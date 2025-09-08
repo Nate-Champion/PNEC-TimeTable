@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="dark"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Class Schedule</title>
@@ -22,220 +21,337 @@
             color: white;
             font-weight: 600;
         }
+        select {
+            -webkit-appearance: none; -moz-appearance: none; appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22currentColor%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20clip-rule%3D%22evenodd%22%20%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1.5em 1.5em; padding-right: 2.5rem;
+        }
+        .dark select {
+             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%20fill%3D%22%239CA3AF%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20clip-rule%3D%22evenodd%22%20%2F%3E%3C%2Fsvg%3E');
+        }
+        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
+        .color-radio { display: none; }
+        .color-label {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 0 0 2px transparent;
+        }
+        .color-radio:checked + .color-label {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 3px #10B981; /* Ring color */
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
 
     <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-7xl">
 
-        <!-- Header Section -->
         <header class="mb-6">
-            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-200">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <div>
-                        <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">Electrical Engineering</h1>
-                        <div class="mt-2 text-gray-500 flex space-x-4">
-                            <p>Semester: <span id="semester" class="font-semibold text-gray-700">1st</span></p>
-                            <p>Section: <span id="section-name" class="font-semibold text-gray-700">A</span></p>
+                        <h1 id="faculty-title" class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">Loading...</h1>
+                        <div class="mt-2 text-gray-500 dark:text-gray-400 flex space-x-4">
+                            <p>Semester: <span id="semester" class="font-semibold text-gray-700 dark:text-gray-100"></span></p>
+                            <p>Section: <span id="section-name" class="font-semibold text-gray-700 dark:text-gray-100"></span></p>
                         </div>
                     </div>
-                    <div class="text-right">
-                        <p class="text-lg font-semibold text-gray-700">Class Room: <span id="class-room" class="text-emerald-600 font-bold">F-007</span></p>
-                        <p id="class-strength" class="text-sm text-gray-500">Strength: 41 Students</p>
+                    <div class="flex items-center space-x-4">
+                         <div class="text-right">
+                            <p class="text-lg font-semibold text-gray-700 dark:text-gray-100">Class Room: <span id="class-room" class="text-emerald-500 font-bold"></span></p>
+                            <p id="class-strength" class="text-sm text-gray-500 dark:text-gray-400"></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Section Selector -->
-        <div class="mb-4 bg-white p-3 rounded-full shadow-sm border border-gray-200 flex justify-center flex-wrap gap-2">
-            <button id="section-A" class="section-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-100 transition-colors">Section A</button>
-            <button id="section-B" class="section-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-100 transition-colors">Section B</button>
-        </div>
-
-        <!-- Day Selector -->
-        <div class="mb-8 bg-white p-3 rounded-full shadow-sm border border-gray-200 flex justify-center flex-wrap gap-2">
-            <button id="day-Mon" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-100 transition-colors">Monday</button>
-            <button id="day-Tue" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-100 transition-colors">Tuesday</button>
-            <button id="day-Wed" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-100 transition-colors">Wednesday</button>
-            <button id="day-Thu" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-100 transition-colors">Thursday</button>
-            <button id="day-Fri" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 hover:bg-gray-100 transition-colors">Friday</button>
-        </div>
-
-        <!-- Schedule Display -->
-        <div>
-            <h2 id="schedule-title" class="text-2xl font-bold mb-6 text-center text-gray-700">Today's Schedule</h2>
-            <div id="schedule-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Schedule cards will be injected here by JavaScript -->
+        <div class="mb-4 bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row justify-center items-center flex-wrap gap-4 hidden">
+            <div>
+                <label for="faculty-select" class="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Faculty:</label>
+                <select id="faculty-select" class="rounded-full px-4 py-2 text-sm sm:text-base font-medium bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"></select>
+            </div>
+            <div>
+                <label for="semester-select" class="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Semester:</label>
+                <select id="semester-select" class="rounded-full px-4 py-2 text-sm sm:text-base font-medium bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"></select>
             </div>
         </div>
 
+        <div id="section-btn-container" class="mb-4 bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 flex justify-center flex-wrap gap-2"></div>
+
+        <div class="mb-8 bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 flex justify-center flex-wrap gap-2">
+            <button id="day-Mon" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Monday</button>
+            <button id="day-Tue" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Tuesday</button>
+            <button id="day-Wed" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Wednesday</button>
+            <button id="day-Thu" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Thursday</button>
+            <button id="day-Fri" class="day-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Friday</button>
+        </div>
+
+        <div>
+            <h2 id="schedule-title" class="text-2xl font-bold mb-6 text-center text-gray-700 dark:text-gray-100">Today's Schedule</h2>
+            <div id="schedule-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        </div>
+
+        <footer class="mt-12 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>Made with <span class="text-red-500">❤️</span> by Amir Ali :)</p>
+        </footer>
+        </div>
+
+    <div id="edit-modal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden opacity-0">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-2xl transform transition-transform scale-95">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                <h3 id="edit-modal-title" class="text-xl font-bold">Edit Schedule</h3>
+                <button id="close-edit-modal-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">&times;</button>
+            </div>
+            <div id="edit-modal-content" class="p-6 max-h-[60vh] overflow-y-auto space-y-3"></div>
+            <div class="p-6 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center rounded-b-2xl">
+                <button id="add-new-class-btn" class="px-4 py-2 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600 transition">Add New Entry</button>
+                <button id="save-and-download-btn" class="px-4 py-2 bg-emerald-500 text-white rounded-full font-semibold hover:bg-emerald-600 transition">Save & Download JSON</button>
+            </div>
+        </div>
     </div>
 
-    <script>
-        const scheduleData = {
-            'A': {
-                info: { semester: '1st', section: 'A', room: 'F-007', strength: '41 Students' },
-                days: {
-                    Mon: [
-                        { time: '08:00 - 10:40', subject: 'APPLICATION OF ICT LAB', teacher: 'Mr LIAQUAT ALI KHAN', location: 'COMPUTER LAB- 2', color: 'bg-yellow-100', textColor: 'text-yellow-800' },
-                        { time: '11:10 - 01:50', subject: 'LCA (LAB)', teacher: 'MS RIDHA SHAHID', location: 'EE MACHINE & CCTs', color: 'bg-yellow-100', textColor: 'text-yellow-800' }
-                    ],
-                    Tue: [
-                        { time: '08:00 - 09:45', subject: 'LCA THEORY', teacher: 'DR SYED WAQAD', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '09:50 - 10:40', subject: 'CALCULUS AND ANALYTICAL GEOMETRY', teacher: 'MR SAQIB NAUMAN', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '11:10 - 12:00', subject: 'FUNCTIONAL ENGLISH', teacher: 'LT CDR FATIMA', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '12:05 - 01:50', subject: 'APPLICATION OF ICT', teacher: 'LT CDR DR HASNAIN', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                    ],
-                    Wed: [
-                        { time: '08:00 - 09:45', subject: 'FUNCTIONAL ENGLISH', teacher: 'LT CDR FATIMA', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '09:50 - 10:40', subject: 'LCA THEORY', teacher: 'DR SYED WAQAD', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '11:10 - 01:50', subject: 'APPLIED PHYSICS LAB', teacher: 'LT CDR RUKHSANA', location: 'PHYSICS LAB', color: 'bg-yellow-100', textColor: 'text-yellow-800' }
-                    ],
-                    Thu: [
-                        { time: '08:00 - 09:45', subject: 'CALCULUS AND ANALYTICAL GEOMETRY', teacher: 'MR SAQIB NAUMAN', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '09:50 - 10:40', subject: 'GUEST LECTURE', teacher: 'GUEST SPEAKER', location: 'AUDITORIUM', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '11:10 - 12:00', subject: 'DIVISIONAL PERIOD', teacher: 'COURSE OFFICER', location: 'F- 007', color: 'bg-green-100', textColor: 'text-green-800' },
-                        { time: '12:05 - 03:30', subject: 'UNDERSTADING OF QURAN-I', teacher: 'DR HAYAT', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' }
-                    ],
-                    Fri: [
-                        { time: '08:00 - 10:40', subject: 'WORKSHOP PRACTICE LAB', teacher: 'MR M YAWAR', location: 'MECHANICAL WORKSHOP', color: 'bg-yellow-100', textColor: 'text-yellow-800' },
-                        { time: '10:45 - 12:30', subject: 'FUNDAMENTALS OF CHEMISTRY', teacher: 'LT AMMAR', location: 'A-001', color: 'bg-gray-200', textColor: 'text-gray-800' }
-                    ],
-                }
-            },
-            'B': {
-                info: { semester: '1st', section: 'B', room: 'F-008', strength: '42 Students' },
-                days: {
-                    Mon: [
-                        { time: '08:00 - 10:40', subject: 'UNDERSTADING OF QURAN-I', teacher: 'DR HAYAT', location: 'F- 008', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '11:10 - 01:50', subject: 'APPLIED PHYSICS LAB', teacher: 'LT CDR RUKHSANA', location: 'PHYSICS LAB', color: 'bg-yellow-100', textColor: 'text-yellow-800' }
-                    ],
-                    Tue: [
-                        { time: '08:00 - 10:40', subject: 'APPLICATION OF ICT LAB', teacher: 'Mr LIAQUAT ALI KHAN', location: 'COMPUTER LAB- 2', color: 'bg-yellow-100', textColor: 'text-yellow-800' },
-                        { time: '11:10 - 01:50', subject: 'LCA (LAB)', teacher: 'MS RIDHA SHAHID', location: 'EE MACHINE & CCTs', color: 'bg-yellow-100', textColor: 'text-yellow-800' }
-                    ],
-                    Wed: [
-                        { time: '08:00 - 10:40', subject: 'CALCULUS AND ANALYTICAL GEOMETRY', teacher: 'MR SAQIB NAUMAN', location: 'F- 008', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '11:10 - 12:55', subject: 'FUNCTIONAL ENGLISH', teacher: 'LT CDR FATIMA', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '01:00 - 01:50', subject: 'LCA THEORY', teacher: 'DR SYED WAQAD', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' }
-                    ],
-                    Thu: [
-                        { time: '08:00 - 09:45', subject: 'LCA THEORY', teacher: 'DR SYED WAQAD', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '09:50 - 10:40', subject: 'GUEST LECTURE', teacher: 'GUEST SPEAKER', location: 'AUDITORIUM', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '11:10 - 12:00', subject: 'DIV PERIOD', teacher: 'COURSE OFFICER', location: 'F-008', color: 'bg-green-100', textColor: 'text-green-800' },
-                        { time: '12:05 - 03:30', subject: 'WORKSHOP PRACTICE LAB', teacher: 'MR M YAWAR', location: 'MECHANICAL WORKSHOP', color: 'bg-yellow-100', textColor: 'text-yellow-800' }
-                    ],
-                    Fri: [
-                        { time: '08:00 - 08:50', subject: 'FUNCTIONAL ENGLISH', teacher: 'LT CDR FATIMA', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '08:55 - 10:40', subject: 'APPLICATION OF ICT', teacher: 'LT CDR DR HASNAIN', location: 'F- 007', color: 'bg-gray-200', textColor: 'text-gray-800' },
-                        { time: '10:45 - 12:30', subject: 'FUNDAMENTALS OF CHEMISTRY', teacher: 'LT AMMAR', location: 'A-001', color: 'bg-gray-200', textColor: 'text-gray-800' }
-                    ]
-                }
-            }
-        };
-
-        const scheduleContainer = document.getElementById('schedule-container');
-        const scheduleTitle = document.getElementById('schedule-title');
-        const dayButtons = document.querySelectorAll('.day-btn');
-        const sectionButtons = document.querySelectorAll('.section-btn');
-        
-        const classRoomEl = document.getElementById('class-room');
-        const classStrengthEl = document.getElementById('class-strength');
-        const semesterEl = document.getElementById('semester');
-        const sectionNameEl = document.getElementById('section-name');
-
-        let currentSection = 'A';
-        let currentDay = 'Mon';
-
-        function updateHeader(section) {
-            const info = scheduleData[section].info;
-            semesterEl.textContent = info.semester;
-            sectionNameEl.textContent = info.section;
-            classRoomEl.textContent = info.room;
-            classStrengthEl.textContent = `Strength: ${info.strength}`;
-        }
-
-        function renderSchedule(day, section) {
-            scheduleContainer.innerHTML = '';
-            const dayData = scheduleData[section].days[day];
-            
-            const todayShort = new Date().toLocaleString('en-us', { weekday: 'short' });
-            scheduleTitle.textContent = day === todayShort ? "Today's Schedule" : `${day}'s Schedule`;
-
-            if (!dayData || dayData.length === 0) {
-                scheduleContainer.innerHTML = `<p class="text-center text-gray-500 col-span-full">No classes scheduled for this day.</p>`;
-                return;
-            }
-
-            dayData.forEach(item => {
-                const card = `
-                    <div class="schedule-card ${item.color} ${item.textColor} p-5 rounded-xl border border-gray-200/50 shadow-sm">
-                        <div class="flex justify-between items-start">
-                             <p class="font-bold text-lg">${item.subject}</p>
-                             <span class="bg-white/60 text-xs font-semibold px-2.5 py-1 rounded-full">${item.time}</span>
-                        </div>
-                        <p class="text-sm mt-2">${item.teacher}</p>
-                        <p class="text-sm font-medium mt-4">${item.location}</p>
+    <div id="class-form-modal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden opacity-0">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md transform transition-transform scale-95">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                <h3 id="class-form-title" class="text-xl font-bold">Add Entry</h3>
+                <button id="close-class-form-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700">&times;</button>
+            </div>
+            <form id="class-form" class="p-6 space-y-4">
+                <input type="hidden" id="editing-class-index">
+                <div class="flex items-center">
+                    <input id="is-break-checkbox" type="checkbox" class="h-4 w-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500">
+                    <label for="is-break-checkbox" class="ml-2 block text-sm">Mark as Break</label>
+                </div>
+                <div>
+                    <label for="subject" id="subject-label" class="block text-sm font-medium mb-1">Subject</label>
+                    <input type="text" id="subject" required class="w-full p-2 rounded-lg bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+                <div id="class-fields">
+                    <div>
+                        <label for="teacher" class="block text-sm font-medium mb-1">Teacher</label>
+                        <input type="text" id="teacher" class="w-full p-2 rounded-lg bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-emerald-500 outline-none">
                     </div>
-                `;
-                scheduleContainer.innerHTML += card;
-            });
-        }
+                    <div class="mt-4">
+                        <label for="location" class="block text-sm font-medium mb-1">Location</label>
+                        <input type="text" id="location" class="w-full p-2 rounded-lg bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-emerald-500 outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label for="time" class="block text-sm font-medium mb-1">Time (e.g., 08:00 - 10:40)</label>
+                    <input type="text" id="time" required class="w-full p-2 rounded-lg bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+                 <div>
+                    <label class="block text-sm font-medium mb-2">Card Color</label>
+                    <div id="color-picker" class="flex flex-wrap gap-3"></div>
+                </div>
+                <div class="pt-2 flex justify-end">
+                    <button type="submit" class="px-4 py-2 bg-emerald-500 text-white rounded-full font-semibold hover:bg-emerald-600 transition">Save Entry</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-        function setActiveDay(day) {
-            currentDay = day;
-            dayButtons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.id === `day-${day}`) {
-                    btn.classList.add('active');
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let scheduleData = null;
+            const colorPalettes = [
+                { name: 'Blue', color: 'bg-blue-100', textColor: 'text-blue-800', darkColor: 'dark:bg-blue-900/50', darkTextColor: 'dark:text-blue-200' },
+                { name: 'Yellow', color: 'bg-yellow-100', textColor: 'text-yellow-800', darkColor: 'dark:bg-yellow-900/50', darkTextColor: 'dark:text-yellow-200' },
+                { name: 'Green', color: 'bg-green-100', textColor: 'text-green-800', darkColor: 'dark:bg-green-900/50', darkTextColor: 'dark:text-green-200' },
+                { name: 'Purple', color: 'bg-purple-100', textColor: 'text-purple-800', darkColor: 'dark:bg-purple-900/50', darkTextColor: 'dark:text-purple-200' },
+                { name: 'Pink', color: 'bg-pink-100', textColor: 'text-pink-800', darkColor: 'dark:bg-pink-900/50', darkTextColor: 'dark:text-pink-200' },
+            ];
+             const breakPalette = { name: 'Break', color: 'bg-gray-200', textColor: 'text-gray-600', darkColor: 'dark:bg-gray-700/50', darkTextColor: 'dark:text-gray-400' };
+
+            fetch('schedule.json')
+                .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); })
+                .then(data => { scheduleData = data; initializeApp(); })
+                .catch(error => { console.error("Error loading schedule data:", error); document.getElementById('schedule-container').innerHTML = `<p class="text-center text-red-500 col-span-full">Failed to load schedule.</p>`; });
+
+            function initializeApp() {
+                const state = { faculty: null, semester: null, section: null, day: 'Mon' };
+                let tempEditingDaySchedule = [];
+
+                const DOMElements = {
+                    facultySelect: document.getElementById('faculty-select'), semesterSelect: document.getElementById('semester-select'),
+                    sectionBtnContainer: document.getElementById('section-btn-container'), dayButtons: document.querySelectorAll('.day-btn'),
+                    scheduleContainer: document.getElementById('schedule-container'), facultyTitleEl: document.getElementById('faculty-title'),
+                    semesterEl: document.getElementById('semester'), sectionNameEl: document.getElementById('section-name'),
+                    classRoomEl: document.getElementById('class-room'), classStrengthEl: document.getElementById('class-strength'),
+                    scheduleTitle: document.getElementById('schedule-title'), themeToggleBtn: document.getElementById('theme-toggle'),
+                    editScheduleBtn: document.getElementById('edit-schedule-btn'),
+                    editModal: { modal: document.getElementById('edit-modal'), title: document.getElementById('edit-modal-title'), closeBtn: document.getElementById('close-edit-modal-btn'), content: document.getElementById('edit-modal-content'), addNewBtn: document.getElementById('add-new-class-btn'), saveBtn: document.getElementById('save-and-download-btn') },
+                    classFormModal: { modal: document.getElementById('class-form-modal'), form: document.getElementById('class-form'), title: document.getElementById('class-form-title'), closeBtn: document.getElementById('close-class-form-btn'), indexInput: document.getElementById('editing-class-index'), isBreakCheck: document.getElementById('is-break-checkbox'), subjectLabel: document.getElementById('subject-label'), subjectInput: document.getElementById('subject'), teacherInput: document.getElementById('teacher'), locationInput: document.getElementById('location'), timeInput: document.getElementById('time'), classFields: document.getElementById('class-fields'), colorPicker: document.getElementById('color-picker') }
+                };
+
+                const getFacultyFullName = key => ({ "EE": "Electrical Engineering", "ME": "Mechanical Engineering", "NA": "Naval Architecture", "CS": "Computer Science" })[key] || key;
+                const getDayFullName = key => ({ "Mon": "Monday", "Tue": "Tuesday", "Wed": "Wednesday", "Thu": "Thursday", "Fri": "Friday" })[key] || key;
+                const getOrdinal = n => { const s = ["th", "st", "nd", "rd"], v = n % 100; return s[(v - 20) % 10] || s[v] || s[0]; };
+                
+                const showModal = (modal) => { modal.classList.remove('hidden'); setTimeout(() => { modal.classList.remove('opacity-0'); modal.querySelector('div').classList.remove('scale-95'); }, 10); };
+                const hideModal = (modal) => { modal.classList.add('opacity-0'); modal.querySelector('div').classList.add('scale-95'); setTimeout(() => modal.classList.add('hidden'), 300); };
+
+                function populateDropdown(selectEl, data, nameProvider) {
+                    selectEl.innerHTML = Object.keys(data).map(key => `<option value="${key}">${nameProvider(key)}</option>`).join('');
+                    return Object.keys(data)[0];
                 }
-            });
-        }
 
-        function setActiveSection(section) {
-            currentSection = section;
-            sectionButtons.forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.id === `section-${section}`) {
-                    btn.classList.add('active');
+                function populateFacultyDropdown() { state.faculty = populateDropdown(DOMElements.facultySelect, scheduleData, getFacultyFullName); populateSemesterDropdown(); }
+                function populateSemesterDropdown() { state.semester = populateDropdown(DOMElements.semesterSelect, scheduleData[state.faculty], key => `${key}${getOrdinal(key)} Semester`); populateSectionButtons(); }
+
+                function populateSectionButtons() {
+                    const sections = Object.keys(scheduleData[state.faculty][state.semester]);
+                    DOMElements.sectionBtnContainer.innerHTML = sections.map(secKey => `<button id="section-${secKey}" class="section-btn px-4 py-2 rounded-full text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">Section ${secKey}</button>`).join('');
+                    state.section = sections[0];
+                    document.querySelectorAll('.section-btn').forEach(btn => btn.addEventListener('click', () => { setActiveSection(btn.id.replace('section-', '')); updateAllUI(); }));
                 }
-            });
-        }
-        
-        dayButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const day = button.id.replace('day-', '');
-                setActiveDay(day);
-                renderSchedule(currentDay, currentSection);
-            });
-        });
 
-        sectionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const section = button.id.replace('section-', '');
-                setActiveSection(section);
-                updateHeader(currentSection);
-                renderSchedule(currentDay, currentSection);
-            });
-        });
+                function updateAllUI() {
+                    try {
+                        const sectionData = scheduleData[state.faculty][state.semester][state.section];
+                        if (!sectionData) throw new Error('Section data not found');
+                        updateHeader(sectionData.info);
+                        renderSchedule(sectionData.days[state.day]);
+                    } catch (e) {
+                        DOMElements.scheduleContainer.innerHTML = `<p class="text-center text-red-500 col-span-full">No schedule data for this selection.</p>`;
+                        updateHeader(null);
+                    }
+                }
+                
+                function updateHeader(info) {
+                    DOMElements.facultyTitleEl.textContent = getFacultyFullName(state.faculty);
+                    if (info) {
+                        DOMElements.semesterEl.textContent = `${info.semester}${getOrdinal(info.semester)}`; DOMElements.sectionNameEl.textContent = info.section;
+                        DOMElements.classRoomEl.textContent = info.room; DOMElements.classStrengthEl.textContent = `Strength: ${info.strength}`;
+                    } else {
+                        DOMElements.semesterEl.textContent = '-'; DOMElements.sectionNameEl.textContent = '-';
+                        DOMElements.classRoomEl.textContent = '-'; DOMElements.classStrengthEl.textContent = 'Strength: N/A';
+                    }
+                }
 
-        // Initial load
-        window.addEventListener('load', () => {
-            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-            const today = dayNames[new Date().getDay()];
-            
-            const dayToLoad = (today === 'Sun' || today === 'Sat') ? 'Mon' : today;
-            
-            setActiveDay(dayToLoad);
-            setActiveSection(currentSection);
-            updateHeader(currentSection);
-            renderSchedule(currentDay, currentSection);
+                function renderSchedule(dayData) {
+                    const todayShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][new Date().getDay()];
+                    DOMElements.scheduleTitle.textContent = state.day === todayShort ? "Today's Schedule" : `${getDayFullName(state.day)}'s Schedule`;
+
+                    if (!dayData || dayData.length === 0) {
+                        DOMElements.scheduleContainer.innerHTML = `<p class="text-center text-gray-500 dark:text-gray-400 col-span-full">No entries scheduled.</p>`; return;
+                    }
+                    
+                    DOMElements.scheduleContainer.innerHTML = dayData.map(item => {
+                        const isBreak = item.type === 'break';
+                        const mainClasses = isBreak ? `${breakPalette.color} ${breakPalette.textColor} ${breakPalette.darkColor} ${breakPalette.darkTextColor}` : `${item.color} ${item.textColor} ${item.darkColor} ${item.darkTextColor}`;
+                        return `
+                        <div class="schedule-card ${mainClasses} p-5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+                            <div class="flex justify-between items-start">
+                                 <p class="font-bold text-lg">${item.subject}</p>
+                                 <span class="bg-white/60 dark:bg-gray-900/60 text-xs font-semibold px-2.5 py-1 rounded-full">${item.time}</span>
+                            </div>
+                            ${!isBreak ? `<p class="text-sm mt-2 opacity-90">${item.teacher}</p><p class="text-sm font-medium mt-4 opacity-90">${item.location}</p>` : ''}
+                        </div>
+                    `}).join('');
+                }
+
+                const setActiveDay = day => { state.day = day; DOMElements.dayButtons.forEach(btn => btn.classList.toggle('active', btn.id === `day-${day}`)); };
+                const setActiveSection = section => { state.section = section; document.querySelectorAll('.section-btn').forEach(btn => btn.classList.toggle('active', btn.id === `section-${section}`)); };
+
+                // Event listener for theme toggle is no longer needed
+                // DOMElements.themeToggleBtn.addEventListener('click', () => document.documentElement.classList.toggle('dark'));
+                DOMElements.facultySelect.addEventListener('change', e => { state.faculty = e.target.value; populateSemesterDropdown(); updateAllUI(); });
+                DOMElements.semesterSelect.addEventListener('change', e => { state.semester = e.target.value; populateSectionButtons(); updateAllUI(); });
+                DOMElements.dayButtons.forEach(button => button.addEventListener('click', () => { setActiveDay(button.id.replace('day-', '')); updateAllUI(); }));
+
+                function renderEditorList() {
+                    DOMElements.editModal.title.textContent = `Editing: ${getDayFullName(state.day)}'s Schedule`;
+                    DOMElements.editModal.content.innerHTML = tempEditingDaySchedule.length === 0 ? `<p class="text-center text-gray-500">No entries. Add one!</p>` : tempEditingDaySchedule.map((item, index) => `
+                        <div class="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-700/50 rounded-lg">
+                            <div><p class="font-bold">${item.subject}</p><p class="text-sm text-gray-600 dark:text-gray-400">${item.type === 'break' ? 'Break' : `${item.teacher} • ${item.time}`}</p></div>
+                            <div class="space-x-2">
+                                <button data-index="${index}" class="edit-class-btn p-2 text-blue-500 hover:text-blue-700"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L14.732 3.732z" /></svg></button>
+                                <button data-index="${index}" class="delete-class-btn p-2 text-red-500 hover:text-red-700"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                            </div>
+                        </div>`).join('');
+                }
+                
+                DOMElements.editModal.content.addEventListener('click', e => {
+                    const btn = e.target.closest('button');
+                    if (!btn) return;
+                    if (btn.classList.contains('edit-class-btn')) openClassForm(btn.dataset.index);
+                    if (btn.classList.contains('delete-class-btn')) { if (confirm('Are you sure?')) { tempEditingDaySchedule.splice(btn.dataset.index, 1); renderEditorList(); }}
+                });
+
+                function toggleBreakMode(isBreak) {
+                    DOMElements.classFormModal.subjectLabel.textContent = isBreak ? 'Break Name (e.g., Lunch)' : 'Subject';
+                    DOMElements.classFormModal.classFields.style.display = isBreak ? 'none' : 'block';
+                    DOMElements.classFormModal.colorPicker.style.display = isBreak ? 'none' : 'flex';
+                }
+
+                function openClassForm(index = null) {
+                    const { form, indexInput, title, isBreakCheck, subjectInput, teacherInput, locationInput, timeInput, colorPicker } = DOMElements.classFormModal;
+                    form.reset();
+                    const isEditing = index !== null;
+                    const item = isEditing ? tempEditingDaySchedule[index] : {};
+                    const isBreak = item.type === 'break';
+                    
+                    title.textContent = isEditing ? "Edit Entry" : "Add New Entry";
+                    indexInput.value = isEditing ? index : '';
+                    subjectInput.value = item.subject || '';
+                    teacherInput.value = item.teacher || '';
+                    locationInput.value = item.location || '';
+                    timeInput.value = item.time || '';
+                    isBreakCheck.checked = isBreak;
+                    toggleBreakMode(isBreak);
+
+                    colorPicker.innerHTML = colorPalettes.map((p, i) => `<div><input type="radio" name="color-option" value="${i}" id="color-${i}" class="color-radio" ${i===0 ? 'checked' : ''}><label for="color-${i}" class="color-label w-8 h-8 rounded-full cursor-pointer block ${p.color}" title="${p.name}"></label></div>`).join('');
+                    if (isEditing && !isBreak) {
+                        const colorIndex = colorPalettes.findIndex(p => p.color === item.color);
+                        document.getElementById(`color-${colorIndex > -1 ? colorIndex : 0}`).checked = true;
+                    }
+                    showModal(DOMElements.classFormModal.modal);
+                }
+                
+                DOMElements.classFormModal.form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    const { indexInput, isBreakCheck, subjectInput, teacherInput, locationInput, timeInput } = DOMElements.classFormModal;
+                    const isBreak = isBreakCheck.checked;
+                    const selectedColorIndex = document.querySelector('input[name="color-option"]:checked').value;
+                    const palette = isBreak ? breakPalette : colorPalettes[selectedColorIndex];
+
+                    const newEntry = {
+                        subject: subjectInput.value, time: timeInput.value, teacher: isBreak ? '' : teacherInput.value,
+                        location: isBreak ? '' : locationInput.value, type: isBreak ? 'break' : 'class', ...palette
+                    };
+                    
+                    indexInput.value ? tempEditingDaySchedule[indexInput.value] = newEntry : tempEditingDaySchedule.push(newEntry);
+                    hideModal(DOMElements.classFormModal.modal);
+                    renderEditorList();
+                });
+
+                DOMElements.classFormModal.isBreakCheck.addEventListener('change', e => toggleBreakMode(e.target.checked));
+                // Event listener for edit schedule button is no longer needed
+                // DOMElements.editScheduleBtn.addEventListener('click', () => { ... });
+                
+                DOMElements.editModal.saveBtn.addEventListener('click', () => {
+                    scheduleData[state.faculty][state.semester][state.section].days[state.day] = tempEditingDaySchedule;
+                    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(scheduleData, null, 4));
+                    const dl = document.createElement('a');
+                    dl.setAttribute("href", dataStr); dl.setAttribute("download", "schedule.json");
+                    document.body.appendChild(dl); dl.click(); dl.remove();
+                    hideModal(DOMElements.editModal.modal);
+                    updateAllUI();
+                });
+                
+                DOMElements.editModal.addNewBtn.addEventListener('click', () => openClassForm(null));
+                DOMElements.editModal.closeBtn.addEventListener('click', () => hideModal(DOMElements.editModal.modal));
+                DOMElements.classFormModal.closeBtn.addEventListener('click', () => hideModal(DOMElements.classFormModal.modal));
+
+                populateFacultyDropdown();
+                const today = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][new Date().getDay()];
+                setActiveDay((today === 'Sun' || today === 'Sat') ? 'Mon' : today);
+                setActiveSection(state.section);
+                updateAllUI();
+            }
         });
     </script>
 </body>
 </html>
-
-
-
-
