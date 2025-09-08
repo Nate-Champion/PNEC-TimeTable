@@ -164,7 +164,7 @@
             ];
              const breakPalette = { name: 'Break', color: 'bg-gray-200', textColor: 'text-gray-600', darkColor: 'dark:bg-gray-700/50', darkTextColor: 'dark:text-gray-400' };
 
-            fetch('schedule.json')
+            fetch('./schedule.json')
                 .then(response => { if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`); return response.json(); })
                 .then(data => { scheduleData = data; initializeApp(); })
                 .catch(error => { console.error("Error loading schedule data:", error); document.getElementById('schedule-container').innerHTML = `<p class="text-center text-red-500 col-span-full">Failed to load schedule.</p>`; });
