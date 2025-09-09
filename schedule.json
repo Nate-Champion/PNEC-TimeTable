@@ -33,7 +33,17 @@
                             "darkTextColor": "dark:text-gray-400"
                         },
                         {
-                            "time": "11:10 - 01:50",
+                            "time": "11:10 - 12:00",
+                            "subject": "CALCULUS AND ANALYTICAL GEOMETRY",
+                            "teacher": "MR SAQIB NAUMAN",
+                            "location": "F- 007",
+                            "color": "bg-blue-100",
+                            "textColor": "text-blue-800",
+                            "darkColor": "dark:bg-blue-900/50",
+                            "darkTextColor": "dark:text-blue-200"
+                        },
+                        {
+                            "time": "12:05 - 01:50",
                             "subject": "LCA (LAB)",
                             "teacher": "MS RIDHA SHAHID",
                             "location": "EE MACHINE & CCTs",
@@ -53,6 +63,16 @@
                             "textColor": "text-purple-800",
                             "darkColor": "dark:bg-purple-900/50",
                             "darkTextColor": "dark:text-purple-200"
+                        },
+                        {
+                            "time": "02:40 - 03:30",
+                            "subject": "LCA (LAB)",
+                            "teacher": "MS RIDHA SHAHID",
+                            "location": "EE MACHINE & CCTs",
+                            "color": "bg-yellow-100",
+                            "textColor": "text-yellow-800",
+                            "darkColor": "dark:bg-yellow-900/50",
+                            "darkTextColor": "dark:text-yellow-200"
                         }
                     ],
                     "Tue": [
@@ -88,10 +108,10 @@
                             "darkColor": "dark:bg-gray-700/50",
                             "darkTextColor": "dark:text-gray-400"
                         },
-                        {
+                         {
                             "time": "11:10 - 12:00",
-                            "subject": "FUNCTIONAL ENGLISH",
-                            "teacher": "LT CDR FATIMA",
+                            "subject": "CALCULUS AND ANALYTICAL GEOMETRY",
+                            "teacher": "MR SAQIB NAUMAN",
                             "location": "F- 007",
                             "color": "bg-blue-100",
                             "textColor": "text-blue-800",
@@ -135,8 +155,8 @@
                         },
                         {
                             "time": "09:50 - 10:40",
-                            "subject": "LCA THEORY",
-                            "teacher": "DR SYED WAQAD",
+                            "subject": "APPLIED PHYSICS",
+                            "teacher": "LT AMIR HUSSAIN",
                             "location": "F- 007",
                             "color": "bg-blue-100",
                             "textColor": "text-blue-800",
@@ -156,7 +176,17 @@
                             "darkTextColor": "dark:text-gray-400"
                         },
                         {
-                            "time": "11:10 - 01:50",
+                            "time": "11:10 - 1200",
+                            "subject": "LCA THEORY",
+                            "teacher": "DR SYED WAQAD",
+                            "location": "F- 007",
+                            "color": "bg-blue-100",
+                            "textColor": "text-blue-800",
+                            "darkColor": "dark:bg-blue-900/50",
+                            "darkTextColor": "dark:text-blue-200"
+                        },
+                        {
+                            "time": "12:05 - 01:50",
                             "subject": "APPLIED PHYSICS LAB",
                             "teacher": "LT CDR RUKHSANA",
                             "location": "PHYSICS LAB",
@@ -176,19 +206,39 @@
                             "textColor": "text-purple-800",
                             "darkColor": "dark:bg-purple-900/50",
                             "darkTextColor": "dark:text-purple-200"
+                        },
+                        {
+                            "time": "02:40 - 03:30",
+                            "subject": "APPLIED PHYSICS LAB",
+                            "teacher": "LT CDR RUKHSANA",
+                            "location": "PHYSICS LAB",
+                            "color": "bg-yellow-100",
+                            "textColor": "text-yellow-800",
+                            "darkColor": "dark:bg-yellow-900/50",
+                            "darkTextColor": "dark:text-yellow-200"
                         }
                     ],
                     "Thu": [
                         {
-                            "time": "08:00 - 09:45",
-                            "subject": "CALCULUS AND ANALYTICAL GEOMETRY",
-                            "teacher": "MR SAQIB NAUMAN",
+                            "time": "08:00 - 08:50",
+                            "subject": "FUNCTIONAL ENGLISH",
+                            "teacher": "LT CDR FATIMA",
                             "location": "F- 007",
                             "color": "bg-blue-100",
                             "textColor": "text-blue-800",
                             "darkColor": "dark:bg-blue-900/50",
                             "darkTextColor": "dark:text-blue-200"
                         },
+                        {
+                            "time": "08:55 - 09:45",
+                            "subject": "APPLIED PHYSICS",
+                            "teacher": "LT AMIR HUSSAIN",
+                            "location": "F- 007",
+                            "color": "bg-blue-100",
+                            "textColor": "text-blue-800",
+                            "darkColor": "dark:bg-blue-900/50",
+                            "darkTextColor": "dark:text-blue-200"
+                        },                       
                         {
                             "time": "09:50 - 10:40",
                             "subject": "GUEST LECTURE",
@@ -244,7 +294,7 @@
                             "darkTextColor": "dark:text-purple-200"
                         },
                         {
-                            "time": "12:05 - 01:50",
+                            "time": "02:40 - 03:30",
                             "subject": "UNDERSTANDING OF QURAN-I",
                             "teacher": "DR HAYAT",
                             "location": "F- 007",
@@ -310,6 +360,16 @@
                             "darkTextColor": "dark:text-gray-400"
                         },
                         {
+                            "time": "11:10 - 12:00",
+                            "subject": "FUNCTIONAL ENGLISH",
+                            "teacher": "LT CDR FATIMA",
+                            "location": "F- 008",
+                            "color": "bg-blue-100",
+                            "textColor": "text-blue-800",
+                            "darkColor": "dark:bg-blue-900/50",
+                            "darkTextColor": "dark:text-blue-200"
+                        },
+                        {
                             "time": "11:10 - 01:50",
                             "subject": "APPLIED PHYSICS LAB",
                             "teacher": "LT CDR RUKHSANA",
@@ -330,6 +390,16 @@
                             "textColor": "text-purple-800",
                             "darkColor": "dark:bg-purple-900/50",
                             "darkTextColor": "dark:text-purple-200"
+                        },
+                        {
+                            "time": "02:40 - 03:30",
+                            "subject": "APPLIED PHYSICS LAB",
+                            "teacher": "LT CDR RUKHSANA",
+                            "location": "PHYSICS LAB",
+                            "color": "bg-yellow-100",
+                            "textColor": "text-yellow-800",
+                            "darkColor": "dark:bg-yellow-900/50",
+                            "darkTextColor": "dark:text-yellow-200"
                         }
                     ],
                     "Tue": [
@@ -357,7 +427,17 @@
                             "darkTextColor": "dark:text-gray-400"
                         },
                         {
-                            "time": "11:10 - 01:50",
+                            "time": "11:10 - 12:00",
+                            "subject": "LCA THEORY",
+                            "teacher": "DR SYED WAQAD",
+                            "location": "F- 008",
+                            "color": "bg-blue-100",
+                            "textColor": "text-blue-800",
+                            "darkColor": "dark:bg-blue-900/50",
+                            "darkTextColor": "dark:text-blue-200"
+                        },
+                        {
+                            "time": "12:05 - 01:50",
                             "subject": "LCA (LAB)",
                             "teacher": "MS RIDHA SHAHID",
                             "location": "EE MACHINE & CCTs",
@@ -377,6 +457,16 @@
                             "textColor": "text-purple-800",
                             "darkColor": "dark:bg-purple-900/50",
                             "darkTextColor": "dark:text-purple-200"
+                        },
+                        {
+                            "time": "02:40 - 03:30",
+                            "subject": "LCA (LAB)",
+                            "teacher": "MS RIDHA SHAHID",
+                            "location": "EE MACHINE & CCTs",
+                            "color": "bg-yellow-100",
+                            "textColor": "text-yellow-800",
+                            "darkColor": "dark:bg-yellow-900/50",
+                            "darkTextColor": "dark:text-yellow-200"
                         }
                     
                     ],
@@ -402,11 +492,11 @@
                             "textColor": "text-gray-600",
                             "darkColor": "dark:bg-gray-700/50",
                             "darkTextColor": "dark:text-gray-400"
-                        },
+                        },                       
                         {
                             "time": "11:10 - 12:55",
-                            "subject": "FUNCTIONAL ENGLISH",
-                            "teacher": "LT CDR FATIMA",
+                            "subject": "APPLICATION OF ICT",
+                            "teacher": "LT CDR DR HASNAIN",
                             "location": "F- 008",
                             "color": "bg-blue-100",
                             "textColor": "text-blue-800",
@@ -415,14 +505,14 @@
                         },
                         {
                             "time": "01:00 - 01:50",
-                            "subject": "LCA THEORY",
-                            "teacher": "DR SYED WAQAD",
-                            "location": "F- 007",
+                            "subject": "FUNCTIONAL ENGLISH",
+                            "teacher": "LT CDR FATIMA",
+                            "location": "F- 008",
                             "color": "bg-blue-100",
                             "textColor": "text-blue-800",
                             "darkColor": "dark:bg-blue-900/50",
                             "darkTextColor": "dark:text-blue-200"
-                        },
+                        },                     
                         {
                             "subject": "Break :)",
                             "time": "01:50 - 02:40",
@@ -527,8 +617,8 @@
                         },
                      {
                             "time": "08:55 - 10:40",
-                            "subject": "APPLICATION OF ICT",
-                            "teacher": "LT CDR DR HASNAIN",
+                            "subject": "APPLIED PHYSICS",
+                            "teacher": "LT AMIR HUSSAIN",
                             "location": "F- 008",
                             "color": "bg-blue-100",
                             "textColor": "text-blue-800",
