@@ -331,7 +331,8 @@
         "info": {
           "semester": "1",
           "section": "B",
-          "room": "F-008"
+          "room": "F-008",
+          "strength": "35 Students"
         },
         "days": {
           "Mon": [
