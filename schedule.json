@@ -453,7 +453,7 @@
               "name": "Purple",
               "color": "bg-purple-100",
               "textColor": "text-purple-800",
-              "darkColor": "dark:bg-purple-900/5D",
+              "darkColor": "dark:bg-purple-900/50",
               "darkTextColor": "dark:text-purple-200"
             },
             {
@@ -507,7 +507,7 @@
               "location": "F- 008",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
-              "darkColor": "dark:bg-blue-900/5D",
+              "darkColor": "dark:bg-blue-900/50",
               "darkTextColor": "dark:text-blue-200"
             },
             {
