@@ -34,7 +34,7 @@
             },
             {
               "time": "11:45 - 12:35",
-              "subject": "CALCULUS AND ANALYTICAL GEOMETRY",
+              "subject": "CALCULUS",
               "teacher": "MR SAQIB NAUMAN",
               "location": "F- 007",
               "color": "bg-blue-100",
@@ -88,7 +88,7 @@
             },
             {
               "time": "10:25 - 11:15",
-              "subject": "CALCULUS AND ANALYTICAL GEOMETRY",
+              "subject": "CALCULUS",
               "teacher": "MR SAQIB NAUMAN",
               "location": "F- 007",
               "color": "bg-blue-100",
@@ -110,7 +110,7 @@
             },
             {
               "time": "11:45 - 12:35",
-              "subject": "CALCULUS AND ANALYTICAL GEOMETRY",
+              "subject": "CALCULUS",
               "teacher": "MR SAQIB NAUMAN",
               "location": "F- 007",
               "color": "bg-blue-100",
@@ -470,7 +470,7 @@
           "Wed": [
             {
               "time": "08:35 - 11:15",
-              "subject": "CALCULUS AND ANALYTICAL GEOMETRY",
+              "subject": "CALCULUS",
               "teacher": "MR SAQIB NAUMAN",
               "location": "F- 008",
               "color": "bg-blue-100",
