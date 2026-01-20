@@ -412,6 +412,38 @@
               "darkColor": "dark:bg-blue-900/50",
               "darkTextColor": "dark:text-blue-200"
             }
+          ],
+          "Fri": [
+            {
+              "time": "08:35 - 09:25",
+              "subject": "ELECTRICAL NETWORK ANALYSIS",
+              "teacher": "MR ABDUL SAMIAH",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "09:30 - 10:20",
+              "subject": "DIFFERENTIAL EQUATIONS",
+              "teacher": "DR ASIF MANSOOR",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "10:25 - 01:05",
+              "subject": "ENGINEERING DRAWING",
+              "teacher": "DR SHAHEER",
+              "location": "ED ROOM",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            }
           ]
         }
       }
