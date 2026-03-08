@@ -6,12 +6,12 @@
           "semester": "2",
           "section": "A",
           "room": "F-007",
-          "strength": "36 Students"
+          "strength": "34 Students"
         },
         "days": {
           "Mon": [
             {
-              "time": "08:35 - 11:15",
+              "time": "09:30 - 11:30",
               "subject": "ENGINEERING DRAWING",
               "teacher": "DR SHAHEER",
               "location": "ED ROOM",
@@ -21,7 +21,7 @@
               "darkTextColor": "dark:text-yellow-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -33,7 +33,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 02:25",
+              "time": "11:40 - 01:40",
               "subject": "ELECTRICAL NETWORK ANALYSIS LAB",
               "teacher": "MS FARHA PERVEEN",
               "location": "COMP LAB-1",
@@ -45,7 +45,7 @@
           ],
           "Tue": [
             {
-              "time": "08:35 - 10:20",
+              "time": "09:30 - 10:50",
               "subject": "ELECTRICAL NETWORK ANALYSIS",
               "teacher": "MR ABDUL SAMIAH",
               "location": "F-007",
@@ -55,7 +55,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "10:25 - 11:15",
+              "time": "10:50 - 11:30",
               "subject": "DIFFERENTIAL EQUATIONS",
               "teacher": "DR ASIF MANSOOR",
               "location": "F-007",
@@ -65,7 +65,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -77,7 +77,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 12:35",
+              "time": "11:40 - 12:20",
               "subject": "COMPUTER PROGRAMMING",
               "teacher": "MR MUBASHIR TARIQ",
               "location": "F-007",
@@ -87,7 +87,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "12:40 - 01:30",
+              "time": "12:20 - 01:00",
               "subject": "CONSULTANCY",
               "teacher": "INSTRUCTORS",
               "location": "",
@@ -97,7 +97,7 @@
               "darkTextColor": "dark:text-purple-200"
             },
             {
-              "time": "01:35 - 03:15",
+              "time": "01:00 - 02:40",
               "subject": "IDEOLOGY AND CONSTITUTION OF PAKISTAN",
               "teacher": "MS FARAH NAQVI (TVF)",
               "location": "F-007",
@@ -109,7 +109,7 @@
           ],
           "Wed": [
             {
-              "time": "08:35 - 11:15",
+              "time": "09:30 - 11:30",
               "subject": "COMPUTER PROGRAMMING LAB",
               "teacher": "MR LIAQUAT ALI KHAN",
               "location": "COMPUTER LAB-2",
@@ -119,7 +119,7 @@
               "darkTextColor": "dark:text-yellow-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -131,7 +131,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 02:25",
+              "time": "11:40 - 01:40",
               "subject": "UNDERSTANDING QURAN-II",
               "teacher": "DR HAYYAT MUHAMMAD",
               "location": "F-007",
@@ -143,7 +143,7 @@
           ],
           "Thu": [
             {
-              "time": "08:35 - 10:20",
+              "time": "09:30 - 10:50",
               "subject": "ISLAMIC STUDIES",
               "teacher": "DR SHAMS UL HAQ (TVF)",
               "location": "F-007",
@@ -153,7 +153,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "10:25 - 11:15",
+              "time": "10:50 - 11:30",
               "subject": "GUEST LECTURE",
               "teacher": "GUEST SPEAKER",
               "location": "AUDITORIUM",
@@ -163,7 +163,7 @@
               "darkTextColor": "dark:text-purple-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -175,7 +175,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 12:35",
+              "time": "11:40 - 12:20",
               "subject": "DIVISIONAL PERIOD",
               "teacher": "COURSE OFFICER",
               "location": "F-105",
@@ -185,7 +185,7 @@
               "darkTextColor": "dark:text-green-200"
             },
             {
-              "time": "12:40 - 03:15",
+              "time": "12:20 - 02:40",
               "subject": "ENGINEERING DRAWING",
               "teacher": "DR SHAHEER",
               "location": "ED ROOM",
@@ -197,7 +197,7 @@
           ],
           "Fri": [
             {
-              "time": "08:35 - 10:20",
+              "time": "09:00 - 10:20",
               "subject": "COMPUTER PROGRAMMING",
               "teacher": "MR MUBASHIR TARIQ",
               "location": "F-007",
@@ -207,7 +207,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "10:25 - 12:10",
+              "time": "10:20 - 11:50",
               "subject": "DIFFERENTIAL EQUATIONS",
               "teacher": "DR ASIF MANSOOR",
               "location": "F-007",
@@ -217,7 +217,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "12:15 - 01:05",
+              "time": "11:50 - 12:30",
               "subject": "ELECTRICAL NETWORK ANALYSIS",
               "teacher": "MR ABDUL SAMIAH",
               "location": "F-007",
@@ -239,7 +239,7 @@
         "days": {
           "Mon": [
             {
-              "time": "08:35 - 11:15",
+              "time": "09:30 - 11:30",
               "subject": "UNDERSTANDING QURAN-II",
               "teacher": "DR HAYYAT MUHAMMAD",
               "location": "F-008",
@@ -249,7 +249,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -261,7 +261,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 01:30",
+              "time": "11:40 - 01:00",
               "subject": "COMPUTER PROGRAMMING",
               "teacher": "MR MUBASHIR TARIQ",
               "location": "F-008",
@@ -271,7 +271,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "01:35 - 04:05",
+              "time": "01:00 - 03:20",
               "subject": "IDEOLOGY AND CONSTITUTION OF PAKISTAN",
               "teacher": "MS FARAH NAQVI (TVF)",
               "location": "F-008",
@@ -283,7 +283,7 @@
           ],
           "Tue": [
             {
-              "time": "08:35 - 11:15",
+              "time": "09:30 - 11:30",
               "subject": "COMPUTER PROGRAMMING LAB",
               "teacher": "MR LIAQUAT ALI KHAN",
               "location": "COMPUTER LAB-2",
@@ -293,7 +293,7 @@
               "darkTextColor": "dark:text-yellow-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -305,7 +305,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 01:30",
+              "time": "11:40 - 01:00",
               "subject": "DIFFERENTIAL EQUATIONS",
               "teacher": "DR ASIF MANSOOR",
               "location": "F-008",
@@ -315,7 +315,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "01:35 - 02:25",
+              "time": "01:00 - 01:40",
               "subject": "COMPUTER PROGRAMMING",
               "teacher": "MR MUBASHIR TARIQ",
               "location": "F-008",
@@ -327,7 +327,7 @@
           ],
           "Wed": [
             {
-              "time": "08:35 - 11:15",
+              "time": "09:30 - 11:30",
               "subject": "ENGINEERING DRAWING",
               "teacher": "DR SHAHEER",
               "location": "ED ROOM",
@@ -337,7 +337,7 @@
               "darkTextColor": "dark:text-yellow-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -349,7 +349,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 02:25",
+              "time": "11:40 - 01:40",
               "subject": "ELECTRICAL NETWORK ANALYSIS LAB",
               "teacher": "MS FARHA PERVEEN",
               "location": "COMP LAB-1",
@@ -361,7 +361,7 @@
           ],
           "Thu": [
             {
-              "time": "08:35 - 10:20",
+              "time": "09:30 - 10:50",
               "subject": "ELECTRICAL NETWORK ANALYSIS",
               "teacher": "MR ABDUL SAMIAH",
               "location": "F-008",
@@ -371,7 +371,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "10:25 - 11:15",
+              "time": "10:50 - 11:30",
               "subject": "GUEST LECTURE",
               "teacher": "GUEST SPEAKER",
               "location": "AUDITORIUM",
@@ -381,7 +381,7 @@
               "darkTextColor": "dark:text-purple-200"
             },
             {
-              "time": "11:15 - 11:45",
+              "time": "11:30 - 11:40",
               "subject": "Stand Easy",
               "teacher": "",
               "location": "",
@@ -393,7 +393,7 @@
               "darkTextColor": "dark:text-gray-400"
             },
             {
-              "time": "11:45 - 12:35",
+              "time": "11:40 - 12:20",
               "subject": "DIVISIONAL PERIOD",
               "teacher": "COURSE OFFICER",
               "location": "F-102",
@@ -403,7 +403,7 @@
               "darkTextColor": "dark:text-green-200"
             },
             {
-              "time": "12:40 - 02:25",
+              "time": "12:20 - 01:40",
               "subject": "ISLAMIC STUDIES",
               "teacher": "DR SHAMS UL HAQ (TVF)",
               "location": "F-008",
@@ -415,7 +415,7 @@
           ],
           "Fri": [
             {
-              "time": "08:35 - 09:25",
+              "time": "09:00 - 09:40",
               "subject": "ELECTRICAL NETWORK ANALYSIS",
               "teacher": "MR ABDUL SAMIAH",
               "location": "F-008",
@@ -425,7 +425,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "09:30 - 10:20",
+              "time": "09:40 - 10:20",
               "subject": "DIFFERENTIAL EQUATIONS",
               "teacher": "DR ASIF MANSOOR",
               "location": "F-008",
@@ -435,7 +435,7 @@
               "darkTextColor": "dark:text-blue-200"
             },
             {
-              "time": "10:25 - 01:05",
+              "time": "10:20 - 12:30",
               "subject": "ENGINEERING DRAWING",
               "teacher": "DR SHAHEER",
               "location": "ED ROOM",
