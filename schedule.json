@@ -1,0 +1,452 @@
+{
+  "EE": {
+    "2": {
+      "A": {
+        "info": {
+          "semester": "2",
+          "section": "A",
+          "room": "F-007",
+          "strength": "34 Students"
+        },
+        "days": {
+          "Mon": [
+            {
+              "time": "09:30 - 11:30",
+              "subject": "ENGINEERING DRAWING",
+              "teacher": "DR SHAHEER",
+              "location": "ED ROOM",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 01:40",
+              "subject": "ELECTRICAL NETWORK ANALYSIS LAB",
+              "teacher": "MS FARHA PERVEEN",
+              "location": "COMP LAB-1",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            }
+          ],
+          "Tue": [
+            {
+              "time": "09:30 - 10:50",
+              "subject": "ELECTRICAL NETWORK ANALYSIS",
+              "teacher": "MR ABDUL SAMIAH",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "10:50 - 11:30",
+              "subject": "DIFFERENTIAL EQUATIONS",
+              "teacher": "DR ASIF MANSOOR",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 12:20",
+              "subject": "COMPUTER PROGRAMMING",
+              "teacher": "MR MUBASHIR TARIQ",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "12:20 - 01:00",
+              "subject": "CONSULTANCY",
+              "teacher": "INSTRUCTORS",
+              "location": "",
+              "color": "bg-purple-100",
+              "textColor": "text-purple-800",
+              "darkColor": "dark:bg-purple-900/50",
+              "darkTextColor": "dark:text-purple-200"
+            },
+            {
+              "time": "01:00 - 02:40",
+              "subject": "IDEOLOGY AND CONSTITUTION OF PAKISTAN",
+              "teacher": "MS FARAH NAQVI (TVF)",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            }
+          ],
+          "Wed": [
+            {
+              "time": "09:30 - 11:30",
+              "subject": "COMPUTER PROGRAMMING LAB",
+              "teacher": "MR LIAQUAT ALI KHAN",
+              "location": "COMPUTER LAB-2",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 01:40",
+              "subject": "UNDERSTANDING QURAN-II",
+              "teacher": "DR HAYYAT MUHAMMAD",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            }
+          ],
+          "Thu": [
+            {
+              "time": "09:30 - 10:50",
+              "subject": "ISLAMIC STUDIES",
+              "teacher": "DR SHAMS UL HAQ (TVF)",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "10:50 - 11:30",
+              "subject": "GUEST LECTURE",
+              "teacher": "GUEST SPEAKER",
+              "location": "AUDITORIUM",
+              "color": "bg-purple-100",
+              "textColor": "text-purple-800",
+              "darkColor": "dark:bg-purple-900/50",
+              "darkTextColor": "dark:text-purple-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 12:20",
+              "subject": "DIVISIONAL PERIOD",
+              "teacher": "COURSE OFFICER",
+              "location": "F-105",
+              "color": "bg-green-100",
+              "textColor": "text-green-800",
+              "darkColor": "dark:bg-green-900/50",
+              "darkTextColor": "dark:text-green-200"
+            },
+            {
+              "time": "12:20 - 02:40",
+              "subject": "ENGINEERING DRAWING",
+              "teacher": "DR SHAHEER",
+              "location": "ED ROOM",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            }
+          ],
+          "Fri": [
+            {
+              "time": "09:00 - 10:20",
+              "subject": "COMPUTER PROGRAMMING",
+              "teacher": "MR MUBASHIR TARIQ",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "10:20 - 11:50",
+              "subject": "DIFFERENTIAL EQUATIONS",
+              "teacher": "DR ASIF MANSOOR",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "11:50 - 12:30",
+              "subject": "ELECTRICAL NETWORK ANALYSIS",
+              "teacher": "MR ABDUL SAMIAH",
+              "location": "F-007",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            }
+          ]
+        }
+      },
+      "B": {
+        "info": {
+          "semester": "2",
+          "section": "B",
+          "room": "F-008",
+          "strength": "35 Students"
+        },
+        "days": {
+          "Mon": [
+            {
+              "time": "09:30 - 11:30",
+              "subject": "UNDERSTANDING QURAN-II",
+              "teacher": "DR HAYYAT MUHAMMAD",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 01:00",
+              "subject": "COMPUTER PROGRAMMING",
+              "teacher": "MR MUBASHIR TARIQ",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "01:00 - 03:20",
+              "subject": "IDEOLOGY AND CONSTITUTION OF PAKISTAN",
+              "teacher": "MS FARAH NAQVI (TVF)",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            }
+          ],
+          "Tue": [
+            {
+              "time": "09:30 - 11:30",
+              "subject": "COMPUTER PROGRAMMING LAB",
+              "teacher": "MR LIAQUAT ALI KHAN",
+              "location": "COMPUTER LAB-2",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 01:00",
+              "subject": "DIFFERENTIAL EQUATIONS",
+              "teacher": "DR ASIF MANSOOR",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "01:00 - 01:40",
+              "subject": "COMPUTER PROGRAMMING",
+              "teacher": "MR MUBASHIR TARIQ",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            }
+          ],
+          "Wed": [
+            {
+              "time": "09:30 - 11:30",
+              "subject": "ENGINEERING DRAWING",
+              "teacher": "DR SHAHEER",
+              "location": "ED ROOM",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 01:40",
+              "subject": "ELECTRICAL NETWORK ANALYSIS LAB",
+              "teacher": "MS FARHA PERVEEN",
+              "location": "COMP LAB-1",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            }
+          ],
+          "Thu": [
+            {
+              "time": "09:30 - 10:50",
+              "subject": "ELECTRICAL NETWORK ANALYSIS",
+              "teacher": "MR ABDUL SAMIAH",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "10:50 - 11:30",
+              "subject": "GUEST LECTURE",
+              "teacher": "GUEST SPEAKER",
+              "location": "AUDITORIUM",
+              "color": "bg-purple-100",
+              "textColor": "text-purple-800",
+              "darkColor": "dark:bg-purple-900/50",
+              "darkTextColor": "dark:text-purple-200"
+            },
+            {
+              "time": "11:30 - 11:40",
+              "subject": "Stand Easy",
+              "teacher": "",
+              "location": "",
+              "type": "break",
+              "name": "Break",
+              "color": "bg-gray-200",
+              "textColor": "text-gray-600",
+              "darkColor": "dark:bg-gray-700/50",
+              "darkTextColor": "dark:text-gray-400"
+            },
+            {
+              "time": "11:40 - 12:20",
+              "subject": "DIVISIONAL PERIOD",
+              "teacher": "COURSE OFFICER",
+              "location": "F-102",
+              "color": "bg-green-100",
+              "textColor": "text-green-800",
+              "darkColor": "dark:bg-green-900/50",
+              "darkTextColor": "dark:text-green-200"
+            },
+            {
+              "time": "12:20 - 01:40",
+              "subject": "ISLAMIC STUDIES",
+              "teacher": "DR SHAMS UL HAQ (TVF)",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            }
+          ],
+          "Fri": [
+            {
+              "time": "09:00 - 09:40",
+              "subject": "ELECTRICAL NETWORK ANALYSIS",
+              "teacher": "MR ABDUL SAMIAH",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "09:40 - 10:20",
+              "subject": "DIFFERENTIAL EQUATIONS",
+              "teacher": "DR ASIF MANSOOR",
+              "location": "F-008",
+              "color": "bg-blue-100",
+              "textColor": "text-blue-800",
+              "darkColor": "dark:bg-blue-900/50",
+              "darkTextColor": "dark:text-blue-200"
+            },
+            {
+              "time": "10:20 - 12:30",
+              "subject": "ENGINEERING DRAWING",
+              "teacher": "DR SHAHEER",
+              "location": "ED ROOM",
+              "color": "bg-yellow-100",
+              "textColor": "text-yellow-800",
+              "darkColor": "dark:bg-yellow-900/50",
+              "darkTextColor": "dark:text-yellow-200"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
