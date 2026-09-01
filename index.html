@@ -132,7 +132,7 @@ header, .header, .flex, .section-header {
             </div>
         </header>
 
-        <div class="mb-4 bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row justify-center items-center flex-wrap gap-4 hidden">
+        <div class="mb-4 bg-white dark:bg-gray-800 p-3 rounded-full shadow-sm border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row justify-center items-center flex-wrap gap-4">
             <div>
                 <label for="faculty-select" class="text-sm font-medium text-gray-600 dark:text-gray-400 mr-2">Faculty:</label>
                 <select id="faculty-select" class="rounded-full px-4 py-2 text-sm sm:text-base font-medium bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"></select>
@@ -252,7 +252,7 @@ header, .header, .flex, .section-header {
                     classFormModal: { modal: document.getElementById('class-form-modal'), form: document.getElementById('class-form'), title: document.getElementById('class-form-title'), closeBtn: document.getElementById('close-class-form-btn'), indexInput: document.getElementById('editing-class-index'), isBreakCheck: document.getElementById('is-break-checkbox'), subjectLabel: document.getElementById('subject-label'), subjectInput: document.getElementById('subject'), teacherInput: document.getElementById('teacher'), locationInput: document.getElementById('location'), timeInput: document.getElementById('time'), classFields: document.getElementById('class-fields'), colorPicker: document.getElementById('color-picker') }
                 };
 
-                const getFacultyFullName = key => ({ "EE": "Electrical Engineering", "ME": "Mechanical Engineering", "NA": "Naval Architecture", "CS": "Computer Science" })[key] || key;
+                const getFacultyFullName = key => ({ "EE": "Electrical Engineering", "ME": "Mechanical Engineering", "NA": "Naval Architecture", "CS": "Computer Science", "WE": "Weekend Executive" })[key] || key;
                 const getDayFullName = key => ({ "Mon": "Monday", "Tue": "Tuesday", "Wed": "Wednesday", "Thu": "Thursday", "Fri": "Friday" })[key] || key;
                 const getOrdinal = n => { const s = ["th", "st", "nd", "rd"], v = n % 100; return s[(v - 20) % 10] || s[v] || s[0]; };
                 
