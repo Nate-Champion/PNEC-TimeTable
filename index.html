@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#09090b" />
+  <meta name="description" content="Class Schedule" />
+  <title>Class Schedule · NUST PNEC</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: {
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5'
+            },
+            ink: {
+              950: '#09090b',
+              900: '#0f1014',
+              850: '#14161c',
+              800: '#191c24',
+              700: '#242936'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% -5%, rgba(99,102,241,.13), transparent 28rem),
+        radial-gradient(circle at 95% 5%, rgba(20,184,166,.08), transparent 24rem),
+        #09090b;
+      color: #f4f4f5;
+      font-family: Inter, sans-serif;
+    }
+
+    ::selection { background: rgba(99,102,241,.35); }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #272a33; border-radius: 999px; }
+
+    .hide-scrollbar { scrollbar-width: none; }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+    .glass {
+      background: rgba(25, 28, 36, .72);
+      border: 1px solid rgba(255,255,255,.07);
+      box-shadow: 0 18px 55px rgba(0,0,0,.18);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .select-wrap { position: relative; min-width: 0; }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid #a1a1aa;
+      border-bottom: 1.5px solid #a1a1aa;
+      transform: translateY(-65%) rotate(45deg);
+      pointer-events: none;
+    }
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      background: #101217;
+      color: #e4e4e7;
+      border: 1px solid rgba(255,255,255,.08);
+      outline: none;
+      cursor: pointer;
+    }
+    select:hover { border-color: rgba(255,255,255,.16); }
+    select:focus { border-color: rgba(99,102,241,.65); box-shadow: 0 0 0 3px rgba(99,102,241,.12); }
+
+    .day-pill, .section-pill { flex: 0 0 auto; }
+    .day-pill { transition: transform .18s ease, background .18s ease, border-color .18s ease; }
+    .day-pill:active, .section-pill:active { transform: scale(.97); }
+
+    .schedule-card {
+      min-width: 0;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .schedule-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(99,102,241,.28);
+      box-shadow: 0 14px 35px rgba(0,0,0,.18);
+    }
+
+    .subject-clamp {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    html:not(.dark) { color-scheme: light; }
+    html:not(.dark) body { background: radial-gradient(circle at 10% -5%, rgba(99,102,241,.10), transparent 28rem), radial-gradient(circle at 95% 5%, rgba(20,184,166,.07), transparent 24rem), #f5f7fb; color:#18181b; }
+    html:not(.dark) .glass { background:rgba(255,255,255,.82); border-color:rgba(24,24,27,.08); box-shadow:0 18px 55px rgba(15,23,42,.08); }
+    html:not(.dark) select { background:#fff; color:#27272a; border-color:rgba(24,24,27,.10); }
+    html:not(.dark) .bg-ink-800 { background-color:#fff; }
+    html:not(.dark) .bg-ink-700 { background-color:#f1f5f9; }
+    html:not(.dark) .bg-ink-800\/70 { background-color:rgba(255,255,255,.88); }
+    html:not(.dark) .bg-ink-800\/55 { background-color:rgba(255,255,255,.72); }
+    html:not(.dark) .bg-ink-800\/45 { background-color:rgba(255,255,255,.68); }
+    html:not(.dark) .bg-ink-800\/30 { background-color:rgba(255,255,255,.58); }
+    html:not(.dark) .text-zinc-100 { color:#18181b; }
+    html:not(.dark) .text-zinc-200 { color:#27272a; }
+    html:not(.dark) .text-zinc-300 { color:#3f3f46; }
+    html:not(.dark) .text-zinc-400 { color:#52525b; }
+    html:not(.dark) .text-zinc-500 { color:#52525b; }
+    html:not(.dark) .text-zinc-600 { color:#52525b; }
+    html:not(.dark) .text-zinc-700 { color:#3f3f46; }
+    /* Stronger light-mode text/card colors for WCAG-friendly contrast. */
+    html:not(.dark) .text-indigo-200 { color:#4338ca; }
+    html:not(.dark) .text-indigo-300 { color:#4f46e5; }
+    html:not(.dark) .text-sky-200 { color:#0369a1; }
+    html:not(.dark) .text-sky-300 { color:#0284c7; }
+    html:not(.dark) .text-emerald-200 { color:#047857; }
+    html:not(.dark) .text-emerald-300 { color:#059669; }
+    html:not(.dark) .text-violet-200 { color:#6d28d9; }
+    html:not(.dark) .text-violet-300 { color:#7c3aed; }
+    html:not(.dark) .text-amber-300 { color:#92400e; }
+    html:not(.dark) .text-teal-300 { color:#0f766e; }
+    html:not(.dark) .text-brand-300 { color:#4338ca; }
+    html:not(.dark) .bg-indigo-500\/\[\.13\] { background-color:rgba(99,102,241,.10); }
+    html:not(.dark) .bg-sky-500\/\[\.12\] { background-color:rgba(14,165,233,.10); }
+    html:not(.dark) .bg-emerald-500\/\[\.13\] { background-color:rgba(16,185,129,.10); }
+    html:not(.dark) .bg-violet-500\/\[\.12\] { background-color:rgba(139,92,246,.10); }
+    html:not(.dark) .bg-amber-400\/\[\.10\] { background-color:rgba(245,158,11,.10); }
+    html:not(.dark) .text-rose-500 { color:#e11d48; }
+    html:not(.dark) .border-white\/6 { border-color:rgba(24,24,27,.08); }
+    html:not(.dark) .border-white\/7 { border-color:rgba(24,24,27,.09); }
+    html:not(.dark) .border-white\/8 { border-color:rgba(24,24,27,.10); }
+    html:not(.dark) .bg-black\/20 { background-color:rgba(24,24,27,.06); }
+
+    @media (max-width: 640px) {
+      html.dark body { background: #09090b; }
+      .glass { backdrop-filter: none; -webkit-backdrop-filter: none; }
+      .schedule-card:hover { transform: none; }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <main class="mx-auto w-full max-w-6xl px-3 py-3 sm:px-6 sm:py-6 lg:px-8">
+
+    <!-- Header -->
+    <header class="glass overflow-hidden rounded-[26px] p-5 sm:p-7">
+      <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div class="min-w-0">
+          <div class="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.16em] text-zinc-500">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+            Class Schedule · NUST PNEC
+          </div>
+
+          <h1 id="facultyTitle" class="max-w-3xl text-[2rem] font-extrabold leading-[1.08] tracking-tight text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-violet-400 bg-clip-text sm:text-5xl">
+            Loading…
+          </h1>
+
+          <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-zinc-400">
+            <span>Semester <strong id="semesterDisplay" class="ml-1 font-semibold text-zinc-100">—</strong></span>
+            <span class="text-zinc-700">•</span>
+            <span>Section <strong id="sectionDisplay" class="ml-1 font-semibold text-zinc-100">—</strong></span>
+            <span class="text-zinc-700">•</span>
+            <span>Room <strong id="roomDisplay" class="ml-1 font-semibold text-teal-400">—</strong></span>
+          </div>
+        </div>
+
+        <div class="flex w-fit shrink-0 items-center gap-2">
+          <button id="themeToggle" type="button" aria-label="Switch to light mode" title="Switch to light mode" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/7 bg-black/20 text-base text-zinc-300 transition hover:bg-white/10">☀️</button>
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/7 bg-black/20 px-3.5 py-2 text-xs font-semibold text-zinc-400">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+          </span>
+          <span id="strengthDisplay">Strength: —</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Filters -->
+    <section class="glass mt-3 rounded-[24px] p-3 sm:mt-4 sm:p-4" aria-label="Schedule filters">
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
+        <div class="select-wrap">
+          <label for="facultySelect" class="sr-only">Faculty</label>
+          <select id="facultySelect" class="h-12 rounded-2xl px-4 pr-10 text-sm font-semibold"></select>
+        </div>
+        <div class="select-wrap">
+          <label for="semesterSelect" class="sr-only">Semester</label>
+          <select id="semesterSelect" class="h-12 rounded-2xl px-4 pr-10 text-sm font-semibold"></select>
+        </div>
+        <div id="sectionContainer" class="flex min-w-0 gap-2 overflow-x-auto hide-scrollbar sm:col-span-2 lg:col-span-1 lg:max-w-[360px]"></div>
+      </div>
+    </section>
+
+    <!-- Days -->
+    <nav class="mt-3 overflow-x-auto hide-scrollbar sm:mt-4" aria-label="Day navigation">
+      <div class="flex min-w-max gap-2 rounded-[22px] border border-white/6 bg-ink-800/70 p-2">
+        <button class="day-pill rounded-2xl border border-brand-500/40 bg-brand-500 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-500/20 sm:px-5" data-day="Mon">Monday</button>
+        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Tue">Tuesday</button>
+        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Wed">Wednesday</button>
+        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Thu">Thursday</button>
+        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Fri">Friday</button>
+      </div>
+    </nav>
+
+    <!-- Live status -->
+    <section id="liveStatusContainer" class="mt-3 sm:mt-4" aria-live="polite"></section>
+
+    <!-- Schedule -->
+    <section class="mt-6 sm:mt-8">
+      <div class="mb-3 flex items-center justify-between px-1 sm:mb-4">
+        <div>
+          <h2 id="scheduleTitle" class="text-xl font-extrabold tracking-tight text-zinc-100">Today's Schedule</h2>
+          <p id="scheduleSubtitle" class="mt-0.5 text-xs text-zinc-500">Your classes for the selected day</p>
+        </div>
+        <span id="entryCount" class="shrink-0 rounded-full border border-brand-500/20 bg-brand-500/10 px-3 py-1.5 text-xs font-bold text-brand-300">0 entries</span>
+      </div>
+
+      <div id="scheduleGrid" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <footer class="pb-5 pt-10 text-center text-xs text-zinc-600">
+      <p>Made with <span class="inline-block text-rose-500">❤</span> by Amir Ali :)</p>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+      const DAY_NAMES = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday' };
+      const FACULTIES = {
+        EE: 'Electrical Engineering',
+        ME: 'Mechanical Engineering',
+        NA: 'Naval Architecture',
+        CS: 'Computer Science',
+        WE: 'Weapon Engineering'
+      };
+
+      // Visual palette is intentionally independent of schedule.json.
+      // This means the JSON only needs schedule information; the UI supplies styling.
+      const PALETTE = [
+        { card: 'border-indigo-500/25 bg-indigo-500/[.13]', title: 'text-indigo-200', icon: 'text-indigo-300' },
+        { card: 'border-sky-500/25 bg-sky-500/[.12]', title: 'text-sky-200', icon: 'text-sky-300' },
+        { card: 'border-emerald-500/25 bg-emerald-500/[.12]', title: 'text-emerald-200', icon: 'text-emerald-300' },
+        { card: 'border-violet-500/25 bg-violet-500/[.12]', title: 'text-violet-200', icon: 'text-violet-300' },
+        { card: 'border-amber-500/25 bg-amber-500/[.12]', title: 'text-amber-200', icon: 'text-amber-300' }
+      ];
+
+      const $ = id => document.getElementById(id);
+      const facultySelect = $('facultySelect');
+      const semesterSelect = $('semesterSelect');
+      const sectionContainer = $('sectionContainer');
+      const scheduleGrid = $('scheduleGrid');
+      const scheduleTitle = $('scheduleTitle');
+      const scheduleSubtitle = $('scheduleSubtitle');
+      const entryCount = $('entryCount');
+      const liveStatusContainer = $('liveStatusContainer');
+      const facultyTitle = $('facultyTitle');
+      const semesterDisplay = $('semesterDisplay');
+      const sectionDisplay = $('sectionDisplay');
+      const roomDisplay = $('roomDisplay');
+      const strengthDisplay = $('strengthDisplay');
+
+      let scheduleData = null;
+      const state = { faculty: null, semester: null, section: null, day: null };
+      let savedPreferences = {};
+
+      const STORAGE_KEY = 'pnec-schedule-preferences-v1';
+      const THEME_KEY = 'pnec-schedule-theme';
+
+      function loadPreferences() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {}; } catch { return {}; }
+      }
+
+      function savePreferences() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            faculty: state.faculty, semester: state.semester, section: state.section
+          }));
+        } catch {}
+      }
+
+      function applyTheme(theme) {
+        const light = theme === 'light';
+        document.documentElement.classList.toggle('dark', !light);
+        document.documentElement.style.colorScheme = light ? 'light' : 'dark';
+        const button = $('themeToggle');
+        if (button) {
+          button.textContent = light ? '🌙' : '☀️';
+          button.title = light ? 'Switch to dark mode' : 'Switch to light mode';
+          button.setAttribute('aria-label', button.title);
+        }
+        try { localStorage.setItem(THEME_KEY, light ? 'light' : 'dark'); } catch {}
+      }
+
+      function initTheme() {
+        let theme = 'dark';
+        try { theme = localStorage.getItem(THEME_KEY) || 'dark'; } catch {}
+        applyTheme(theme === 'light' ? 'light' : 'dark');
+      }
+
+      const getFacultyFull = key => FACULTIES[key] || key;
+      const getDayFull = key => DAY_NAMES[key] || key;
+      const getOrdinal = value => {
+        const n = Number(value);
+        if (!Number.isFinite(n)) return '';
+        const mod100 = n % 100;
+        if (mod100 >= 11 && mod100 <= 13) return 'th';
+        return ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th');
+      };
+
+      function todayCode() {
+        return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date().getDay()];
+      }
+
+      function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>'"]/g, ch => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+        }[ch]));
+      }
+
+      function getSectionData() {
+        return scheduleData?.[state.faculty]?.[state.semester]?.[state.section] || null;
+      }
+
+      function getDayData() {
+        const data = getSectionData();
+        return Array.isArray(data?.days?.[state.day]) ? data.days[state.day] : [];
+      }
+
+      function setSelectOptions(select, object, labelFn) {
+        const keys = Object.keys(object || {});
+        select.innerHTML = keys.map(key => `<option value="${escapeHTML(key)}">${escapeHTML(labelFn(key))}</option>`).join('');
+        return keys;
+      }
+
+      function populateFaculty() {
+        const keys = setSelectOptions(facultySelect, scheduleData, getFacultyFull);
+        state.faculty = keys.includes(savedPreferences.faculty) ? savedPreferences.faculty : (keys[0] || null);
+        facultySelect.value = state.faculty || '';
+        populateSemester();
+      }
+
+      function populateSemester() {
+        const semesters = scheduleData?.[state.faculty] || {};
+        const keys = setSelectOptions(semesterSelect, semesters, key => `${key}${getOrdinal(key)} Semester`);
+        state.semester = keys.includes(savedPreferences.semester) ? savedPreferences.semester : (keys[0] || null);
+        semesterSelect.value = state.semester || '';
+        populateSections();
+      }
+
+      function populateSections() {
+        const sections = Object.keys(scheduleData?.[state.faculty]?.[state.semester] || {});
+        if (!sections.includes(state.section)) state.section = sections.includes(savedPreferences.section) ? savedPreferences.section : (sections[0] || null);
+
+        sectionContainer.innerHTML = sections.length
+          ? sections.map(section => {
+              const active = section === state.section;
+              return `<button type="button" class="section-pill rounded-2xl border px-4 py-3 text-sm font-bold transition-all ${
+                active
+                  ? 'border-brand-500/40 bg-brand-500 text-white shadow-lg shadow-brand-500/15'
+                  : 'border-white/6 bg-ink-800 text-zinc-400 hover:bg-ink-700 hover:text-zinc-100'
+              }" data-section="${escapeHTML(section)}">Section ${escapeHTML(section)}</button>`;
+            }).join('')
+          : `<span class="px-3 py-3 text-sm text-zinc-500">No sections available</span>`;
+
+        sectionContainer.querySelectorAll('.section-pill').forEach(button => {
+          button.addEventListener('click', () => {
+            state.section = button.dataset.section;
+            populateSections();
+            savePreferences();
+            updateAll();
+          });
+        });
+      }
+
+      function setActiveDay(day) {
+        state.day = DAYS.includes(day) ? day : 'Mon';
+        document.querySelectorAll('.day-pill').forEach(button => {
+          const active = button.dataset.day === state.day;
+          button.classList.toggle('bg-brand-500', active);
+          button.classList.toggle('text-white', active);
+          button.classList.toggle('border-brand-500/40', active);
+          button.classList.toggle('shadow-lg', active);
+          button.classList.toggle('shadow-brand-500/20', active);
+          button.classList.toggle('bg-ink-800', !active);
+          button.classList.toggle('text-zinc-400', !active);
+          button.classList.toggle('border-white/6', !active);
+        });
+      }
+
+      // Accepts common schedule formats such as:
+      // 08:35 - 10:20, 12:40 - 02:25, 8:35 AM - 10:20 AM, 12:40 PM - 2:25 PM.
+      function parseTimePart(value) {
+        const raw = String(value || '').trim().toUpperCase();
+        const match = raw.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?$/);
+        if (!match) return null;
+
+        let hour = Number(match[1]);
+        const minute = Number(match[2] || 0);
+        const meridiem = match[3];
+        if (minute > 59) return null;
+
+        if (meridiem === 'AM') hour = hour === 12 ? 0 : hour;
+        else if (meridiem === 'PM') hour = hour === 12 ? 12 : hour + 12;
+        else if (hour >= 1 && hour <= 6) hour += 12; // schedule convention: 01:00–06:xx = PM
+
+        if (hour > 23) return null;
+        return hour * 60 + minute;
+      }
+
+      function parseTimeRange(time) {
+        const parts = String(time || '').split(/\s*-\s*/);
+        if (parts.length !== 2) return null;
+        const start = parseTimePart(parts[0]);
+        const endRaw = parts[1];
+        let end = parseTimePart(endRaw);
+        if (start == null || end == null) return null;
+        if (end <= start) end += 12 * 60;
+        return { start, end };
+      }
+
+      function formatDuration(start, end) {
+        const mins = Math.max(0, end - start);
+        if (mins < 60) return `${mins} min`;
+        const h = Math.floor(mins / 60);
+        const m = mins % 60;
+        return m ? `${h}h ${m}m` : `${h}h`;
+      }
+
+      function renderLiveStatus(entries) {
+        if (state.day !== todayCode()) {
+          liveStatusContainer.innerHTML = '';
+          return;
+        }
+
+        const now = new Date();
+        const current = now.getHours() * 60 + now.getMinutes();
+        let inProgress = null;
+        let upNext = null;
+
+        for (const item of entries) {
+          const range = parseTimeRange(item.time);
+          if (!range) continue;
+          if (current >= range.start && current < range.end) {
+            inProgress = { item, range };
+            break;
+          }
+          if (current < range.start && !upNext) upNext = { item, range };
+        }
+
+        if (inProgress) {
+          const { item, range } = inProgress;
+          const subject = String(item.subject || '').trim();
+          const normalized = subject.toLowerCase().replace(/\s+/g, ' ');
+          const isStandEasy = item.type === 'break' || normalized === 'stand easy' || normalized.includes('stand easy');
+          const isPrayerLunch = normalized.includes('zohar prayer') || normalized.includes('prayer/lunch') || normalized.includes('prayer / lunch') || normalized.includes('zohar') && normalized.includes('lunch');
+
+          if (isStandEasy || isPrayerLunch) {
+            const isPrayer = isPrayerLunch;
+            const title = isPrayer ? 'Zohar Prayer & Lunch' : 'Stand Easy';
+            const subtitle = isPrayer
+              ? 'Prayer & lunch break — take a proper pause before the next class.'
+              : 'Short break — stretch, reset, and get ready for the next class.';
+            const icon = isPrayer ? '🕌' : '☕';
+            const nextAfterBreak = entries
+              .map(entry => { const r = parseTimeRange(entry.time); return r ? { item: entry, range: r } : null; })
+              .filter(Boolean)
+              .find(entry => entry.range.start >= range.end);
+
+            liveStatusContainer.innerHTML = `
+              <div class="relative overflow-hidden rounded-[24px] border border-amber-400/20 bg-gradient-to-r from-amber-400/[.10] via-orange-400/[.05] to-transparent p-4 sm:p-5">
+                <div class="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-300/10 blur-3xl"></div>
+                <div class="relative flex items-center justify-between gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1.5 text-[10px] font-extrabold tracking-[.08em] text-amber-300">
+                    <span class="text-sm leading-none">${icon}</span>
+                    ${isPrayer ? 'PRAYER & LUNCH' : 'BREAK TIME'}
+                  </span>
+                  <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1.5 text-[11px] font-bold text-zinc-300">${escapeHTML(item.time)}</span>
+                </div>
+                <h3 class="relative mt-3 text-lg font-extrabold text-zinc-100 sm:text-xl">${title}</h3>
+                <p class="relative mt-1.5 max-w-2xl text-xs leading-relaxed text-zinc-400">${subtitle}</p>
+                <div class="relative mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs">
+                  <span class="font-semibold text-amber-300">${formatDuration(range.start, range.end)}</span>
+                  ${nextAfterBreak ? `<span class="text-zinc-500">Next: <strong class="text-zinc-300">${escapeHTML(nextAfterBreak.item.subject || 'Class')}</strong></span>` : ''}
+                </div>
+              </div>`;
+          } else {
+            liveStatusContainer.innerHTML = `
+              <div class="relative overflow-hidden rounded-[24px] border border-emerald-500/25 bg-gradient-to-r from-emerald-500/[.13] via-teal-500/[.07] to-transparent p-4 sm:p-5">
+                <div class="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl"></div>
+                <div class="relative flex items-center justify-between gap-3">
+                  <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/15 px-3 py-1.5 text-[10px] font-extrabold tracking-[.08em] text-emerald-300">
+                    <span class="relative flex h-2 w-2"><span class="absolute h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span><span class="relative h-2 w-2 rounded-full bg-emerald-500"></span></span>
+                    CLASS IN PROGRESS
+                  </span>
+                  <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1.5 text-[11px] font-bold text-zinc-300">${escapeHTML(item.time)}</span>
+                </div>
+                <h3 class="subject-clamp relative mt-3 text-lg font-extrabold text-zinc-100 sm:text-xl">${escapeHTML(item.subject || 'Class')}</h3>
+                <div class="relative mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-zinc-400">
+                  ${item.teacher ? `<span>👤 ${escapeHTML(item.teacher)}</span>` : ''}
+                  ${item.location ? `<span class="font-semibold text-teal-300">📍 ${escapeHTML(item.location)}</span>` : ''}
+                  <span class="text-zinc-500">${formatDuration(range.start, range.end)}</span>
+                </div>
+              </div>`;
+          }
+        } else if (upNext) {
+          const { item, range } = upNext;
+          liveStatusContainer.innerHTML = `
+            <div class="rounded-[24px] border border-brand-500/25 bg-gradient-to-r from-brand-500/[.12] via-violet-500/[.06] to-transparent p-4 sm:p-5">
+              <div class="flex items-center justify-between gap-3">
+                <span class="rounded-full border border-brand-500/25 bg-brand-500/15 px-3 py-1.5 text-[10px] font-extrabold tracking-[.08em] text-brand-300">⏳ UP NEXT</span>
+                <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1.5 text-[11px] font-bold text-zinc-300">${escapeHTML(item.time)}</span>
+              </div>
+              <h3 class="subject-clamp mt-3 text-lg font-extrabold text-zinc-100 sm:text-xl">${escapeHTML(item.subject || 'Class')}</h3>
+              <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-zinc-400">
+                ${item.teacher ? `<span>👤 ${escapeHTML(item.teacher)}</span>` : ''}
+                ${item.location ? `<span class="font-semibold text-teal-300">📍 ${escapeHTML(item.location)}</span>` : ''}
+                <span class="text-zinc-500">Starts in ${formatCountdown(range.start - current)}</span>
+              </div>
+            </div>`;
+        } else {
+          liveStatusContainer.innerHTML = `
+            <div class="flex items-center gap-3 rounded-[22px] border border-white/6 bg-ink-800/55 px-4 py-3.5 text-sm text-zinc-400">
+              <span>✨</span><span>All classes finished for today.</span>
+            </div>`;
+        }
+      }
+
+      function formatCountdown(minutes) {
+        const m = Math.max(0, minutes);
+        if (m < 60) return `${m} min`;
+        const h = Math.floor(m / 60);
+        const r = m % 60;
+        return r ? `${h}h ${r}m` : `${h}h`;
+      }
+
+      function renderSchedule(entries) {
+        const list = Array.isArray(entries) ? entries : [];
+        const today = todayCode();
+        const isToday = state.day === today;
+
+        scheduleTitle.textContent = isToday ? "Today's Schedule" : `${getDayFull(state.day)}'s Schedule`;
+        scheduleSubtitle.textContent = isToday ? 'Your classes for today' : `Your classes for ${getDayFull(state.day)}`;
+        entryCount.textContent = `${list.length} ${list.length === 1 ? 'entry' : 'entries'}`;
+
+        if (!list.length) {
+          scheduleGrid.innerHTML = `
+            <div class="col-span-full rounded-[24px] border border-dashed border-white/8 bg-ink-800/30 px-5 py-14 text-center">
+              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[.04] text-2xl">🗓️</div>
+              <p class="font-semibold text-zinc-300">No classes scheduled</p>
+              <p class="mt-1 text-sm text-zinc-600">Try another day or section.</p>
+            </div>`;
+          return;
+        }
+
+        scheduleGrid.innerHTML = list.map((item, index) => {
+          const isBreak = item?.type === 'break';
+          const palette = PALETTE[index % PALETTE.length];
+          const range = parseTimeRange(item?.time);
+
+          if (isBreak) {
+            return `
+              <article class="schedule-card rounded-[22px] border border-dashed border-white/8 bg-ink-800/45 p-4 sm:p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="min-w-0">
+                    <p class="text-[10px] font-bold uppercase tracking-[.1em] text-zinc-600">${escapeHTML(item.time || '')}</p>
+                    <h3 class="mt-1 truncate text-sm font-bold text-zinc-400">☕ ${escapeHTML(item.subject || 'Break')}</h3>
+                  </div>
+                  <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1 text-[10px] font-semibold text-zinc-600">BREAK</span>
+                </div>
+              </article>`;
+          }
+
+          return `
+            <article class="schedule-card ${palette.card} rounded-[22px] border p-4 sm:p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0">
+                  <h3 class="subject-clamp text-base font-extrabold leading-snug ${palette.title}">${escapeHTML(item?.subject || 'Untitled class')}</h3>
+                </div>
+                <span class="shrink-0 rounded-xl bg-black/20 px-2.5 py-1.5 text-[10px] font-bold tracking-tight text-zinc-300">${escapeHTML(item?.time || '—')}</span>
+              </div>
+
+              <div class="mt-4 space-y-2 text-xs text-zinc-400">
+                ${item?.teacher ? `<p class="flex min-w-0 items-center gap-2"><span class="${palette.icon}">♙</span><span class="truncate">${escapeHTML(item.teacher)}</span></p>` : ''}
+                ${item?.location ? `<p class="flex min-w-0 items-center gap-2"><span class="text-teal-300">⌖</span><span class="truncate font-medium text-zinc-300">${escapeHTML(item.location)}</span></p>` : ''}
+              </div>
+
+              ${range ? `<div class="mt-4 border-t border-white/5 pt-3 text-[10px] font-semibold text-zinc-600">${formatDuration(range.start, range.end)}</div>` : ''}
+            </article>`;
+        }).join('');
+      }
+
+      function updateHeader(info) {
+        facultyTitle.textContent = getFacultyFull(state.faculty || '');
+        if (!info) {
+          semesterDisplay.textContent = '—';
+          sectionDisplay.textContent = '—';
+          roomDisplay.textContent = '—';
+          strengthDisplay.textContent = 'Strength: —';
+          return;
+        }
+        semesterDisplay.textContent = `${info.semester}${getOrdinal(info.semester)}`;
+        sectionDisplay.textContent = info.section || state.section || '—';
+        roomDisplay.textContent = info.room || '—';
+        strengthDisplay.textContent = info.strength != null ? `Strength: ${info.strength} Students` : 'Strength: —';
+      }
+
+      function updateAll() {
+        const sectionData = getSectionData();
+        updateHeader(sectionData?.info || null);
+        const entries = getDayData();
+        renderLiveStatus(entries);
+        renderSchedule(entries);
+      }
+
+      function showLoading() {
+        scheduleGrid.innerHTML = `
+          <div class="col-span-full flex items-center justify-center rounded-[24px] border border-white/6 bg-ink-800/30 py-16 text-sm text-zinc-500">
+            <span class="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-zinc-700 border-t-brand-400"></span>
+            Loading schedule…
+          </div>`;
+      }
+
+      function showError(message) {
+        scheduleGrid.innerHTML = `
+          <div class="col-span-full rounded-[24px] border border-rose-500/20 bg-rose-500/[.06] px-5 py-12 text-center">
+            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-500/10 text-xl">!</div>
+            <p class="font-semibold text-rose-300">Unable to load schedule</p>
+            <p class="mx-auto mt-2 max-w-md text-sm text-zinc-500">${escapeHTML(message)}</p>
+            <button id="retryButton" class="mt-5 rounded-xl border border-white/8 bg-ink-800 px-4 py-2.5 text-sm font-bold text-zinc-200 hover:bg-ink-700">Try again</button>
+          </div>`;
+          $('retryButton')?.addEventListener('click', loadSchedule);
+      }
+
+      async function loadSchedule() {
+        showLoading();
+        try {
+          const response = await fetch('./schedule.json', { cache: 'no-store' });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+          if (!data || typeof data !== 'object' || Array.isArray(data) || !Object.keys(data).length) {
+            throw new Error('schedule.json is empty or has an invalid structure.');
+          }
+
+          scheduleData = data;
+          savedPreferences = loadPreferences();
+          populateFaculty();
+
+          const today = todayCode();
+          setActiveDay(DAYS.includes(today) ? today : 'Mon');
+          savePreferences();
+          updateAll();
+        } catch (error) {
+          console.error('Schedule loading error:', error);
+          showError('Please check that schedule.json exists beside this HTML file and contains valid JSON.');
+        }
+      }
+
+      facultySelect.addEventListener('change', () => {
+        state.faculty = facultySelect.value;
+        state.section = null;
+        populateSemester();
+        savePreferences();
+        updateAll();
+      });
+
+      semesterSelect.addEventListener('change', () => {
+        state.semester = semesterSelect.value;
+        state.section = null;
+        populateSections();
+        savePreferences();
+        updateAll();
+      });
+
+      document.querySelectorAll('.day-pill').forEach(button => {
+        button.addEventListener('click', () => {
+          setActiveDay(button.dataset.day);
+          savePreferences();
+          updateAll();
+        });
+      });
+
+      initTheme();
+      $('themeToggle')?.addEventListener('click', () => {
+        applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
+      });
+
+      loadSchedule();
+
+      // Keep the live card accurate without rebuilding the whole page.
+      setInterval(() => {
+        if (scheduleData) renderLiveStatus(getDayData());
+      }, 30000);
+    });
+  </script>
+</body>
+</html>
