@@ -6,7 +6,7 @@
           "semester": "6",
           "section": "A",
           "room": "B-013",
-          "strength": "29 Students"
+          "strength": "29"
         },
         "days": {
           "Mon": [
@@ -294,7 +294,7 @@
               "time": "12:40 - 02:25",
               "subject": "Contemprary Cyber Security Challenges and approches",
               "teacher": "MR WALI MUHAMMAD",
-              "location": "COMP LAB-I",
+              "location": "COMP LAB-1",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -315,8 +315,8 @@
             {
               "time": "03:15 - 04:05",
               "subject": "Contemprary Cyber Security Challenges and approches",
-              "teacher": "COMP LAB-I",
-              "location": "BASIC CyS LAB",
+              "teacher": "COMP LAB-1",
+              "location": "BASIC CYBER SECURITY LAB",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -362,7 +362,7 @@
           "semester": "6",
           "section": "B",
           "room": "B-014",
-          "strength": "29 Students"
+          "strength": "29"
         },
         "days": {
           "Mon": [
@@ -700,7 +700,7 @@
           "semester": "5",
           "section": "A",
           "room": "B-008",
-          "strength": "33 Students"
+          "strength": "33"
         },
         "days": {
           "Mon": [
@@ -948,7 +948,7 @@
           "semester": "5",
           "section": "B",
           "room": "B-009",
-          "strength": "33 Students"
+          "strength": "33"
         },
         "days": {
           "Mon": [
@@ -1210,7 +1210,7 @@
           "semester": "8",
           "section": "A",
           "room": "F-003",
-          "strength": "13 Students"
+          "strength": "13"
         },
         "days": {
           "Mon": [
@@ -1283,7 +1283,7 @@
             {
               "time": "08:35 - 10:20",
               "subject": "PROFESSIONAL ETHICS",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "F-003",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
@@ -1316,7 +1316,7 @@
               "time": "11:45 - 02:25",
               "subject": "COMP & COMM N/W (LAB)",
               "teacher": "MS ALEENA MUSHTAQ",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -1518,7 +1518,7 @@
           "semester": "7",
           "section": "A",
           "room": "F-002",
-          "strength": "12 Students"
+          "strength": "12"
         },
         "days": {
           "Mon": [
@@ -1790,7 +1790,7 @@
           "semester": "6",
           "section": "A",
           "room": "F-104",
-          "strength": "8 Students"
+          "strength": "8"
         },
         "days": {
           "Mon": [
@@ -2084,7 +2084,7 @@
           "semester": "5",
           "section": "A",
           "room": "F-105",
-          "strength": "32 Students"
+          "strength": "32"
         },
         "days": {
           "Mon": [
@@ -2334,7 +2334,7 @@
           "semester": "5",
           "section": "B",
           "room": "F-107",
-          "strength": "36 Students"
+          "strength": "36"
         },
         "days": {
           "Mon": [
@@ -2606,7 +2606,7 @@
           "semester": "4",
           "section": "A",
           "room": "F-103",
-          "strength": "14 Students"
+          "strength": "14"
         },
         "days": {
           "Mon": [
@@ -2878,7 +2878,7 @@
           "semester": "3",
           "section": "A",
           "room": "F-102",
-          "strength": "48 Students"
+          "strength": "48"
         },
         "days": {
           "Mon": [
@@ -2917,7 +2917,7 @@
             {
               "time": "12:40 - 02:25",
               "subject": "DATA STRUCTURE & ALGORITHM LAB",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "COMP LAB-1",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
@@ -2939,7 +2939,7 @@
             {
               "time": "03:15 - 04:05",
               "subject": "DATA STRUCTURE & ALGORITHM LAB",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "COMP LAB-1",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
@@ -2971,7 +2971,7 @@
             {
               "time": "10:25 - 11:15",
               "subject": "DATA STRUCTURE & ALGORITHM",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "F-102",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
@@ -2993,7 +2993,7 @@
             {
               "time": "11:45 - 12:35",
               "subject": "DATA STRUCTURE & ALGORITHM",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "F-102",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
@@ -3037,7 +3037,7 @@
             {
               "time": "11:45 - 12:35",
               "subject": "DATA STRUCTURE & ALGORITHM",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "F-102",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
@@ -3150,7 +3150,7 @@
           "semester": "3",
           "section": "B",
           "room": "F-011",
-          "strength": "44 Students"
+          "strength": "44"
         },
         "days": {
           "Mon": [
@@ -3299,7 +3299,7 @@
             {
               "time": "08:35 - 10:20",
               "subject": "DATA STRUCTURE & ALGORITHM",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "F-011",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
@@ -3331,7 +3331,7 @@
             {
               "time": "12:40 - 02:25",
               "subject": "DATA STRUCTURE & ALGORITHM LAB",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "COMP LAB-2",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
@@ -3353,7 +3353,7 @@
             {
               "time": "03:15 - 04:05",
               "subject": "DATA STRUCTURE & ALGORITHM LAB",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "COMP LAB-2",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
@@ -3375,7 +3375,7 @@
             {
               "time": "12:15 - 01:05",
               "subject": "DATA STRUCTURE & ALGORITHM",
-              "teacher": "MUBASHIR TARIQ",
+              "teacher": "Please Do Understand 🥇",
               "location": "F-011",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
@@ -3394,7 +3394,7 @@
           "semester": "7",
           "section": "A",
           "room": "F-009",
-          "strength": "49 Students"
+          "strength": "49"
         },
         "days": {
           "Mon": [
@@ -3402,7 +3402,7 @@
               "time": "08:35 - 11:15",
               "subject": "MACHINE LEARNING LAB",
               "teacher": "MS FARHA PERVEEN",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -3500,7 +3500,7 @@
               "time": "11:45 - 02:25",
               "subject": "COMP & COMM N/W (LAB)",
               "teacher": "MS ALEENA MUSHTAQ",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -3702,7 +3702,7 @@
           "semester": "1",
           "section": "A",
           "room": "F-007",
-          "strength": "40 Students"
+          "strength": "40"
         },
         "days": {
           "Mon": [
@@ -3710,7 +3710,7 @@
               "time": "08:35 - 11:15",
               "subject": "APPLICATION OF ICT LAB",
               "teacher": "Mr LIAQUAT ALI KHAN",
-              "location": "COMPUTER LAB-2",
+              "location": "COMP LAB-2",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -3986,7 +3986,7 @@
           "semester": "1",
           "section": "B",
           "room": "F-008",
-          "strength": "40 Students"
+          "strength": "40"
         },
         "days": {
           "Mon": [
@@ -4060,7 +4060,7 @@
               "time": "08:35 - 11:15",
               "subject": "APPLICATION OF ICT LAB",
               "teacher": "Mr LIAQUAT ALI KHAN",
-              "location": "COMPUTER LAB-2",
+              "location": "COMP LAB-2",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -4264,7 +4264,7 @@
           "semester": "8",
           "section": "A",
           "room": "A-010",
-          "strength": "14 Students"
+          "strength": "14"
         },
         "days": {
           "Mon": [
@@ -4612,7 +4612,7 @@
           "semester": "7",
           "section": "A",
           "room": "A-005",
-          "strength": "31 Students"
+          "strength": "31"
         },
         "days": {
           "Mon": [
@@ -4652,7 +4652,7 @@
               "time": "12:40 - 02:25",
               "subject": "CHINESE LANGUAGE/ CFD LAB",
               "teacher": "MR KARAM ALI/ DR ANTASH",
-              "location": "CHINESE LANGUAGE LAB/ CADAM",
+              "location": "CHINESE LANGUAGE LAB/ CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -4674,7 +4674,7 @@
               "time": "03:15 - 04:05",
               "subject": "CHINESE LANGUAGE/ CFD LAB",
               "teacher": "MR KARAM ALI/ DR ANTASH",
-              "location": "CHINESE LANGUAGE LAB/ CADAM",
+              "location": "CHINESE LANGUAGE LAB/ CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -4814,7 +4814,7 @@
               "time": "01:35 - 02:25",
               "subject": "PAKISTAN STUDIES (CIV )",
               "teacher": "MR ALI QASIM(TVF)",
-              "location": "A 006",
+              "location": "A-006",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
               "darkColor": "dark:bg-blue-900/50",
@@ -4836,7 +4836,7 @@
               "time": "03:15 - 04:05",
               "subject": "PAKISTAN STUDIES (CIV )",
               "teacher": "MR ALI QASIM(TVF)",
-              "location": "A 006",
+              "location": "A-006",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
               "darkColor": "dark:bg-blue-900/50",
@@ -4958,7 +4958,7 @@
           "semester": "7",
           "section": "B",
           "room": "A-006",
-          "strength": "30 Students"
+          "strength": "30"
         },
         "days": {
           "Mon": [
@@ -4998,7 +4998,7 @@
               "time": "12:40 - 02:25",
               "subject": "CHINESE LANGUAGE/ CFD LAB",
               "teacher": "MR KARAM ALI/ DR ANTASH",
-              "location": "CHINESE LANGUAGE LAB/ CADAM",
+              "location": "CHINESE LANGUAGE LAB/ CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -5020,7 +5020,7 @@
               "time": "03:15 - 04:05",
               "subject": "CHINESE LANGUAGE/ CFD LAB",
               "teacher": "MR KARAM ALI/ DR ANTASH",
-              "location": "CHINESE LANGUAGE LAB/ CADAM",
+              "location": "CHINESE LANGUAGE LAB/ CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -5140,7 +5140,7 @@
               "time": "01:35 - 02:25",
               "subject": "PAKISTAN STUDIES (CIV )",
               "teacher": "MR ALI QASIM(TVF)",
-              "location": "A 006",
+              "location": "A-006",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
               "darkColor": "dark:bg-blue-900/50",
@@ -5162,7 +5162,7 @@
               "time": "03:15 - 04:05",
               "subject": "PAKISTAN STUDIES (CIV )",
               "teacher": "MR ALI QASIM(TVF)",
-              "location": "A 006",
+              "location": "A-006",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
               "darkColor": "dark:bg-blue-900/50",
@@ -5276,7 +5276,7 @@
           "semester": "6",
           "section": "A",
           "room": "A-114",
-          "strength": "5 Students"
+          "strength": "5"
         },
         "days": {
           "Mon": [
@@ -5348,7 +5348,7 @@
               "time": "08:35 - 11:15",
               "subject": "APPLIED AI & MACHINE LEARNING LAB",
               "teacher": "DR CDR TABYYAB",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -5490,7 +5490,7 @@
               "time": "10:25 - 01:05",
               "subject": "INTRODUCTION TO INFINITE ELEMENT ANALYSIS LAB",
               "teacher": "SAMAR RAZZAQ",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -5506,7 +5506,7 @@
           "semester": "5",
           "section": "A",
           "room": "A-109",
-          "strength": "35 Students"
+          "strength": "35"
         },
         "days": {
           "Mon": [
@@ -5678,7 +5678,7 @@
               "time": "12:40 - 02:25",
               "subject": "COMPUTER AIDED DRAWING LAB",
               "teacher": "MR ARSALAN AHMED",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -5700,7 +5700,7 @@
               "time": "03:15 - 04:05",
               "subject": "COMPUTER AIDED DRAWING LAB",
               "teacher": "MR ARSALAN AHMED",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -5756,7 +5756,7 @@
           "semester": "5",
           "section": "B",
           "room": "A-110",
-          "strength": "35 Students"
+          "strength": "35"
         },
         "days": {
           "Mon": [
@@ -5852,7 +5852,7 @@
               "time": "08:35 - 11:15",
               "subject": "COMPUTER AIDED DRAWING LAB",
               "teacher": "MS AYESHA LAB ENGR",
-              "location": "CADAM LAB",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -5986,7 +5986,7 @@
           "semester": "4",
           "section": "A",
           "room": "A-115",
-          "strength": "13 Students"
+          "strength": "13"
         },
         "days": {
           "Mon": [
@@ -6192,7 +6192,7 @@
               "time": "09:30 - 12:10",
               "subject": "NUMERICAL ANALYSIS LAB",
               "teacher": "DR JUNID AHMED KHAN",
-              "location": "BASIC CYS LAB",
+              "location": "BASIC CYBER SECURITY LAB",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -6218,7 +6218,7 @@
           "semester": "3",
           "section": "A",
           "room": "A-001",
-          "strength": "36 Students"
+          "strength": "36"
         },
         "days": {
           "Mon": [
@@ -6466,7 +6466,7 @@
           "semester": "3",
           "section": "B",
           "room": "A-002",
-          "strength": "34 Students"
+          "strength": "34"
         },
         "days": {
           "Mon": [
@@ -6736,7 +6736,7 @@
           "semester": "1",
           "section": "A",
           "room": "A-017",
-          "strength": "40 Students"
+          "strength": "40"
         },
         "days": {
           "Mon": [
@@ -7020,7 +7020,7 @@
           "semester": "1",
           "section": "B",
           "room": "A-018",
-          "strength": "40 Students"
+          "strength": "40"
         },
         "days": {
           "Mon": [
@@ -7254,7 +7254,7 @@
           "semester": "7",
           "section": "A",
           "room": "NA-101",
-          "strength": "24 Students"
+          "strength": "24"
         },
         "days": {
           "Mon": [
@@ -7550,7 +7550,7 @@
           "semester": "5",
           "section": "A",
           "room": "NA-109",
-          "strength": "26 Students"
+          "strength": "26"
         },
         "days": {
           "Mon": [
@@ -7790,7 +7790,7 @@
           "semester": "3",
           "section": "A",
           "room": "NA-107",
-          "strength": "32 Students"
+          "strength": "32"
         },
         "days": {
           "Mon": [
@@ -7928,7 +7928,7 @@
               "time": "11:45 - 02:25",
               "subject": "CAD LAB",
               "teacher": "MR ALI HASSAN",
-              "location": "CADAM",
+              "location": "CADAM Lab",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8032,7 +8032,7 @@
           "semester": "1",
           "section": "A",
           "room": "NA-108",
-          "strength": "35 Students"
+          "strength": "35"
         },
         "days": {
           "Mon": [
@@ -8040,7 +8040,7 @@
               "time": "08:35 - 11:15",
               "subject": "APPLICATION OF ICT LAB",
               "teacher": "MR SHAH ZAIB  LAB ENGG.",
-              "location": "BASIC CYBER  SECURITY LAB",
+              "location": "BASIC CYBER SECURITY LAB",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8266,7 +8266,7 @@
           "semester": "3",
           "section": "A",
           "room": "E-102",
-          "strength": "43 Students"
+          "strength": "43"
         },
         "days": {
           "Mon": [
@@ -8328,7 +8328,7 @@
               "time": "08:35 - 11:15",
               "subject": "DATA STRUCTURE AND ALGORITHMS LAB",
               "teacher": "MS HAFSA PARKER",
-              "location": "COMP LAB-I",
+              "location": "COMP LAB-1",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8414,7 +8414,7 @@
               "time": "11:45 - 02:25",
               "subject": "ARTIFICIAL INTELLIGENCE LAB",
               "teacher": "MS HAFSA PARKER",
-              "location": "BASIC CYBER  SECURITY LAB",
+              "location": "BASIC CYBER SECURITY LAB",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8468,7 +8468,7 @@
               "time": "12:40 - 02:25",
               "subject": "IINFORMATION SECURITY LAB",
               "teacher": "MR SHAHZAIB",
-              "location": "BASIC CYBER  SECURITY LAB",
+              "location": "BASIC CYBER SECURITY LAB",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8490,7 +8490,7 @@
               "time": "03:15 - 04:05",
               "subject": "IINFORMATION SECURITY LAB",
               "teacher": "MR SHAHZAIB",
-              "location": "BASIC CYBER  SECURITY LAB",
+              "location": "BASIC CYBER SECURITY LAB",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8502,7 +8502,7 @@
               "time": "08:35 - 11:15",
               "subject": "COMPUTER NETWORKS",
               "teacher": "MS HAFSA PARKER",
-              "location": "COMP LAB-I",
+              "location": "COMP LAB-1",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8528,7 +8528,7 @@
           "semester": "1",
           "section": "A",
           "room": "E-101",
-          "strength": "43 Students"
+          "strength": "43"
         },
         "days": {
           "Mon": [
@@ -8676,7 +8676,7 @@
               "time": "11:45 - 02:25",
               "subject": "FUNDAMENTAL OF COMPUTER PROGRAMMING",
               "teacher": "MR WALI MUHAMMAD",
-              "location": "COMP-LAB 2",
+              "location": "COMP LAB-2",
               "color": "bg-yellow-100",
               "textColor": "text-yellow-800",
               "darkColor": "dark:bg-yellow-900/50",
@@ -8730,7 +8730,7 @@
               "time": "12:40 - 02:25",
               "subject": "QUNTATIVE RESONING- I",
               "teacher": "MR ZAFAR ALI",
-              "location": "E 101",
+              "location": "E-101",
               "color": "bg-blue-100",
               "textColor": "text-blue-800",
               "darkColor": "dark:bg-blue-900/50",
