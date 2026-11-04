@@ -1,958 +1,524 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#09090b" />
-  <meta name="description" content="Class Schedule" />
-  <title>Class Schedule · NUST PNEC</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
-          colors: {
-            brand: {
-              300: '#a5b4fc',
-              400: '#818cf8',
-              500: '#6366f1',
-              600: '#4f46e5'
-            },
-            ink: {
-              950: '#09090b',
-              900: '#0f1014',
-              850: '#14161c',
-              800: '#191c24',
-              700: '#242936'
-            }
-          }
-        }
-      }
-    };
-  </script>
-
-  <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 10% -5%, rgba(99,102,241,.13), transparent 28rem),
-        radial-gradient(circle at 95% 5%, rgba(20,184,166,.08), transparent 24rem),
-        #09090b;
-      color: #f4f4f5;
-      font-family: Inter, sans-serif;
-    }
-
-    ::selection { background: rgba(99,102,241,.35); }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #272a33; border-radius: 999px; }
-
-    .hide-scrollbar { scrollbar-width: none; }
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
-
-    .glass {
-      background: rgba(25, 28, 36, .72);
-      border: 1px solid rgba(255,255,255,.07);
-      box-shadow: 0 18px 55px rgba(0,0,0,.18);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .select-wrap { position: relative; min-width: 0; }
-    .select-wrap::after {
-      content: '';
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      width: 7px;
-      height: 7px;
-      border-right: 1.5px solid #a1a1aa;
-      border-bottom: 1.5px solid #a1a1aa;
-      transform: translateY(-65%) rotate(45deg);
-      pointer-events: none;
-    }
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 100%;
-      background: #101217;
-      color: #e4e4e7;
-      border: 1px solid rgba(255,255,255,.08);
-      outline: none;
-      cursor: pointer;
-    }
-    select:hover { border-color: rgba(255,255,255,.16); }
-    select:focus { border-color: rgba(99,102,241,.65); box-shadow: 0 0 0 3px rgba(99,102,241,.12); }
-
-    .day-pill, .section-pill { flex: 0 0 auto; }
-    .day-pill { transition: transform .18s ease, background .18s ease, border-color .18s ease; }
-    .day-pill:active, .section-pill:active { transform: scale(.97); }
-
-    .schedule-card {
-      min-width: 0;
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
-    }
-    .schedule-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(99,102,241,.28);
-      box-shadow: 0 14px 35px rgba(0,0,0,.18);
-    }
-
-    .subject-clamp {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-    }
-
-    @media (max-width: 640px) {
-      body { background: #09090b; }
-      .glass { backdrop-filter: none; -webkit-backdrop-filter: none; }
-      .schedule-card:hover { transform: none; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#fef7fe" />
+<title>Class Schedule · NUST PNEC</title>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('rf_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Material+Symbols+Rounded:FILL@1&display=block" rel="stylesheet" />
+<style>
+:root{--p:#6750a4;--op:#fff;--pc:#eaddff;--opc:#21005d;--sc:#e8def8;--osc:#1d192b;--tc:#ffd8e4;--s:#fef7fe;--s1:#f7f2fa;--s2:#f3edf7;--s3:#ece6f0;--s4:#e6e0e9;--on:#1d1b20;--onv:#49454f;--ol:#79747e;
+--c0:#eaddff;--f0:#21005d;--c1:#d3e3fd;--f1:#041e49;--c2:#c4eed0;--f2:#072711;--c3:#ffe08c;--f3:#261a00;--c4:#ffd8e4;--f4:#31111d;--c5:#c7ece8;--f5:#00201d;
+--e1:0 1px 2px rgba(0,0,0,.25),0 1px 3px 1px rgba(0,0,0,.12);--ease:cubic-bezier(.2,0,0,1);color-scheme:light}
+:root[data-theme=dark]{--p:#d0bcff;--op:#381e72;--pc:#4f378b;--opc:#eaddff;--sc:#4a4458;--osc:#e8def8;--tc:#633b48;--s:#141218;--s1:#1d1b20;--s2:#211f26;--s3:#2b2930;--s4:#36343b;--on:#e6e0e9;--onv:#cac4d0;--ol:#938f99;
+--c0:#4f378b;--f0:#eaddff;--c1:#0842a0;--f1:#d3e3fd;--c2:#0f5223;--f2:#c4eed0;--c3:#5c4300;--f3:#ffe08c;--c4:#633b48;--f4:#ffd8e4;--c5:#00504a;--f5:#c7ece8;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;min-height:100vh;background:var(--s);color:var(--on);font:400 14px/1.45 Roboto,system-ui,sans-serif;transition:background .4s,color .4s}
+button,select,input{font-family:inherit}
+.ms{font:normal 20px/1 'Material Symbols Rounded';display:inline-block;flex:none;vertical-align:middle;user-select:none;letter-spacing:normal;white-space:nowrap}
+.rip{position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.ripple{position:absolute;border-radius:50%;background:currentColor;opacity:.2;transform:scale(0);animation:rp .6s ease-out forwards;pointer-events:none}
+@keyframes rp{to{transform:scale(1);opacity:0}}
+.appbar{position:sticky;top:0;z-index:10;padding-top:env(safe-area-inset-top);background:var(--s);transition:background .3s,box-shadow .3s}
+.appbar.sc{background:var(--s2);box-shadow:var(--e1)}
+.wrap{max-width:1120px;margin:auto;height:64px;padding:0 8px 0 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}.brand .ms{font-size:28px;color:var(--p)}
+.brand b{display:block;font:500 22px/1.1 Roboto}.brand small{color:var(--onv);font-size:12px}
+.ib{width:40px;height:40px;border:0;border-radius:50%;background:none;color:var(--onv);display:grid;place-items:center;cursor:pointer}
+.ib:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+.ib.spin .ms{animation:spin .6s var(--ease)}@keyframes spin{from{transform:rotate(-180deg) scale(.4);opacity:0}}
+main{max-width:1120px;margin:auto;padding:4px 12px 96px}
+.hero{position:relative;overflow:hidden;isolation:isolate;background:var(--pc);color:var(--opc);border-radius:28px;padding:24px}
+.hero::before,.hero::after{content:"";position:absolute;z-index:-1;background:var(--tc);opacity:.75;animation:morph 14s ease-in-out infinite alternate}
+.hero::before{width:230px;height:230px;right:-50px;top:-80px}
+.hero::after{width:140px;height:140px;right:110px;bottom:-70px;background:var(--sc);animation-delay:-6s}
+@keyframes morph{0%{border-radius:42% 58% 63% 37%/45% 40% 60% 55%}100%{border-radius:60% 40% 35% 65%/55% 62% 38% 45%;transform:rotate(60deg) translateY(10px)}}
+.hero h1{margin:0 0 18px;max-width:20ch;font:500 clamp(28px,6vw,44px)/1.12 Roboto}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:8px;background:color-mix(in srgb,currentColor 10%,transparent);font-weight:500;font-size:13px}
+.chip .ms{font-size:18px}.chip.sm{height:24px;padding:0 8px;font-size:12px}
+.panel{display:grid;gap:12px;margin-top:12px;padding:12px;border-radius:24px;background:var(--s2)}
+.seg{display:inline-flex;justify-self:start;height:40px;border:1px solid var(--ol);border-radius:20px;overflow:hidden}
+.seg button{display:flex;align-items:center;gap:6px;padding:0 18px;border:0;background:none;color:var(--on);font:500 14px Roboto;cursor:pointer;transition:background .25s,color .25s}
+.seg button+button{border-left:1px solid var(--ol)}.seg .on{background:var(--sc);color:var(--osc)}.seg .ms{font-size:18px}
+.row{display:grid;gap:8px;align-items:center}
+@media(min-width:640px){.row{grid-template-columns:1fr 1fr}.row>.chiprow,.row>.free{grid-column:1/-1}}
+.field{position:relative;display:block;min-width:0}
+.field small{position:absolute;left:16px;top:8px;font-size:12px;color:var(--onv);pointer-events:none}
+.field .ms{position:absolute;right:12px;top:18px;color:var(--onv);pointer-events:none}
+.field select{width:100%;height:56px;padding:22px 40px 4px 16px;border:0;border-radius:12px 12px 0 0;box-shadow:0 1px 0 var(--ol);background:var(--s4);color:var(--on);font:500 15px Roboto;appearance:none;-webkit-appearance:none;outline:0;cursor:pointer;transition:box-shadow .2s}
+.field select:focus{box-shadow:0 2px 0 var(--p)}select option{background:var(--s2);color:var(--on)}
+.chiprow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;align-items:center}.chiprow::-webkit-scrollbar{display:none}
+.free{display:grid;gap:6px}.free small,.chiprow>small{color:var(--onv)}
+.fchip{flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 16px;border-radius:10px;border:1px solid var(--ol);background:none;color:var(--onv);font:500 14px Roboto;cursor:pointer;transition:background .25s,color .25s,padding .25s}
+.fchip.on{background:var(--sc);color:var(--osc);border-color:transparent;padding-left:10px}.fchip .ms{font-size:18px}
+.search{display:flex;align-items:center;gap:12px;height:48px;padding:0 4px 0 16px;border-radius:28px;background:var(--s4);color:var(--onv);transition:box-shadow .2s}
+.search:focus-within{box-shadow:0 0 0 2px var(--p)}
+.search input{flex:1;min-width:0;border:0;background:none;outline:0;color:var(--on);font-size:15px}
+.tabs{position:relative;display:flex;gap:4px;margin-top:12px;padding:4px;border-radius:20px;background:var(--s1);overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{position:relative;z-index:1;flex:1 0 56px;display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 6px 6px;border:0;border-radius:16px;background:none;color:var(--onv);font:500 12px Roboto;cursor:pointer;transition:color .3s}
+.tabs b{font:500 20px/1.2 Roboto}.tabs .on{color:var(--osc)}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--p);opacity:0;transition:opacity .3s}.tabs .today .dot{opacity:1}
+.ind{position:absolute;z-index:0;top:4px;bottom:4px;left:4px;width:60px;border-radius:16px;background:var(--sc);transition:left .45s var(--ease),width .45s var(--ease)}
+.live{position:relative;overflow:hidden;margin-top:12px;padding:18px 20px;border-radius:24px;background:var(--pc);color:var(--opc)}
+.live.in{animation:rise .6s var(--ease)}.live.brk{background:var(--c3);color:var(--f3)}.live.free{background:var(--c2);color:var(--f2)}.live.fin{background:var(--s1);color:var(--onv)}
+.lt{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.badge{display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px;border-radius:14px;background:color-mix(in srgb,currentColor 12%,transparent);font:500 12px Roboto;letter-spacing:.5px}.badge .ms{font-size:16px}
+.live h3{margin:12px 0 6px;font:500 22px/1.25 Roboto}.live .ll{margin:10px 0 0;opacity:.85}.live h3+.ll{margin-top:0}
+.dotp{width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 1.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 currentColor}70%,100%{box-shadow:0 0 0 8px transparent}}
+.bar{height:6px;margin-top:14px;border-radius:3px;overflow:hidden;background:color-mix(in srgb,currentColor 18%,transparent)}
+.bar i{display:block;height:100%;border-radius:3px;background:currentColor;transition:width 1.2s var(--ease)}
+.head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:24px 4px 12px}
+.head h2{margin:0;font:500 24px/1.2 Roboto}.head p{margin:2px 0 0;color:var(--onv);font-size:13px}
+#entryCount{flex:none;background:var(--sc);color:var(--osc)}.pop{animation:pop .4s var(--ease)}@keyframes pop{50%{transform:scale(1.12)}}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}.grid.week{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));align-items:start}
+.card{position:relative;overflow:hidden;padding:16px 18px;border-radius:24px;background:var(--bg,var(--s2));color:var(--fg,var(--on));animation:rise .5s var(--ease) backwards;animation-delay:calc(var(--i,0)*50ms);transition:transform .25s var(--ease),box-shadow .25s,opacity .4s}
+.nox .card{animation:none}
+@keyframes rise{from{opacity:0;transform:translateY(18px) scale(.96)}}
+.card:hover{transform:translateY(-3px);box-shadow:var(--e1),inset 0 0 0 99px color-mix(in srgb,currentColor 6%,transparent)}
+.card.done{opacity:.55}.card.now{box-shadow:0 0 0 2px currentColor}
+.card.brk{background:none;border:1px dashed var(--ol);color:var(--onv)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card h3{margin:0;font:500 17px/1.3 Roboto;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.time{flex:none;padding:4px 10px;border-radius:10px;font:500 12px Roboto;background:color-mix(in srgb,currentColor 12%,transparent)}
+.meta{display:grid;gap:6px;margin-top:14px;font-size:13px}.meta p{display:flex;align-items:center;gap:8px;margin:0;min-width:0}
+.meta .ms{font-size:18px;opacity:.8}.meta span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.foot{display:flex;align-items:center;gap:10px;margin-top:14px;font:500 12px Roboto}.foot .dur{display:inline-flex;align-items:center;gap:4px;opacity:.8}.foot .ms{font-size:16px}
+.nowtag{display:none;align-items:center;gap:6px;margin-left:auto}.now .nowtag{display:inline-flex}
+.card.compact{padding:12px 14px;border-radius:18px}.compact h3{font-size:14px}.compact .meta{font-size:12px;margin-top:10px}.compact .foot{margin-top:10px}
+.col{padding:10px;border-radius:24px;background:var(--s1);min-width:0}.col.today{box-shadow:inset 0 0 0 2px var(--p)}
+.colhead{display:flex;justify-content:space-between;align-items:center;margin:2px 4px 10px}.colhead h3{margin:0;font:500 16px Roboto}
+.stack{display:grid;gap:8px}.free-box{display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 8px;border-radius:18px;background:var(--c2);color:var(--f2);font-weight:500;font-size:13px}
+.empty{grid-column:1/-1;text-align:center;padding:48px 16px;border-radius:28px;background:var(--s1);color:var(--onv)}
+.empty .ms{font-size:44px;color:var(--p);animation:bob 3s ease-in-out infinite}.empty p{margin:4px 0}.empty b{font-size:16px;color:var(--on)}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.sk{height:150px;border-radius:24px;background:linear-gradient(90deg,var(--s2) 25%,var(--s3) 50%,var(--s2) 75%);background-size:200% 100%;animation:sh 1.4s linear infinite}@keyframes sh{to{background-position:-200% 0}}
+.btn{height:40px;margin-top:16px;padding:0 24px;border:0;border-radius:20px;background:var(--p);color:var(--op);font:500 14px Roboto;cursor:pointer}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 20px;border:0;border-radius:16px;background:var(--pc);color:var(--opc);font:500 14px Roboto;box-shadow:var(--e1),0 6px 14px rgba(0,0,0,.2);cursor:pointer;transform:scale(0);opacity:0;transition:transform .35s var(--ease),opacity .2s}
+.fab.show{transform:none;opacity:1}
+footer{padding:28px 0 8px;text-align:center;color:var(--onv);font-size:12px}
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
 </head>
+<body>
+<header class="appbar" id="appbar"><div class="wrap">
+  <div class="brand"><i class="ms">event_available</i><div><b>Class Schedule</b><small>NUST PNEC</small></div></div>
+  <button class="ib rip" id="themeBtn" aria-label="Toggle light or dark theme"><i class="ms" id="themeIcon">dark_mode</i></button>
+</div></header>
 
-<body class="antialiased">
-  <main class="mx-auto w-full max-w-6xl px-3 py-3 sm:px-6 sm:py-6 lg:px-8">
+<main>
+  <section class="hero">
+    <h1 id="facultyTitle">Loading…</h1>
+    <div class="chips">
+      <span class="chip"><i class="ms">school</i>Semester <b id="semesterDisplay">—</b></span>
+      <span class="chip"><i class="ms">groups</i>Section <b id="sectionDisplay">—</b></span>
+      <span class="chip"><i class="ms">meeting_room</i>Room <b id="roomDisplay">—</b></span>
+      <span class="chip"><i class="ms">info</i><b id="strengthDisplay">Strength: —</b></span>
+    </div>
+  </section>
 
-    <!-- Header -->
-    <header class="glass overflow-hidden rounded-[26px] p-5 sm:p-7">
-      <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-        <div class="min-w-0">
-          <div class="mb-2 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.16em] text-zinc-500">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            Class Schedule · NUST PNEC
-          </div>
-
-          <h1 id="facultyTitle" class="max-w-3xl text-[2rem] font-extrabold leading-[1.08] tracking-tight text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-violet-400 bg-clip-text sm:text-5xl">
-            Loading…
-          </h1>
-
-          <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-zinc-400">
-            <span>Semester <strong id="semesterDisplay" class="ml-1 font-semibold text-zinc-100">—</strong></span>
-            <span class="text-zinc-700">•</span>
-            <span>Section <strong id="sectionDisplay" class="ml-1 font-semibold text-zinc-100">—</strong></span>
-            <span class="text-zinc-700">•</span>
-            <span>Room <strong id="roomDisplay" class="ml-1 font-semibold text-teal-400">—</strong></span>
-          </div>
-        </div>
-
-        <div class="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/7 bg-black/20 px-3.5 py-2 text-xs font-semibold text-zinc-400">
-          <span class="relative flex h-2 w-2">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-          </span>
-          <span id="strengthDisplay">Strength: —</span>
-        </div>
+  <section class="panel" aria-label="Schedule filters">
+    <div class="seg" id="modeSeg">
+      <button type="button" class="rip on" data-v="class"><i class="ms">auto_stories</i>My Classes</button>
+      <button type="button" class="rip" data-v="room"><i class="ms">meeting_room</i>Room Finder</button>
+    </div>
+    <div class="row" id="classControls">
+      <label class="field"><small>Faculty</small><select id="facultySelect"></select><i class="ms">expand_more</i></label>
+      <label class="field"><small>Semester</small><select id="semesterSelect"></select><i class="ms">expand_more</i></label>
+      <div class="chiprow" id="sectionContainer"></div>
+    </div>
+    <div class="row" id="roomControls" hidden>
+      <label class="field"><small>Room</small><select id="roomSelect"></select><i class="ms">expand_more</i></label>
+      <div class="seg" id="viewSeg">
+        <button type="button" class="rip on" data-v="week">Week</button>
+        <button type="button" class="rip" data-v="day">Day</button>
       </div>
-    </header>
+      <div class="free"><small>Free right now</small><div class="chiprow" id="freeRow"></div></div>
+    </div>
+    <div class="search"><i class="ms">search</i><input id="q" type="text" placeholder="Search subject or teacher" autocomplete="off" aria-label="Search classes" /><button class="ib rip" id="qClear" type="button" hidden aria-label="Clear search"><i class="ms">close</i></button></div>
+  </section>
 
-    <!-- Filters -->
-    <section class="glass mt-3 rounded-[24px] p-3 sm:mt-4 sm:p-4" aria-label="Schedule filters">
-      <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto]">
-        <div class="select-wrap">
-          <label for="facultySelect" class="sr-only">Faculty</label>
-          <select id="facultySelect" class="h-12 rounded-2xl px-4 pr-10 text-sm font-semibold"></select>
-        </div>
-        <div class="select-wrap">
-          <label for="semesterSelect" class="sr-only">Semester</label>
-          <select id="semesterSelect" class="h-12 rounded-2xl px-4 pr-10 text-sm font-semibold"></select>
-        </div>
-        <div id="sectionContainer" class="flex min-w-0 gap-2 overflow-x-auto hide-scrollbar sm:col-span-2 lg:col-span-1 lg:max-w-[360px]"></div>
+  <nav class="tabs" id="dayNavigation" aria-label="Day navigation"></nav>
+  <section id="liveStatusContainer" aria-live="polite"></section>
+
+  <section>
+    <div class="head">
+      <div><h2 id="scheduleTitle">Today’s Schedule</h2><p id="scheduleSubtitle">Your classes for the selected day</p></div>
+      <span class="chip" id="entryCount">0 classes</span>
+    </div>
+    <div class="grid" id="scheduleGrid"></div>
+  </section>
+
+  <footer>Made with <span style="color:#e5484d">❤</span> by Amir Ali :)</footer>
+</main>
+
+<button class="rip fab" id="fab" type="button"><i class="ms">today</i>Today</button>
+
+<script>
+(() => {
+  const D = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+  const N = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday' };
+  const FAC = { EE: 'Electrical Engineering', ME: 'Mechanical Engineering', NA: 'Naval Architecture', CS: 'Computer Science', WE: 'Weapon Engineering' };
+  const $ = id => document.getElementById(id);
+  const root = document.documentElement;
+  const st = {
+    get: k => { try { return localStorage.getItem('rf_' + k); } catch (e) { return null; } },
+    set: (k, v) => { try { localStorage.setItem('rf_' + k, v); } catch (e) {} }
+  };
+  const esc = v => String(v ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
+  const facFull = k => FAC[k] || k;
+  const ord = v => { const n = Number(v); if (!Number.isFinite(n)) return ''; if (n % 100 >= 11 && n % 100 <= 13) return 'th'; return { 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th'; };
+  const todayCode = () => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date().getDay()];
+  const nowMin = () => { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); };
+  const hm = m => { m %= 1440; const h = Math.floor(m / 60); return `${h % 12 || 12}:${String(m % 60).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`; };
+  const dur = (a, b) => { const m = Math.max(0, b - a); if (m < 60) return `${m} min`; const h = Math.floor(m / 60), r = m % 60; return r ? `${h}h ${r}m` : `${h}h`; };
+  const cd = m => dur(0, Math.max(0, m));
+  const colorOf = s => { let h = 0; for (const c of String(s || '')) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h % 6; };
+
+  function parseTimePart(v) {
+    const m = String(v || '').trim().toUpperCase().match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?$/);
+    if (!m) return null;
+    let h = Number(m[1]); const min = Number(m[2] || 0);
+    if (min > 59) return null;
+    if (m[3] === 'AM') h = h === 12 ? 0 : h;
+    else if (m[3] === 'PM') h = h === 12 ? 12 : h + 12;
+    else if (h >= 1 && h <= 6) h += 12;
+    return h > 23 ? null : h * 60 + min;
+  }
+  function parseTimeRange(t) {
+    const p = String(t || '').split(/\s*-\s*/);
+    if (p.length !== 2) return null;
+    const start = parseTimePart(p[0]); let end = parseTimePart(p[1]);
+    if (start == null || end == null) return null;
+    if (end <= start) end += 720;
+    return { start, end };
+  }
+
+  let data = null, rooms = new Map(), roomList = [], quiet = false, liveKey = '';
+  const S = { faculty: st.get('faculty'), semester: st.get('semester'), section: st.get('section'), day: null, mode: st.get('mode') || 'class', room: st.get('room'), view: st.get('view') || 'week', q: '' };
+  const save = () => ['faculty', 'semester', 'section', 'mode', 'room', 'view'].forEach(k => S[k] && st.set(k, S[k]));
+  const grid = $('scheduleGrid'), liveBox = $('liveStatusContainer'), tabs = $('dayNavigation');
+
+  /* Theme */
+  function syncTheme() {
+    const dark = root.dataset.theme === 'dark';
+    $('themeIcon').textContent = dark ? 'light_mode' : 'dark_mode';
+    document.querySelector('meta[name=theme-color]').content = dark ? '#141218' : '#fef7fe';
+  }
+  $('themeBtn').onclick = () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    st.set('theme', root.dataset.theme); syncTheme();
+    const b = $('themeBtn'); b.classList.remove('spin'); void b.offsetWidth; b.classList.add('spin');
+  };
+  syncTheme();
+
+  /* Data helpers */
+  const getSection = () => data?.[S.faculty]?.[S.semester]?.[S.section] || null;
+  const getDay = () => Array.isArray(getSection()?.days?.[S.day]) ? getSection().days[S.day] : [];
+  const hit = it => !S.q || [it.subject, it.teacher, it.location, FAC[it.faculty]].join(' ').toLowerCase().includes(S.q);
+  const getRoomEntries = d => rooms.get(String(S.room || '').toLowerCase())?.days[d] || [];
+
+  function indexRooms() {
+    rooms = new Map();
+    const room = n => {
+      n = String(n || '').trim(); if (!n) return null;
+      const k = n.toLowerCase();
+      if (!rooms.has(k)) rooms.set(k, { name: n, days: Object.fromEntries(D.map(d => [d, []])) });
+      return rooms.get(k);
+    };
+    for (const f in data) for (const sem in data[f]) for (const sec in data[f][sem]) {
+      const x = data[f][sem][sec];
+      room(x?.info?.room);
+      for (const d of D) for (const it of (Array.isArray(x?.days?.[d]) ? x.days[d] : [])) {
+        const r = room(it?.location);
+        if (r) r.days[d].push({ ...it, faculty: f, semester: sem, section: sec });
+      }
+    }
+    roomList = [...rooms.values()].sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+    roomList.forEach(r => D.forEach(d => r.days[d].sort((a, b) => (parseTimeRange(a.time)?.start ?? 9999) - (parseTimeRange(b.time)?.start ?? 9999))));
+  }
+
+  /* Cards */
+  function card(it, i, o) {
+    const g = parseTimeRange(it.time);
+    const at = `data-d="${o.day}"${g ? ` data-s="${g.start}" data-e="${g.end}"` : ''}`;
+    if (it.type === 'break') {
+      return `<article class="card brk" style="--i:${i}" ${at}><div class="top"><h3><i class="ms">coffee</i> ${esc(it.subject || 'Break')}</h3><span class="time">${esc(it.time || '')}</span></div></article>`;
+    }
+    const c = colorOf(it.subject);
+    const group = o.compact ? `${it.faculty} · Sem ${it.semester} · ${it.section}` : `${facFull(it.faculty)} · ${it.semester}${ord(it.semester)} · Section ${it.section}`;
+    return `<article class="card rip${o.compact ? ' compact' : ''}" style="--i:${i};--bg:var(--c${c});--fg:var(--f${c})" ${at}>
+      <div class="top"><h3>${esc(it.subject || 'Untitled class')}</h3><span class="time">${esc(it.time || '—')}</span></div>
+      <div class="meta">
+        ${it.teacher ? `<p><i class="ms">person</i><span>${esc(it.teacher)}</span></p>` : ''}
+        ${o.group ? `<p><i class="ms">school</i><span>${esc(group)}</span></p>` : it.location ? `<p><i class="ms">location_on</i><span>${esc(it.location)}</span></p>` : ''}
       </div>
-
-      <div class="mt-2 flex flex-col gap-2 border-t border-white/6 pt-2 sm:flex-row sm:items-center">
-        <div class="flex rounded-2xl border border-white/6 bg-ink-900/70 p-1">
-          <button id="classModeButton" type="button" class="rounded-xl bg-brand-500 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-brand-500/15">My Classes</button>
-          <button id="roomModeButton" type="button" class="rounded-xl px-4 py-2.5 text-xs font-bold text-zinc-500 hover:text-zinc-200">Room Finder</button>
-        </div>
-
-        <div id="roomFinderControls" class="hidden min-w-0 flex-1 gap-2 sm:flex">
-          <div class="select-wrap min-w-0 flex-1">
-            <label for="roomSelect" class="sr-only">Room</label>
-            <select id="roomSelect" class="h-11 rounded-2xl px-4 pr-10 text-sm font-semibold"></select>
-          </div>
-          <div class="flex shrink-0 rounded-2xl border border-white/6 bg-ink-900/70 p-1">
-            <button id="roomWeekButton" type="button" class="rounded-xl bg-brand-500 px-3.5 py-2 text-xs font-bold text-white">Week</button>
-            <button id="roomDayButton" type="button" class="rounded-xl px-3.5 py-2 text-xs font-bold text-zinc-500 hover:text-zinc-200">Day</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Days -->
-    <nav id="dayNavigation" class="mt-3 overflow-x-auto hide-scrollbar sm:mt-4" aria-label="Day navigation">
-      <div class="flex min-w-max gap-2 rounded-[22px] border border-white/6 bg-ink-800/70 p-2">
-        <button class="day-pill rounded-2xl border border-brand-500/40 bg-brand-500 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-brand-500/20 sm:px-5" data-day="Mon">Monday</button>
-        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Tue">Tuesday</button>
-        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Wed">Wednesday</button>
-        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Thu">Thursday</button>
-        <button class="day-pill rounded-2xl border border-white/6 bg-ink-800 px-4 py-3 text-sm font-semibold text-zinc-400 hover:bg-ink-700 hover:text-zinc-100 sm:px-5" data-day="Fri">Friday</button>
-      </div>
-    </nav>
-
-    <!-- Live status -->
-    <section id="liveStatusContainer" class="mt-3 sm:mt-4" aria-live="polite"></section>
-
-    <!-- Schedule -->
-    <section class="mt-6 sm:mt-8">
-      <div class="mb-3 flex items-center justify-between px-1 sm:mb-4">
-        <div>
-          <h2 id="scheduleTitle" class="text-xl font-extrabold tracking-tight text-zinc-100">Today's Schedule</h2>
-          <p id="scheduleSubtitle" class="mt-0.5 text-xs text-zinc-500">Your classes for the selected day</p>
-        </div>
-        <span id="entryCount" class="shrink-0 rounded-full border border-brand-500/20 bg-brand-500/10 px-3 py-1.5 text-xs font-bold text-brand-300">0 entries</span>
-      </div>
-
-      <div id="scheduleGrid" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
-    </section>
-
-    <footer class="pb-5 pt-10 text-center text-xs text-zinc-600">
-      <p>Made with <span class="inline-block text-rose-500">❤</span> by Amir Ali :)</p>
-    </footer>
-  </main>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-      const DAY_NAMES = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday' };
-      const FACULTIES = {
-        EE: 'Electrical Engineering',
-        ME: 'Mechanical Engineering',
-        NA: 'Naval Architecture',
-        CS: 'Computer Science',
-        WE: 'Weapon Engineering'
-      };
-
-      // Visual palette is intentionally independent of schedule.json.
-      // This means the JSON only needs schedule information; the UI supplies styling.
-      const PALETTE = [
-        { card: 'border-indigo-500/25 bg-indigo-500/[.13]', title: 'text-indigo-200', icon: 'text-indigo-300' },
-        { card: 'border-sky-500/25 bg-sky-500/[.12]', title: 'text-sky-200', icon: 'text-sky-300' },
-        { card: 'border-emerald-500/25 bg-emerald-500/[.12]', title: 'text-emerald-200', icon: 'text-emerald-300' },
-        { card: 'border-violet-500/25 bg-violet-500/[.12]', title: 'text-violet-200', icon: 'text-violet-300' },
-        { card: 'border-amber-500/25 bg-amber-500/[.12]', title: 'text-amber-200', icon: 'text-amber-300' }
-      ];
-
-      const $ = id => document.getElementById(id);
-      const facultySelect = $('facultySelect');
-      const semesterSelect = $('semesterSelect');
-      const sectionContainer = $('sectionContainer');
-      const scheduleGrid = $('scheduleGrid');
-      const scheduleTitle = $('scheduleTitle');
-      const scheduleSubtitle = $('scheduleSubtitle');
-      const entryCount = $('entryCount');
-      const liveStatusContainer = $('liveStatusContainer');
-      const facultyTitle = $('facultyTitle');
-      const semesterDisplay = $('semesterDisplay');
-      const sectionDisplay = $('sectionDisplay');
-      const roomDisplay = $('roomDisplay');
-      const strengthDisplay = $('strengthDisplay');
-      const classModeButton = $('classModeButton');
-      const roomModeButton = $('roomModeButton');
-      const roomFinderControls = $('roomFinderControls');
-      const roomSelect = $('roomSelect');
-      const roomWeekButton = $('roomWeekButton');
-      const roomDayButton = $('roomDayButton');
-
-      let scheduleData = null;
-      const state = {
-        faculty: null,
-        semester: null,
-        section: null,
-        day: null,
-        mode: 'class',
-        room: null,
-        roomView: 'week'
-      };
-
-      const getFacultyFull = key => FACULTIES[key] || key;
-      const getDayFull = key => DAY_NAMES[key] || key;
-      const getOrdinal = value => {
-        const n = Number(value);
-        if (!Number.isFinite(n)) return '';
-        const mod100 = n % 100;
-        if (mod100 >= 11 && mod100 <= 13) return 'th';
-        return ({ 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th');
-      };
-
-      function todayCode() {
-        return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date().getDay()];
-      }
-
-      function escapeHTML(value) {
-        return String(value ?? '').replace(/[&<>'"]/g, ch => ({
-          '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-        }[ch]));
-      }
-
-      function getSectionData() {
-        return scheduleData?.[state.faculty]?.[state.semester]?.[state.section] || null;
-      }
-
-      function getDayData() {
-        const data = getSectionData();
-        return Array.isArray(data?.days?.[state.day]) ? data.days[state.day] : [];
-      }
-
-      function getAllRooms() {
-        const rooms = new Map();
-
-        for (const faculty of Object.keys(scheduleData || {})) {
-          for (const semester of Object.keys(scheduleData?.[faculty] || {})) {
-            for (const section of Object.keys(scheduleData?.[faculty]?.[semester] || {})) {
-              const data = scheduleData[faculty][semester][section];
-
-              const infoRoom = String(data?.info?.room || '').trim();
-              if (infoRoom) {
-                const key = infoRoom.toLowerCase();
-                if (!rooms.has(key)) rooms.set(key, infoRoom);
-              }
-
-              for (const day of DAYS) {
-                const entries = Array.isArray(data?.days?.[day]) ? data.days[day] : [];
-                for (const item of entries) {
-                  const location = String(item?.location || '').trim();
-                  if (!location) continue;
-
-                  const key = location.toLowerCase();
-                  if (!rooms.has(key)) rooms.set(key, location);
-                }
-              }
-            }
-          }
-        }
-
-        return [...rooms.values()].sort((a, b) =>
-          a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
-        );
-      }
-
-      function populateRooms() {
-        const rooms = getAllRooms();
-
-        if (!rooms.includes(state.room)) {
-          state.room = rooms[0] || null;
-        }
-
-        roomSelect.innerHTML = rooms.length
-          ? rooms.map(room =>
-              `<option value="${escapeHTML(room)}">${escapeHTML(room)}</option>`
-            ).join('')
-          : '<option value="">No rooms found</option>';
-
-        roomSelect.value = state.room || '';
-      }
-
-      function getRoomEntries(day) {
-        const result = [];
-        const wantedRoom = String(state.room || '').trim().toLowerCase();
-
-        if (!wantedRoom) return result;
-
-        for (const faculty of Object.keys(scheduleData || {})) {
-          for (const semester of Object.keys(scheduleData?.[faculty] || {})) {
-            for (const section of Object.keys(scheduleData?.[faculty]?.[semester] || {})) {
-              const data = scheduleData[faculty][semester][section];
-              const entries = Array.isArray(data?.days?.[day]) ? data.days[day] : [];
-
-              for (const item of entries) {
-                const location = String(item?.location || '').trim();
-
-                if (location.toLowerCase() !== wantedRoom) continue;
-
-                result.push({
-                  ...item,
-                  faculty,
-                  semester,
-                  section,
-                  room: location
-                });
-              }
-            }
-          }
-        }
-
-        return result.sort((a, b) => {
-          const ar = parseTimeRange(a.time);
-          const br = parseTimeRange(b.time);
-          return (ar?.start ?? 9999) - (br?.start ?? 9999);
-        });
-      }
-
-      function renderRoomSchedule() {
-        const room = state.room;
-
-        facultyTitle.textContent = room ? `Room ${room}` : 'Room Finder';
-        semesterDisplay.textContent = 'All';
-        sectionDisplay.textContent = 'All';
-        roomDisplay.textContent = room || '—';
-        strengthDisplay.textContent = 'Weekly room view';
-        liveStatusContainer.innerHTML = '';
-
-        if (!room) {
-          scheduleTitle.textContent = 'No rooms found';
-          scheduleSubtitle.textContent = 'No room information was found in schedule.json.';
-          entryCount.textContent = '0 entries';
-          scheduleGrid.className = 'grid grid-cols-1 gap-3';
-          scheduleGrid.innerHTML = `
-            <div class="rounded-[24px] border border-dashed border-white/8 bg-ink-800/30 px-5 py-14 text-center">
-              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[.04] text-2xl">🚪</div>
-              <p class="font-semibold text-zinc-300">No rooms available</p>
-            </div>`;
-          return;
-        }
-
-        if (state.roomView === 'week') {
-          const byDay = Object.fromEntries(DAYS.map(day => [day, getRoomEntries(day)]));
-          const total = DAYS.reduce((sum, day) => sum + byDay[day].length, 0);
-
-          scheduleTitle.textContent = 'Weekly Room Schedule';
-          scheduleSubtitle.textContent = `All classes using ${room} from Monday to Friday`;
-          entryCount.textContent = `${total} ${total === 1 ? 'entry' : 'entries'}`;
-
-          scheduleGrid.className = 'grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5';
-
-          scheduleGrid.innerHTML = DAYS.map(day => {
-            const entries = byDay[day];
-
-            return `
-              <section class="min-w-0 rounded-[22px] border border-white/6 bg-ink-800/35 p-3 sm:p-4">
-                <div class="mb-3 flex items-center justify-between gap-2">
-                  <h3 class="font-extrabold text-zinc-100">${getDayFull(day)}</h3>
-                  <span class="rounded-full bg-white/[.04] px-2 py-1 text-[10px] font-bold text-zinc-500">${entries.length}</span>
-                </div>
-
-                <div class="space-y-2">
-                  ${entries.length ? entries.map(item => {
-                    const range = parseTimeRange(item.time);
-
-                    return `
-                      <article class="rounded-2xl border border-white/6 bg-black/15 p-3">
-                        <div class="flex items-start justify-between gap-2">
-                          <h4 class="subject-clamp text-xs font-extrabold text-zinc-200">
-                            ${escapeHTML(item.subject || 'Untitled class')}
-                          </h4>
-                          <span class="shrink-0 text-[9px] font-bold text-zinc-500">
-                            ${escapeHTML(item.time || '')}
-                          </span>
-                        </div>
-
-                        <p class="mt-2 truncate text-[10px] font-medium text-teal-300">
-                          ${escapeHTML(getFacultyFull(item.faculty))} · Section ${escapeHTML(item.section)}
-                        </p>
-
-                        ${item.teacher ? `
-                          <p class="mt-1 truncate text-[10px] text-zinc-500">
-                            ${escapeHTML(item.teacher)}
-                          </p>` : ''}
-
-                        ${range ? `
-                          <p class="mt-2 text-[9px] font-semibold text-zinc-600">
-                            ${formatDuration(range.start, range.end)}
-                          </p>` : ''}
-                      </article>`;
-                  }).join('') : `
-                    <div class="rounded-2xl border border-dashed border-white/6 px-3 py-8 text-center text-[10px] text-zinc-600">
-                      Room free
-                    </div>`}
-                </div>
-              </section>`;
-          }).join('');
-
-        } else {
-          const entries = getRoomEntries(state.day);
-
-          scheduleGrid.className = 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3';
-
-          scheduleTitle.textContent =
-            state.day === todayCode()
-              ? "Today's Room Schedule"
-              : `${getDayFull(state.day)}'s Room Schedule`;
-
-          scheduleSubtitle.textContent =
-            `${entries.length ? 'Classes using' : 'No classes using'} ${room} on ${getDayFull(state.day)}`;
-
-          entryCount.textContent = `${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`;
-
-          scheduleGrid.innerHTML = entries.length
-            ? entries.map((item, index) => {
-                const palette = PALETTE[index % PALETTE.length];
-                const range = parseTimeRange(item.time);
-
-                return `
-                  <article class="schedule-card ${palette.card} rounded-[22px] border p-4 sm:p-5">
-                    <div class="flex items-start justify-between gap-3">
-                      <div class="min-w-0">
-                        <h3 class="subject-clamp text-base font-extrabold leading-snug ${palette.title}">
-                          ${escapeHTML(item.subject || 'Untitled class')}
-                        </h3>
-                      </div>
-                      <span class="shrink-0 rounded-xl bg-black/20 px-2.5 py-1.5 text-[10px] font-bold text-zinc-300">
-                        ${escapeHTML(item.time || '—')}
-                      </span>
-                    </div>
-
-                    <div class="mt-4 space-y-2 text-xs text-zinc-400">
-                      ${item.teacher ? `
-                        <p class="flex min-w-0 items-center gap-2">
-                          <span class="${palette.icon}">♙</span>
-                          <span class="truncate">${escapeHTML(item.teacher)}</span>
-                        </p>` : ''}
-
-                      <p class="flex min-w-0 items-center gap-2">
-                        <span class="text-teal-300">⌖</span>
-                        <span class="truncate font-medium text-zinc-300">${escapeHTML(room)}</span>
-                      </p>
-
-                      <p class="flex min-w-0 items-center gap-2">
-                        <span>🎓</span>
-                        <span class="truncate">${escapeHTML(getFacultyFull(item.faculty))} · ${escapeHTML(item.semester)}${getOrdinal(item.semester)} · Section ${escapeHTML(item.section)}</span>
-                      </p>
-                    </div>
-
-                    ${range ? `
-                      <div class="mt-4 border-t border-white/5 pt-3 text-[10px] font-semibold text-zinc-600">
-                        ${formatDuration(range.start, range.end)}
-                      </div>` : ''}
-                  </article>`;
-              }).join('')
-            : `
-              <div class="col-span-full rounded-[24px] border border-dashed border-white/8 bg-ink-800/30 px-5 py-14 text-center">
-                <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[.04] text-2xl">🟢</div>
-                <p class="font-semibold text-zinc-300">Room free</p>
-                <p class="mt-1 text-sm text-zinc-600">
-                  No class is scheduled in ${escapeHTML(room)} on ${escapeHTML(getDayFull(state.day))}.
-                </p>
-              </div>`;
-        }
-      }
-
-      function setMode(mode) {
-        state.mode = mode;
-        const roomMode = mode === 'room';
-
-        classModeButton.className = roomMode
-          ? 'rounded-xl px-4 py-2.5 text-xs font-bold text-zinc-500 hover:text-zinc-200'
-          : 'rounded-xl bg-brand-500 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-brand-500/15';
-
-        roomModeButton.className = roomMode
-          ? 'rounded-xl bg-brand-500 px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-brand-500/15'
-          : 'rounded-xl px-4 py-2.5 text-xs font-bold text-zinc-500 hover:text-zinc-200';
-
-        roomFinderControls.classList.toggle('hidden', !roomMode);
-        roomFinderControls.classList.toggle('sm:flex', roomMode);
-
-        facultySelect.parentElement.classList.toggle('hidden', roomMode);
-        semesterSelect.parentElement.classList.toggle('hidden', roomMode);
-        sectionContainer.classList.toggle('hidden', roomMode);
-
-        if (roomMode) {
-          populateRooms();
-          renderRoomSchedule();
-        } else {
-          updateAll();
-        }
-      }
-
-      function setSelectOptions(select, object, labelFn) {
-        const keys = Object.keys(object || {});
-        select.innerHTML = keys.map(key => `<option value="${escapeHTML(key)}">${escapeHTML(labelFn(key))}</option>`).join('');
-        return keys;
-      }
-
-      function populateFaculty() {
-        const keys = setSelectOptions(facultySelect, scheduleData, getFacultyFull);
-        state.faculty = keys[0] || null;
-        facultySelect.value = state.faculty || '';
-        populateSemester();
-      }
-
-      function populateSemester() {
-        const semesters = scheduleData?.[state.faculty] || {};
-        const keys = setSelectOptions(semesterSelect, semesters, key => `${key}${getOrdinal(key)} Semester`);
-        state.semester = keys[0] || null;
-        semesterSelect.value = state.semester || '';
-        populateSections();
-      }
-
-      function populateSections() {
-        const sections = Object.keys(scheduleData?.[state.faculty]?.[state.semester] || {});
-        if (!sections.includes(state.section)) state.section = sections[0] || null;
-
-        sectionContainer.innerHTML = sections.length
-          ? sections.map(section => {
-              const active = section === state.section;
-              return `<button type="button" class="section-pill rounded-2xl border px-4 py-3 text-sm font-bold transition-all ${
-                active
-                  ? 'border-brand-500/40 bg-brand-500 text-white shadow-lg shadow-brand-500/15'
-                  : 'border-white/6 bg-ink-800 text-zinc-400 hover:bg-ink-700 hover:text-zinc-100'
-              }" data-section="${escapeHTML(section)}">Section ${escapeHTML(section)}</button>`;
-            }).join('')
-          : `<span class="px-3 py-3 text-sm text-zinc-500">No sections available</span>`;
-
-        sectionContainer.querySelectorAll('.section-pill').forEach(button => {
-          button.addEventListener('click', () => {
-            state.section = button.dataset.section;
-            populateSections();
-            updateAll();
-          });
-        });
-      }
-
-      function setActiveDay(day) {
-        state.day = DAYS.includes(day) ? day : 'Mon';
-        document.querySelectorAll('.day-pill').forEach(button => {
-          const active = button.dataset.day === state.day;
-          button.classList.toggle('bg-brand-500', active);
-          button.classList.toggle('text-white', active);
-          button.classList.toggle('border-brand-500/40', active);
-          button.classList.toggle('shadow-lg', active);
-          button.classList.toggle('shadow-brand-500/20', active);
-          button.classList.toggle('bg-ink-800', !active);
-          button.classList.toggle('text-zinc-400', !active);
-          button.classList.toggle('border-white/6', !active);
-        });
-      }
-
-      // Accepts common schedule formats such as:
-      // 08:35 - 10:20, 12:40 - 02:25, 8:35 AM - 10:20 AM, 12:40 PM - 2:25 PM.
-      function parseTimePart(value) {
-        const raw = String(value || '').trim().toUpperCase();
-        const match = raw.match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?$/);
-        if (!match) return null;
-
-        let hour = Number(match[1]);
-        const minute = Number(match[2] || 0);
-        const meridiem = match[3];
-        if (minute > 59) return null;
-
-        if (meridiem === 'AM') hour = hour === 12 ? 0 : hour;
-        else if (meridiem === 'PM') hour = hour === 12 ? 12 : hour + 12;
-        else if (hour >= 1 && hour <= 6) hour += 12; // schedule convention: 01:00–06:xx = PM
-
-        if (hour > 23) return null;
-        return hour * 60 + minute;
-      }
-
-      function parseTimeRange(time) {
-        const parts = String(time || '').split(/\s*-\s*/);
-        if (parts.length !== 2) return null;
-        const start = parseTimePart(parts[0]);
-        const endRaw = parts[1];
-        let end = parseTimePart(endRaw);
-        if (start == null || end == null) return null;
-        if (end <= start) end += 12 * 60;
-        return { start, end };
-      }
-
-      function formatDuration(start, end) {
-        const mins = Math.max(0, end - start);
-        if (mins < 60) return `${mins} min`;
-        const h = Math.floor(mins / 60);
-        const m = mins % 60;
-        return m ? `${h}h ${m}m` : `${h}h`;
-      }
-
-      function renderLiveStatus(entries) {
-        if (state.day !== todayCode()) {
-          liveStatusContainer.innerHTML = '';
-          return;
-        }
-
-        const now = new Date();
-        const current = now.getHours() * 60 + now.getMinutes();
-        let inProgress = null;
-        let upNext = null;
-
-        for (const item of entries) {
-          const range = parseTimeRange(item.time);
-          if (!range) continue;
-          if (current >= range.start && current < range.end) {
-            inProgress = { item, range };
-            break;
-          }
-          if (current < range.start && !upNext) upNext = { item, range };
-        }
-
-        if (inProgress) {
-          const { item, range } = inProgress;
-          const subject = String(item.subject || '').trim();
-          const normalized = subject.toLowerCase().replace(/\s+/g, ' ');
-          const isStandEasy = item.type === 'break' || normalized === 'stand easy' || normalized.includes('stand easy');
-          const isPrayerLunch = normalized.includes('zohar prayer') || normalized.includes('prayer/lunch') || normalized.includes('prayer / lunch') || normalized.includes('zohar') && normalized.includes('lunch');
-
-          if (isStandEasy || isPrayerLunch) {
-            const isPrayer = isPrayerLunch;
-            const title = isPrayer ? 'Zohar Prayer & Lunch' : 'Stand Easy';
-            const subtitle = isPrayer
-              ? 'Prayer & lunch break — take a proper pause before the next class.'
-              : 'Short break — stretch, reset, and get ready for the next class.';
-            const icon = isPrayer ? '🕌' : '☕';
-            const nextAfterBreak = entries
-              .map(entry => { const r = parseTimeRange(entry.time); return r ? { item: entry, range: r } : null; })
-              .filter(Boolean)
-              .find(entry => entry.range.start >= range.end);
-
-            liveStatusContainer.innerHTML = `
-              <div class="relative overflow-hidden rounded-[24px] border border-amber-400/20 bg-gradient-to-r from-amber-400/[.10] via-orange-400/[.05] to-transparent p-4 sm:p-5">
-                <div class="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-amber-300/10 blur-3xl"></div>
-                <div class="relative flex items-center justify-between gap-3">
-                  <span class="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1.5 text-[10px] font-extrabold tracking-[.08em] text-amber-300">
-                    <span class="text-sm leading-none">${icon}</span>
-                    ${isPrayer ? 'PRAYER & LUNCH' : 'BREAK TIME'}
-                  </span>
-                  <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1.5 text-[11px] font-bold text-zinc-300">${escapeHTML(item.time)}</span>
-                </div>
-                <h3 class="relative mt-3 text-lg font-extrabold text-zinc-100 sm:text-xl">${title}</h3>
-                <p class="relative mt-1.5 max-w-2xl text-xs leading-relaxed text-zinc-400">${subtitle}</p>
-                <div class="relative mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs">
-                  <span class="font-semibold text-amber-300">${formatDuration(range.start, range.end)}</span>
-                  ${nextAfterBreak ? `<span class="text-zinc-500">Next: <strong class="text-zinc-300">${escapeHTML(nextAfterBreak.item.subject || 'Class')}</strong></span>` : ''}
-                </div>
-              </div>`;
-          } else {
-            liveStatusContainer.innerHTML = `
-              <div class="relative overflow-hidden rounded-[24px] border border-emerald-500/25 bg-gradient-to-r from-emerald-500/[.13] via-teal-500/[.07] to-transparent p-4 sm:p-5">
-                <div class="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl"></div>
-                <div class="relative flex items-center justify-between gap-3">
-                  <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/15 px-3 py-1.5 text-[10px] font-extrabold tracking-[.08em] text-emerald-300">
-                    <span class="relative flex h-2 w-2"><span class="absolute h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60"></span><span class="relative h-2 w-2 rounded-full bg-emerald-500"></span></span>
-                    CLASS IN PROGRESS
-                  </span>
-                  <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1.5 text-[11px] font-bold text-zinc-300">${escapeHTML(item.time)}</span>
-                </div>
-                <h3 class="subject-clamp relative mt-3 text-lg font-extrabold text-zinc-100 sm:text-xl">${escapeHTML(item.subject || 'Class')}</h3>
-                <div class="relative mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-zinc-400">
-                  ${item.teacher ? `<span>👤 ${escapeHTML(item.teacher)}</span>` : ''}
-                  ${item.location ? `<span class="font-semibold text-teal-300">📍 ${escapeHTML(item.location)}</span>` : ''}
-                  <span class="text-zinc-500">${formatDuration(range.start, range.end)}</span>
-                </div>
-              </div>`;
-          }
-        } else if (upNext) {
-          const { item, range } = upNext;
-          liveStatusContainer.innerHTML = `
-            <div class="rounded-[24px] border border-brand-500/25 bg-gradient-to-r from-brand-500/[.12] via-violet-500/[.06] to-transparent p-4 sm:p-5">
-              <div class="flex items-center justify-between gap-3">
-                <span class="rounded-full border border-brand-500/25 bg-brand-500/15 px-3 py-1.5 text-[10px] font-extrabold tracking-[.08em] text-brand-300">⏳ UP NEXT</span>
-                <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1.5 text-[11px] font-bold text-zinc-300">${escapeHTML(item.time)}</span>
-              </div>
-              <h3 class="subject-clamp mt-3 text-lg font-extrabold text-zinc-100 sm:text-xl">${escapeHTML(item.subject || 'Class')}</h3>
-              <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-zinc-400">
-                ${item.teacher ? `<span>👤 ${escapeHTML(item.teacher)}</span>` : ''}
-                ${item.location ? `<span class="font-semibold text-teal-300">📍 ${escapeHTML(item.location)}</span>` : ''}
-                <span class="text-zinc-500">Starts in ${formatCountdown(range.start - current)}</span>
-              </div>
-            </div>`;
-        } else {
-          liveStatusContainer.innerHTML = `
-            <div class="flex items-center gap-3 rounded-[22px] border border-white/6 bg-ink-800/55 px-4 py-3.5 text-sm text-zinc-400">
-              <span>✨</span><span>All classes finished for today.</span>
-            </div>`;
-        }
-      }
-
-      function formatCountdown(minutes) {
-        const m = Math.max(0, minutes);
-        if (m < 60) return `${m} min`;
-        const h = Math.floor(m / 60);
-        const r = m % 60;
-        return r ? `${h}h ${r}m` : `${h}h`;
-      }
-
-      function renderSchedule(entries) {
-        scheduleGrid.className = 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3';
-        const list = Array.isArray(entries) ? entries : [];
-        const today = todayCode();
-        const isToday = state.day === today;
-
-        scheduleTitle.textContent = isToday ? "Today's Schedule" : `${getDayFull(state.day)}'s Schedule`;
-        scheduleSubtitle.textContent = isToday ? 'Your classes for today' : `Your classes for ${getDayFull(state.day)}`;
-        entryCount.textContent = `${list.length} ${list.length === 1 ? 'entry' : 'entries'}`;
-
-        if (!list.length) {
-          scheduleGrid.innerHTML = `
-            <div class="col-span-full rounded-[24px] border border-dashed border-white/8 bg-ink-800/30 px-5 py-14 text-center">
-              <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[.04] text-2xl">🗓️</div>
-              <p class="font-semibold text-zinc-300">No classes scheduled</p>
-              <p class="mt-1 text-sm text-zinc-600">Try another day or section.</p>
-            </div>`;
-          return;
-        }
-
-        scheduleGrid.innerHTML = list.map((item, index) => {
-          const isBreak = item?.type === 'break';
-          const palette = PALETTE[index % PALETTE.length];
-          const range = parseTimeRange(item?.time);
-
-          if (isBreak) {
-            return `
-              <article class="schedule-card rounded-[22px] border border-dashed border-white/8 bg-ink-800/45 p-4 sm:p-5">
-                <div class="flex items-center justify-between gap-3">
-                  <div class="min-w-0">
-                    <p class="text-[10px] font-bold uppercase tracking-[.1em] text-zinc-600">${escapeHTML(item.time || '')}</p>
-                    <h3 class="mt-1 truncate text-sm font-bold text-zinc-400">☕ ${escapeHTML(item.subject || 'Break')}</h3>
-                  </div>
-                  <span class="shrink-0 rounded-full bg-black/20 px-2.5 py-1 text-[10px] font-semibold text-zinc-600">BREAK</span>
-                </div>
-              </article>`;
-          }
-
-          return `
-            <article class="schedule-card ${palette.card} rounded-[22px] border p-4 sm:p-5">
-              <div class="flex items-start justify-between gap-3">
-                <div class="min-w-0">
-                  <h3 class="subject-clamp text-base font-extrabold leading-snug ${palette.title}">${escapeHTML(item?.subject || 'Untitled class')}</h3>
-                </div>
-                <span class="shrink-0 rounded-xl bg-black/20 px-2.5 py-1.5 text-[10px] font-bold tracking-tight text-zinc-300">${escapeHTML(item?.time || '—')}</span>
-              </div>
-
-              <div class="mt-4 space-y-2 text-xs text-zinc-400">
-                ${item?.teacher ? `<p class="flex min-w-0 items-center gap-2"><span class="${palette.icon}">♙</span><span class="truncate">${escapeHTML(item.teacher)}</span></p>` : ''}
-                ${item?.location ? `<p class="flex min-w-0 items-center gap-2"><span class="text-teal-300">⌖</span><span class="truncate font-medium text-zinc-300">${escapeHTML(item.location)}</span></p>` : ''}
-              </div>
-
-              ${range ? `<div class="mt-4 border-t border-white/5 pt-3 text-[10px] font-semibold text-zinc-600">${formatDuration(range.start, range.end)}</div>` : ''}
-            </article>`;
-        }).join('');
-      }
-
-      function updateHeader(info) {
-        facultyTitle.textContent = getFacultyFull(state.faculty || '');
-        if (!info) {
-          semesterDisplay.textContent = '—';
-          sectionDisplay.textContent = '—';
-          roomDisplay.textContent = '—';
-          strengthDisplay.textContent = 'Strength: —';
-          return;
-        }
-        semesterDisplay.textContent = `${info.semester}${getOrdinal(info.semester)}`;
-        sectionDisplay.textContent = info.section || state.section || '—';
-        roomDisplay.textContent = info.room || '—';
-        strengthDisplay.textContent = info.strength != null ? `Strength: ${info.strength} Students` : 'Strength: —';
-      }
-
-      function updateAll() {
-        const sectionData = getSectionData();
-        updateHeader(sectionData?.info || null);
-        const entries = getDayData();
-        renderLiveStatus(entries);
-        renderSchedule(entries);
-      }
-
-      function showLoading() {
-        scheduleGrid.innerHTML = `
-          <div class="col-span-full flex items-center justify-center rounded-[24px] border border-white/6 bg-ink-800/30 py-16 text-sm text-zinc-500">
-            <span class="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-zinc-700 border-t-brand-400"></span>
-            Loading schedule…
-          </div>`;
-      }
-
-      function showError(message) {
-        scheduleGrid.innerHTML = `
-          <div class="col-span-full rounded-[24px] border border-rose-500/20 bg-rose-500/[.06] px-5 py-12 text-center">
-            <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-500/10 text-xl">!</div>
-            <p class="font-semibold text-rose-300">Unable to load schedule</p>
-            <p class="mx-auto mt-2 max-w-md text-sm text-zinc-500">${escapeHTML(message)}</p>
-            <button id="retryButton" class="mt-5 rounded-xl border border-white/8 bg-ink-800 px-4 py-2.5 text-sm font-bold text-zinc-200 hover:bg-ink-700">Try again</button>
-          </div>`;
-          $('retryButton')?.addEventListener('click', loadSchedule);
-      }
-
-      async function loadSchedule() {
-        showLoading();
-        try {
-          const response = await fetch('./schedule.json', { cache: 'no-store' });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          const data = await response.json();
-          if (!data || typeof data !== 'object' || Array.isArray(data) || !Object.keys(data).length) {
-            throw new Error('schedule.json is empty or has an invalid structure.');
-          }
-
-          scheduleData = data;
-          populateFaculty();
-          populateRooms();
-
-          const today = todayCode();
-          setActiveDay(DAYS.includes(today) ? today : 'Mon');
-          updateAll();
-        } catch (error) {
-          console.error('Schedule loading error:', error);
-          showError('Please check that schedule.json exists beside this HTML file and contains valid JSON.');
-        }
-      }
-
-      facultySelect.addEventListener('change', () => {
-        state.faculty = facultySelect.value;
-        state.section = null;
-        populateSemester();
-        updateAll();
-      });
-
-      semesterSelect.addEventListener('change', () => {
-        state.semester = semesterSelect.value;
-        state.section = null;
-        populateSections();
-        updateAll();
-      });
-
-      document.querySelectorAll('.day-pill').forEach(button => {
-        button.addEventListener('click', () => {
-          setActiveDay(button.dataset.day);
-
-          if (state.mode === 'room') {
-            state.roomView = 'day';
-            roomWeekButton.className = 'rounded-xl px-3.5 py-2 text-xs font-bold text-zinc-500 hover:text-zinc-200';
-            roomDayButton.className = 'rounded-xl bg-brand-500 px-3.5 py-2 text-xs font-bold text-white';
-            renderRoomSchedule();
-          } else {
-            updateAll();
-          }
-        });
-      });
-
-      classModeButton.addEventListener('click', () => setMode('class'));
-      roomModeButton.addEventListener('click', () => setMode('room'));
-
-      roomSelect.addEventListener('change', () => {
-        state.room = roomSelect.value;
-        renderRoomSchedule();
-      });
-
-      roomWeekButton.addEventListener('click', () => {
-        state.roomView = 'week';
-        roomWeekButton.className = 'rounded-xl bg-brand-500 px-3.5 py-2 text-xs font-bold text-white';
-        roomDayButton.className = 'rounded-xl px-3.5 py-2 text-xs font-bold text-zinc-500 hover:text-zinc-200';
-        renderRoomSchedule();
-      });
-
-      roomDayButton.addEventListener('click', () => {
-        state.roomView = 'day';
-        roomWeekButton.className = 'rounded-xl px-3.5 py-2 text-xs font-bold text-zinc-500 hover:text-zinc-200';
-        roomDayButton.className = 'rounded-xl bg-brand-500 px-3.5 py-2 text-xs font-bold text-white';
-        renderRoomSchedule();
-      });
-
-      loadSchedule();
-
-      // Keep the live card accurate without rebuilding the whole page.
-      setInterval(() => {
-        if (scheduleData) renderLiveStatus(getDayData());
-      }, 30000);
+      <div class="foot">${g ? `<span class="dur"><i class="ms">timer</i>${dur(g.start, g.end)}</span>` : ''}<span class="nowtag"><i class="dotp"></i>Now</span></div>
+    </article>`;
+  }
+  const empty = (icon, t, s) => `<div class="empty"><i class="ms">${icon}</i><p><b>${t}</b></p><p>${s}</p></div>`;
+
+  function marks() {
+    const t = todayCode(), n = nowMin();
+    grid.querySelectorAll('.card[data-s]').forEach(c => {
+      const on = c.dataset.d === t, s = +c.dataset.s, e = +c.dataset.e;
+      c.classList.toggle('now', on && n >= s && n < e);
+      c.classList.toggle('done', on && n >= e);
     });
-  </script>
+  }
+  function mount(html, cls = 'grid') { grid.className = cls + (quiet ? ' nox' : ''); grid.innerHTML = html; marks(); }
+
+  function head(t, s, list) {
+    $('scheduleTitle').textContent = t; $('scheduleSubtitle').textContent = s;
+    const c = list.filter(x => x.type !== 'break'); let m = 0;
+    c.forEach(x => { const r = parseTimeRange(x.time); if (r) m += r.end - r.start; });
+    const el = $('entryCount');
+    el.textContent = `${c.length} ${c.length === 1 ? 'class' : 'classes'}${m ? ` · ${dur(0, m)}` : ''}`;
+    el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+  }
+
+  /* Live card */
+  function clearLive() { liveBox.innerHTML = ''; liveKey = ''; }
+  function live(o) {
+    const k = JSON.stringify([o.cls, o.badge, o.title]); const fresh = k !== liveKey; liveKey = k;
+    liveBox.innerHTML = `<div class="live ${o.cls}${fresh ? ' in' : ''}">
+      <div class="lt"><span class="badge">${o.pulse ? '<i class="dotp"></i>' : `<i class="ms">${o.icon}</i>`}${o.badge}</span>${o.time ? `<span class="time">${esc(o.time)}</span>` : ''}</div>
+      ${o.title ? `<h3>${esc(o.title)}</h3>` : ''}<p class="ll">${o.text}</p>
+      ${o.bar != null ? `<div class="bar"><i style="width:${fresh ? 0 : o.bar}%" data-w="${o.bar}"></i></div>` : ''}</div>`;
+    if (fresh) requestAnimationFrame(() => requestAnimationFrame(() => liveBox.querySelectorAll('.bar i').forEach(i => i.style.width = i.dataset.w + '%')));
+  }
+  const pct = (n, g) => Math.min(100, Math.max(0, Math.round((n - g.start) / (g.end - g.start) * 100)));
+
+  function renderLive(es) {
+    if (S.mode !== 'class' || S.day !== todayCode() || !es.length) return clearLive();
+    const n = nowMin(); let cur = null, nx = null;
+    for (const item of es) {
+      const g = parseTimeRange(item.time); if (!g) continue;
+      if (n >= g.start && n < g.end) { cur = { item, g }; break; }
+      if (n < g.start && !nx) nx = { item, g };
+    }
+    if (cur) {
+      const { item, g } = cur, sub = String(item.subject || ''), pr = /zohar|prayer|lunch/i.test(sub);
+      const left = cd(g.end - n);
+      if (item.type === 'break' || pr || /stand easy/i.test(sub)) {
+        const after = es.map(x => ({ x, g: parseTimeRange(x.time) })).find(o => o.g && o.g.start >= g.end);
+        live({ cls: 'brk', badge: pr ? 'PRAYER & LUNCH' : 'BREAK TIME', icon: pr ? 'mosque' : 'coffee', time: item.time, title: pr ? 'Zohar Prayer & Lunch' : 'Stand Easy', text: esc(`${left} left${after ? ` · Next: ${after.x.subject || 'Class'}` : ''}`), bar: pct(n, g) });
+      } else {
+        live({ cls: '', badge: 'CLASS IN PROGRESS', pulse: 1, time: item.time, title: sub || 'Class', text: esc([item.teacher, item.location, `${left} left`].filter(Boolean).join(' · ')), bar: pct(n, g) });
+      }
+    } else if (nx) {
+      live({ cls: '', badge: 'UP NEXT', icon: 'hourglass_top', time: nx.item.time, title: nx.item.subject || 'Class', text: esc([nx.item.teacher, nx.item.location, `Starts in ${cd(nx.g.start - n)}`].filter(Boolean).join(' · ')) });
+    } else {
+      live({ cls: 'fin', badge: 'ALL DONE', icon: 'celebration', text: 'All classes finished for today.' });
+    }
+  }
+
+  function roomLive() {
+    const t = todayCode(), sd = $('strengthDisplay');
+    if (S.mode !== 'room' || !S.room) return;
+    if (!D.includes(t)) { sd.textContent = 'Weekly room view'; return clearLive(); }
+    const n = nowMin(); let cur = null, nx = null;
+    for (const e of getRoomEntries(t)) {
+      if (e.type === 'break') continue;
+      const g = parseTimeRange(e.time); if (!g) continue;
+      if (n >= g.start && n < g.end) { cur = { e, g }; break; }
+      if (n < g.start && !nx) nx = { e, g };
+    }
+    if (cur) {
+      sd.textContent = `In use until ${hm(cur.g.end)}`;
+      live({ cls: '', badge: 'IN USE', pulse: 1, time: cur.e.time, title: cur.e.subject || 'Class', text: esc(`${cur.e.faculty} · Sem ${cur.e.semester} · ${cur.e.section} · ${cd(cur.g.end - n)} left`), bar: pct(n, cur.g) });
+    } else {
+      sd.textContent = nx ? `Free until ${hm(nx.g.start)}` : 'Free for the rest of the day';
+      live({ cls: 'free', badge: 'FREE NOW', icon: 'check_circle', text: esc(nx ? `Next: ${nx.e.subject || 'Class'} at ${hm(nx.g.start)}` : 'No more classes today.') });
+    }
+  }
+
+  function renderFree() {
+    const row = $('freeRow'), t = todayCode(), n = nowMin();
+    row.parentElement.hidden = !D.includes(t);
+    if (!D.includes(t)) return;
+    const f = roomList.filter(r => !r.days[t].some(e => { const g = e.type !== 'break' && parseTimeRange(e.time); return g && n >= g.start && n < g.end; }));
+    row.innerHTML = f.length ? f.map(r => `<button type="button" class="fchip rip${r.name === S.room ? ' on' : ''}" data-room="${esc(r.name)}">${esc(r.name)}</button>`).join('') : '<small>No free rooms right now</small>';
+  }
+
+  /* Renderers */
+  function updateHeader(info) {
+    $('facultyTitle').textContent = facFull(S.faculty || '');
+    $('semesterDisplay').textContent = info ? `${info.semester}${ord(info.semester)}` : '—';
+    $('sectionDisplay').textContent = info ? (info.section || S.section || '—') : '—';
+    $('roomDisplay').textContent = info?.room || '—';
+    $('strengthDisplay').textContent = info?.strength != null ? `Strength: ${info.strength} Students` : 'Strength: —';
+  }
+
+  function render() {
+    updateHeader(getSection()?.info || null);
+    const es = getDay(), list = es.filter(hit), t = S.day === todayCode(), name = N[S.day];
+    renderLive(es);
+    head(t ? 'Today’s Schedule' : `${name}’s Schedule`, t ? 'Your classes for today' : `Your classes for ${name}`, list);
+    mount(list.length ? list.map((it, i) => card(it, i, { day: S.day })).join('') : empty(S.q ? 'search_off' : 'event_busy', S.q ? 'No matches' : 'No classes scheduled', S.q ? 'Try a different search.' : 'Try another day or section.'));
+  }
+
+  function renderRoom() {
+    const room = S.room, t = todayCode();
+    $('facultyTitle').textContent = room ? `Room ${room}` : 'Room Finder';
+    $('semesterDisplay').textContent = $('sectionDisplay').textContent = 'All';
+    $('roomDisplay').textContent = room || '—';
+    $('strengthDisplay').textContent = 'Weekly room view';
+    clearLive(); renderFree();
+    if (!room) { head('No rooms found', 'No room information was found in schedule.json.', []); return mount(empty('door_open', 'No rooms available', '')); }
+    roomLive();
+    if (S.view === 'week') {
+      const by = Object.fromEntries(D.map(d => [d, getRoomEntries(d).filter(hit)]));
+      head('Weekly Room Schedule', `All classes using ${room} from Monday to Friday`, [].concat(...D.map(d => by[d])));
+      let i = 0;
+      mount(D.map(d => `<section class="col${d === t ? ' today' : ''}"><div class="colhead"><h3>${N[d]}</h3><span class="chip sm">${by[d].length}</span></div><div class="stack">${by[d].length ? by[d].map(it => card(it, i++, { day: d, compact: 1, group: 1 })).join('') : '<div class="free-box"><i class="ms">check_circle</i>Room free</div>'}</div></section>`).join(''), 'grid week');
+    } else {
+      const es = getRoomEntries(S.day).filter(hit), name = N[S.day];
+      head(S.day === t ? 'Today’s Room Schedule' : `${name}’s Room Schedule`, `${es.length ? 'Classes using' : 'No classes using'} ${room} on ${name}`, es);
+      mount(es.length ? es.map((it, i) => card(it, i, { day: S.day, group: 1 })).join('') : empty('check_circle', 'Room free', `No class is scheduled in ${esc(room)} on ${name}.`));
+    }
+  }
+  const refresh = () => S.mode === 'room' ? renderRoom() : render();
+
+  /* Controls */
+  const setSeg = (el, v) => el.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  const syncSegs = () => { setSeg($('modeSeg'), S.mode); setSeg($('viewSeg'), S.view); };
+
+  function setMode(m) {
+    S.mode = m; syncSegs(); save();
+    $('classControls').hidden = m === 'room'; $('roomControls').hidden = m !== 'room';
+    if (m === 'room') populateRooms();
+    refresh(); updateFab();
+  }
+
+  function fillSelect(sel, obj, label) {
+    const keys = Object.keys(obj || {});
+    sel.innerHTML = keys.map(k => `<option value="${esc(k)}">${esc(label(k))}</option>`).join('');
+    return keys;
+  }
+  function populateFaculty() {
+    const k = fillSelect($('facultySelect'), data, facFull);
+    if (!k.includes(S.faculty)) S.faculty = k[0] || null;
+    $('facultySelect').value = S.faculty || ''; populateSemester();
+  }
+  function populateSemester() {
+    const k = fillSelect($('semesterSelect'), data?.[S.faculty], x => `${x}${ord(x)} Semester`);
+    if (!k.includes(S.semester)) S.semester = k[0] || null;
+    $('semesterSelect').value = S.semester || ''; populateSections();
+  }
+  function populateSections() {
+    const k = Object.keys(data?.[S.faculty]?.[S.semester] || {});
+    if (!k.includes(S.section)) S.section = k[0] || null;
+    const box = $('sectionContainer');
+    box.innerHTML = k.length ? k.map(s => `<button type="button" class="fchip rip${s === S.section ? ' on' : ''}" data-section="${esc(s)}">${s === S.section ? '<i class="ms">check</i>' : ''}Section ${esc(s)}</button>`).join('') : '<small>No sections available</small>';
+  }
+  function populateRooms() {
+    if (!rooms.has(String(S.room || '').toLowerCase())) S.room = roomList[0]?.name || null;
+    else S.room = rooms.get(S.room.toLowerCase()).name;
+    $('roomSelect').innerHTML = roomList.length ? roomList.map(r => `<option value="${esc(r.name)}">${esc(r.name)}</option>`).join('') : '<option value="">No rooms found</option>';
+    $('roomSelect').value = S.room || '';
+  }
+
+  /* Day tabs */
+  function buildTabs() {
+    const n = new Date(), dow = n.getDay();
+    const mon = new Date(n); mon.setDate(n.getDate() + (dow === 0 ? 1 : dow === 6 ? 2 : 1 - dow));
+    tabs.innerHTML = '<span class="ind" id="ind"></span>' + D.map((d, i) => {
+      const dt = new Date(mon); dt.setDate(mon.getDate() + i);
+      return `<button type="button" class="rip${d === todayCode() ? ' today' : ''}" data-day="${d}" aria-label="${N[d]}"><small>${d}</small><b>${dt.getDate()}</b><i class="dot"></i></button>`;
+    }).join('');
+  }
+  function moveInd() {
+    const b = tabs.querySelector('.on'), ind = $('ind'); if (!b || !ind) return;
+    ind.style.left = b.offsetLeft + 'px'; ind.style.width = b.offsetWidth + 'px';
+  }
+  function setDay(d) {
+    S.day = D.includes(d) ? d : 'Mon';
+    tabs.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.day === S.day));
+    moveInd();
+  }
+  function selectDay(d) {
+    setDay(d);
+    if (S.mode === 'room') { S.view = 'day'; syncSegs(); save(); }
+    refresh(); updateFab();
+  }
+  function step(n) {
+    if (S.mode === 'room' && S.view === 'week') return;
+    const i = D.indexOf(S.day) + n; if (i >= 0 && i < D.length) selectDay(D[i]);
+  }
+  function updateFab() {
+    const t = todayCode();
+    $('fab').classList.toggle('show', !!data && D.includes(t) && S.day !== t && !(S.mode === 'room' && S.view === 'week'));
+  }
+
+  /* Events */
+  $('facultySelect').onchange = e => { S.faculty = e.target.value; S.semester = S.section = null; populateSemester(); save(); render(); };
+  $('semesterSelect').onchange = e => { S.semester = e.target.value; S.section = null; populateSections(); save(); render(); };
+  $('sectionContainer').onclick = e => { const b = e.target.closest('[data-section]'); if (!b) return; S.section = b.dataset.section; populateSections(); save(); render(); };
+  $('roomSelect').onchange = e => { S.room = e.target.value; save(); renderRoom(); };
+  $('freeRow').onclick = e => { const b = e.target.closest('[data-room]'); if (!b) return; S.room = b.dataset.room; $('roomSelect').value = S.room; save(); renderRoom(); };
+  $('modeSeg').onclick = e => { const b = e.target.closest('button'); if (b) setMode(b.dataset.v); };
+  $('viewSeg').onclick = e => { const b = e.target.closest('button'); if (!b) return; S.view = b.dataset.v; syncSegs(); save(); renderRoom(); updateFab(); };
+  tabs.onclick = e => { const b = e.target.closest('[data-day]'); if (b) selectDay(b.dataset.day); };
+  $('fab').onclick = () => selectDay(todayCode());
+  $('q').oninput = e => {
+    S.q = e.target.value.trim().toLowerCase(); $('qClear').hidden = !e.target.value;
+    quiet = true; if (data) refresh(); quiet = false;
+  };
+  $('qClear').onclick = () => { $('q').value = ''; $('q').oninput({ target: $('q') }); $('q').focus(); };
+
+  document.addEventListener('pointerdown', e => {
+    const t = e.target.closest('.rip'); if (!t) return;
+    const r = t.getBoundingClientRect(), s = Math.max(r.width, r.height) * 2, w = document.createElement('span');
+    w.className = 'ripple';
+    w.style.cssText = `width:${s}px;height:${s}px;left:${e.clientX - r.left - s / 2}px;top:${e.clientY - r.top - s / 2}px`;
+    t.appendChild(w); w.onanimationend = () => w.remove();
+  });
+  let tx = 0, ty = 0;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (e.target.closest('.tabs,.chiprow,select,input')) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 70 && Math.abs(dy) < 40) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
+  document.addEventListener('keydown', e => {
+    if (/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight') step(1); else if (e.key === 'ArrowLeft') step(-1);
+  });
+  addEventListener('scroll', () => $('appbar').classList.toggle('sc', scrollY > 8), { passive: true });
+  addEventListener('resize', moveInd);
+
+  /* Load */
+  function tick() {
+    if (!data) return;
+    marks(); S.mode === 'room' ? (roomLive(), renderFree()) : renderLive(getDay()); updateFab();
+  }
+  async function load() {
+    grid.className = 'grid'; grid.innerHTML = Array.from({ length: 6 }, (_, i) => `<div class="sk" style="animation-delay:${i * 80}ms"></div>`).join('');
+    try {
+      const res = await fetch('./schedule.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const j = await res.json();
+      if (!j || typeof j !== 'object' || Array.isArray(j) || !Object.keys(j).length) throw new Error('schedule.json is empty or has an invalid structure.');
+      data = j; indexRooms(); populateFaculty(); populateRooms();
+      setDay(D.includes(todayCode()) ? todayCode() : 'Mon');
+      setMode(S.mode === 'room' ? 'room' : 'class');
+    } catch (err) {
+      console.error('Schedule loading error:', err);
+      grid.innerHTML = `<div class="empty"><i class="ms">cloud_off</i><p><b>Unable to load schedule</b></p><p>Check that schedule.json exists beside this HTML file and contains valid JSON.</p><button class="btn rip" id="retry" type="button">Try again</button></div>`;
+      $('retry').onclick = load;
+    }
+  }
+  buildTabs(); setDay(D.includes(todayCode()) ? todayCode() : 'Mon');
+  if (document.fonts) document.fonts.ready.then(moveInd);
+  syncSegs(); load();
+  setInterval(tick, 30000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) tick(); });
+})();
+</script>
 </body>
 </html>
