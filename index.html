@@ -101,13 +101,40 @@ main{max-width:1120px;margin:auto;padding:4px 12px 96px}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:9;display:flex;align-items:center;gap:8px;height:56px;padding:0 20px;border:0;border-radius:16px;background:var(--pc);color:var(--opc);font:500 14px Roboto;box-shadow:var(--e1),0 6px 14px rgba(0,0,0,.2);cursor:pointer;transform:scale(0);opacity:0;transition:transform .35s var(--ease),opacity .2s}
 .fab.show{transform:none;opacity:1}
 footer{padding:28px 0 8px;text-align:center;color:var(--onv);font-size:12px}
+.cat{position:fixed;left:8px;bottom:calc(6px + env(safe-area-inset-bottom));z-index:8;width:92px;pointer-events:none}
+.cat .flip,.cat .yarn{pointer-events:auto;cursor:pointer}
+.flip{display:block;border-radius:24px;outline-offset:4px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.cat svg{display:block;overflow:visible}
+.tail{transform-origin:92px 96px;animation:wag 2.6s ease-in-out infinite}.happy .tail{animation-duration:.5s}
+@keyframes wag{50%{transform:rotate(-18deg)}}
+.bod{transform-origin:60px 108px;animation:breathe 3.2s ease-in-out infinite}@keyframes breathe{50%{transform:scaleY(1.04)}}
+.head{transform-origin:60px 76px;transition:transform .2s}
+.eyes{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.pup{transition:transform .12s}
+.hp,.zz{display:none}.happy .hp,.sleep .zz{display:block}.happy .eyes,.sleep .eyes{display:none}
+.bub{position:absolute;left:4px;bottom:calc(100% + 4px);width:max-content;max-width:190px;padding:10px 14px;border-radius:16px 16px 16px 4px;background:var(--sc);color:var(--osc);font:500 13px/1.35 Roboto;box-shadow:var(--e1);transform-origin:0 100%;animation:bubin .35s var(--ease);pointer-events:none}
+@keyframes bubin{from{opacity:0;transform:translateY(8px) scale(.7)}}
+.heart{position:absolute;left:40px;top:10px;color:#f06292;font-size:20px;animation:float 1.4s ease-out forwards;pointer-events:none}
+@keyframes float{to{transform:translate(var(--x,0),-70px) scale(1.3);opacity:0}}
+.zzz{display:none;position:absolute;left:62px;top:-6px;font:700 15px Roboto;color:var(--onv);pointer-events:none}
+.sleep .zzz{display:block;animation:zz 2.4s ease-in-out infinite}@keyframes zz{0%{opacity:0;transform:translate(0,8px)}50%{opacity:1}100%{opacity:0;transform:translate(10px,-16px) scale(1.3)}}
+.yarn{position:absolute;left:84px;bottom:2px}
+.cat.jump .flip{animation:jump .7s var(--ease)}@keyframes jump{30%{transform:translateY(-34px) rotate(-6deg)}55%{transform:scaleY(.9)}70%{transform:translateY(-12px)}}
+.cat.roll .yarn{animation:roll 1.6s ease-in-out}@keyframes roll{50%{transform:translateX(70px) rotate(540deg)}100%{transform:rotate(1080deg)}}
+.cat.zoom{animation:zoom 2.6s ease-in-out}.cat.zoom .flip{animation:flipx 2.6s step-end}
+@keyframes zoom{45%{transform:translateX(calc(100vw - 112px))}100%{transform:none}}
+@keyframes flipx{0%{transform:scaleX(1)}45%{transform:scaleX(-1)}100%{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){*,::before,::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 <header class="appbar" id="appbar"><div class="wrap">
   <div class="brand"><i class="ms">event_available</i><div><b>Class Schedule</b><small>NUST PNEC</small></div></div>
-  <button class="ib rip" id="themeBtn" aria-label="Toggle light or dark theme"><i class="ms" id="themeIcon">dark_mode</i></button>
+  <div style="display:flex">
+    <button class="ib rip" id="catToggle" type="button" aria-label="Show or hide the cat"><i class="ms">pets</i></button>
+    <button class="ib rip" id="soundBtn" type="button" aria-label="Toggle purring sounds" aria-pressed="true"><i class="ms" id="soundIcon">volume_up</i></button>
+    <button class="ib rip" id="themeBtn" aria-label="Toggle light or dark theme"><i class="ms" id="themeIcon">dark_mode</i></button>
+  </div>
 </div></header>
 
 <main>
@@ -155,6 +182,31 @@ footer{padding:28px 0 8px;text-align:center;color:var(--onv);font-size:12px}
 
   <footer>Made with <span style="color:#e5484d">❤</span> by Amir Ali :)</footer>
 </main>
+
+<div class="cat" id="cat">
+  <div class="bub" id="bub" role="status" hidden></div>
+  <span class="zzz">z Z</span>
+  <div class="flip" id="catBody" role="button" tabindex="0" aria-label="Pet the cat">
+    <svg viewBox="0 0 120 112" width="92" aria-hidden="true">
+      <g class="tail"><path d="M92 96c22 2 26-24 12-34" fill="none" stroke="#e07b39" stroke-width="9" stroke-linecap="round"/></g>
+      <g class="bod"><ellipse cx="60" cy="88" rx="33" ry="22" fill="#f4a259"/><ellipse cx="60" cy="92" rx="18" ry="15" fill="#fff3e0"/><ellipse cx="46" cy="106" rx="12" ry="6" fill="#fff3e0"/><ellipse cx="74" cy="106" rx="12" ry="6" fill="#fff3e0"/></g>
+      <g class="head">
+        <path d="M29 38 33 8 56 24ZM91 38 87 8 64 24Z" fill="#f4a259"/>
+        <path d="M35 30 37 16 49 25ZM85 30 83 16 71 25Z" fill="#f48fb1"/>
+        <ellipse cx="60" cy="50" rx="35" ry="29" fill="#f4a259"/>
+        <path d="M60 22v10M52 24l2 8M68 24l-2 8" stroke="#e07b39" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="60" cy="62" rx="14" ry="10" fill="#fff3e0"/>
+        <g class="eyes"><ellipse cx="46" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="74" cy="50" rx="7" ry="8" fill="#fff"/>
+          <g class="pup"><circle cx="46" cy="50" r="4.5" fill="#3b2a20"/><circle cx="74" cy="50" r="4.5" fill="#3b2a20"/><circle cx="44.5" cy="48" r="1.5" fill="#fff"/><circle cx="72.5" cy="48" r="1.5" fill="#fff"/></g></g>
+        <g class="hp" fill="none" stroke="#3b2a20" stroke-width="3" stroke-linecap="round"><path d="M39 52q7-9 14 0M67 52q7-9 14 0"/><circle cx="36" cy="60" r="5" fill="#f48fb1" stroke="none" opacity=".6"/><circle cx="84" cy="60" r="5" fill="#f48fb1" stroke="none" opacity=".6"/></g>
+        <path class="zz" d="M39 52q7 7 14 0M67 52q7 7 14 0" fill="none" stroke="#3b2a20" stroke-width="3" stroke-linecap="round"/>
+        <path d="M56 58h8l-4 5z" fill="#f48fb1"/>
+        <path d="M60 63v3M60 66q-4 4-8 1M60 66q4 4 8 1M30 60l-14-3M30 65l-14 3M90 60l14-3M90 65l14 3" fill="none" stroke="#3b2a20" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+  <svg class="yarn" id="yarn" viewBox="0 0 28 28" width="28" role="button" aria-label="Roll the yarn ball"><circle cx="14" cy="14" r="12" fill="#f06292"/><path d="M5 10q9 4 18-2M4 16q10 5 20-1M9 4q8 8 6 20" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/></svg>
+</div>
 
 <button class="rip fab" id="fab" type="button"><i class="ms">today</i>Today</button>
 
@@ -491,6 +543,170 @@ footer{padding:28px 0 8px;text-align:center;color:var(--onv);font-size:12px}
   });
   addEventListener('scroll', () => $('appbar').classList.toggle('sc', scrollY > 8), { passive: true });
   addEventListener('resize', moveInd);
+
+  /* Cat mascot */
+  const cat = $('cat'), catBtn = $('catBody'), bub = $('bub'), pupG = cat.querySelector('.pup'), headG = cat.querySelector('.head');
+  let busy = false, idleAt = Date.now(), taps = 0, tapT, bubT, petT;
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const LINES = {
+    pet: ['Purrrr…', 'More pets, please!', 'Mrrp! Right there.', 'You’re my favorite human.', 'Best study break ever.'],
+    idle: ['Hydrate, human! 💧', 'Is it lunch yet?', 'Nap after class?', 'I checked: no homework for cats.', 'Time to stretch your legs!'],
+    wake: ['Mrrrow… five more minutes.', 'Huh? I wasn’t sleeping!']
+  };
+  function say(t, ms = 3200) {
+    bub.textContent = t; bub.hidden = false;
+    bub.style.animation = 'none'; void bub.offsetWidth; bub.style.animation = '';
+    clearTimeout(bubT); bubT = setTimeout(() => { bub.hidden = true; }, ms);
+  }
+  const flash = (c, ms) => { cat.classList.add(c); setTimeout(() => cat.classList.remove(c), ms); };
+
+  /* Purring (synthesized with Web Audio — no sound files needed) */
+  let soundOn = st.get('sound') !== 'off';
+  const purr = (() => {
+    let ctx = null, master = null, parts = null, wob = 0;
+    function build() {
+      if (ctx) return true;
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return false;
+      try { ctx = new AC(); } catch (e) { return false; }
+      master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
+      // Brown-ish noise for the breathy rasp
+      const sr = ctx.sampleRate, len = Math.floor(sr * 2), buf = ctx.createBuffer(1, len, sr), dat = buf.getChannelData(0);
+      let last = 0;
+      for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.02 * w) / 1.02; dat[i] = last * 3.2; }
+      const noise = ctx.createBufferSource(); noise.buffer = buf; noise.loop = true;
+      const nf = ctx.createBiquadFilter(); nf.type = 'lowpass'; nf.frequency.value = 620; nf.Q.value = 0.7;
+      const ng = ctx.createGain(); ng.gain.value = 0.45;
+      // Low rumble body (harmonics of ~27 Hz)
+      const o1 = ctx.createOscillator(); o1.type = 'sawtooth'; o1.frequency.value = 27;
+      const o2 = ctx.createOscillator(); o2.type = 'triangle'; o2.frequency.value = 54;
+      const o2g = ctx.createGain(); o2g.gain.value = 0.3;
+      const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 850; lp.Q.value = 1.1;
+      // The flutter: ~25 Hz amplitude modulation
+      const mod = ctx.createGain(); mod.gain.value = 0.55;
+      const lfo = ctx.createOscillator(); lfo.type = 'sine'; lfo.frequency.value = 25;
+      const lfoG = ctx.createGain(); lfoG.gain.value = 0.45;
+      lfo.connect(lfoG); lfoG.connect(mod.gain);
+      // Slow "breathing" swell
+      const breath = ctx.createGain(); breath.gain.value = 0.85;
+      const blfo = ctx.createOscillator(); blfo.frequency.value = 0.22;
+      const blfoG = ctx.createGain(); blfoG.gain.value = 0.15;
+      blfo.connect(blfoG); blfoG.connect(breath.gain);
+      noise.connect(nf); nf.connect(ng); ng.connect(lp);
+      o1.connect(lp); o2.connect(o2g); o2g.connect(lp);
+      lp.connect(mod); mod.connect(breath); breath.connect(master);
+      [o1, o2, noise, lfo, blfo].forEach(n => n.start());
+      parts = { o1, o2, lfo };
+      return true;
+    }
+    function wobble() {
+      if (!ctx || !parts) return;
+      const t = ctx.currentTime;
+      parts.lfo.frequency.setTargetAtTime(24 + Math.random() * 4, t, 0.35);
+      parts.o1.frequency.setTargetAtTime(26 + Math.random() * 2.5, t, 0.45);
+      parts.o2.frequency.setTargetAtTime(52 + Math.random() * 5, t, 0.45);
+    }
+    return {
+      start(level = 1) {
+        if (!soundOn || !build()) return;
+        if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+        const t = ctx.currentTime;
+        master.gain.cancelScheduledValues(t);
+        master.gain.setTargetAtTime(0.17 * level, t, 0.15);
+        wobble(); clearInterval(wob); wob = setInterval(wobble, 650);
+      },
+      stop(fade = 0.7) {
+        if (!ctx) return;
+        clearInterval(wob); wob = 0;
+        const t = ctx.currentTime;
+        master.gain.cancelScheduledValues(t);
+        master.gain.setTargetAtTime(0, t, fade / 3);
+      }
+    };
+  })();
+
+  function hearts(n = 3) {
+    for (let i = 0; i < n; i++) setTimeout(() => {
+      const h = document.createElement('i');
+      h.className = 'ms heart'; h.textContent = 'favorite'; h.style.setProperty('--x', (Math.random() * 60 - 30) + 'px');
+      cat.appendChild(h); h.onanimationend = () => h.remove();
+    }, i * 160);
+  }
+  function wake() {
+    if (!cat.classList.contains('sleep')) return false;
+    cat.classList.remove('sleep'); say(pick(LINES.wake)); return true;
+  }
+  const jump = () => flash('jump', 700);
+  function yarn() {
+    if (busy) return; busy = true; flash('roll', 1600); say('Got it! 🧶', 1600);
+    setTimeout(jump, 700); setTimeout(() => { busy = false; }, 1700);
+  }
+  function zoom() {
+    busy = true; bub.hidden = true; purr.stop(.25); flash('zoom', 2600); hearts(5);
+    setTimeout(() => { busy = false; say('Zoomies complete! 🐾'); }, 2600);
+  }
+  function pet() {
+    idleAt = Date.now();
+    if (wake()) { purr.start(.75); setTimeout(() => { if (!cat.classList.contains('happy')) purr.stop(); }, 1000); return; }
+    cat.classList.add('happy'); hearts(); say(pick(LINES.pet), 2200); purr.start();
+    clearTimeout(petT); petT = setTimeout(() => { cat.classList.remove('happy'); purr.stop(); }, 2200);
+    taps++; clearTimeout(tapT); tapT = setTimeout(() => { taps = 0; }, 1500);
+    if (taps >= 6) { taps = 0; zoom(); }
+  }
+  function tip() {
+    if (liveKey.includes('IN PROGRESS')) return say('Class is on. Shh! 🤫');
+    if (/BREAK|PRAYER/.test(liveKey)) return say('Break time! Snacks? 🍪');
+    if (liveKey.includes('UP NEXT')) return say('Next class is coming up. Let’s go!');
+    say(pick(LINES.idle));
+  }
+  catBtn.onclick = pet;
+  catBtn.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pet(); } };
+  $('yarn').onclick = () => { idleAt = Date.now(); if (!wake()) yarn(); };
+
+  let mx = 0, my = 0, raf = 0;
+  ['pointermove', 'pointerdown'].forEach(ev => document.addEventListener(ev, e => {
+    idleAt = Date.now(); mx = e.clientX; my = e.clientY;
+    if (raf || cat.hidden) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      const r = catBtn.getBoundingClientRect(), dx = mx - (r.left + r.width / 2), dy = my - (r.top + r.height * .45);
+      const d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 200);
+      pupG.style.transform = `translate(${dx / d * 2.8 * k}px,${dy / d * 2.2 * k}px)`;
+      headG.style.transform = `rotate(${Math.max(-1, Math.min(1, dx / 400)) * 6}deg)`;
+    });
+  }, { passive: true }));
+
+  setInterval(() => {
+    if (cat.hidden || busy || document.hidden || cat.classList.contains('sleep')) return;
+    if (Date.now() - idleAt > 30000) { cat.classList.add('sleep'); bub.hidden = true; purr.stop(.5); return; }
+    const r = Math.random(); r < .4 ? tip() : r < .7 ? jump() : yarn();
+  }, 7000);
+
+  cat.hidden = st.get('cat') === 'off';
+  const syncCat = () => { $('catToggle').style.color = cat.hidden ? '' : 'var(--p)'; $('catToggle').setAttribute('aria-pressed', !cat.hidden); };
+  $('catToggle').onclick = () => {
+    cat.hidden = !cat.hidden; st.set('cat', cat.hidden ? 'off' : 'on'); syncCat(); idleAt = Date.now();
+    if (cat.hidden) { purr.stop(.2); bub.hidden = true; }
+    else { cat.classList.remove('sleep'); say('Meow! I’m back. 🐱', 2500); purr.start(.7); setTimeout(() => { if (!cat.classList.contains('happy')) purr.stop(); }, 900); }
+  };
+  syncCat();
+
+  /* Purr sound toggle */
+  const soundBtn = $('soundBtn');
+  function syncSound() {
+    $('soundIcon').textContent = soundOn ? 'volume_up' : 'volume_off';
+    soundBtn.setAttribute('aria-pressed', String(soundOn));
+    soundBtn.style.color = soundOn ? 'var(--p)' : '';
+  }
+  soundBtn.onclick = () => {
+    soundOn = !soundOn; st.set('sound', soundOn ? 'on' : 'off'); syncSound();
+    idleAt = Date.now();
+    if (soundOn) { purr.start(.9); setTimeout(() => { if (!cat.classList.contains('happy')) purr.stop(); }, 1200); }
+    else purr.stop(.15);
+  };
+  syncSound();
+
+  setTimeout(() => { if (!cat.hidden) say('Hi! Tap me for pets 🐾', 4000); }, 1500);
 
   /* Load */
   function tick() {
