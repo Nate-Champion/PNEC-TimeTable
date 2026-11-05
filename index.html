@@ -140,11 +140,13 @@ footer{padding:28px 0 8px;text-align:center;color:var(--onv);font-size:12px}
 .cat{--fur:#f4a259;--stripe:#e07b39;--belly:#fff3e0;--ink:#3b2a20}
 .cat[data-skin=niko]{--fur:#fffaf0;--belly:#fff;--tail:#f4a259}
 .cat[data-skin=manu],.cat[data-skin=eddy]{--fur:#fff;--belly:#f4f2f7;--tail:#fff}
-.cat[data-skin=cherry]{--fur:#b59b78;--stripe:#4a3a2a;--belly:#eadfcb;--tail:#b59b78}
+.cat[data-skin=cherry]{--fur:#a89880;--stripe:#3d352c;--belly:#dccdb0;--tail:#a89880}
 .cat[data-skin=niko] .flip svg,.cat[data-skin=manu] .flip svg,.cat[data-skin=eddy] .flip svg{filter:drop-shadow(0 0 1px rgba(0,0,0,.45))}
 .fu{fill:var(--fur)}.be{fill:var(--belly)}.st{stroke:var(--stripe)}.ik{stroke:var(--ink)}.pa{fill:#f4a259}.pb{fill:#2a2630}.tb0{stroke:var(--tail,var(--stripe))}
 .patch,.spots,.tabby,.fh,.hat{display:none}.cat[data-skin=niko] .patch,.cat[data-skin=manu] .spots,.cat[data-skin=cherry] .tabby,.cat[data-skin=cookie] .fh,.cat[data-skin=cherry] .fh,[data-hat] .hat{display:block}
 .cat[data-skin=manu] .eL{stroke:#fff}
+.collar{display:none}.cat[data-skin=cherry] .collar{display:block}.cat[data-skin=cherry] .ew{fill:#e9dd8f}
+.fall{position:fixed;top:-40px;z-index:30;font-size:26px;pointer-events:none;animation:fall 2.6s linear forwards}@keyframes fall{to{transform:translateY(112vh) rotate(360deg)}}
 .bub.act{pointer-events:auto;cursor:pointer}
 dialog{width:calc(100% - 32px);max-width:400px;padding:0;border:0;border-radius:28px;background:var(--s3);color:var(--on);box-shadow:0 8px 32px rgba(0,0,0,.3);animation:dlg .35s var(--ease)}
 dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
@@ -248,11 +250,12 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
       <g class="head">
         <path d="M29 38 33 8 56 24ZM91 38 87 8 64 24Z" class="fu"/>
         <path d="M35 30 37 16 49 25ZM85 30 83 16 71 25Z" fill="#f48fb1"/>
+        <g class="collar"><path d="M36 70Q60 96 84 70" fill="none" stroke="#7e5bb5" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="85" r="3.2" fill="#d8d2e6"/></g>
         <ellipse cx="60" cy="50" rx="35" ry="29" class="fu"/>
         <path d="M60 22v10M52 24l2 8M68 24l-2 8" class="st fh" stroke-width="3" stroke-linecap="round"/>
         <g class="spots" clip-path="url(#hc)"><circle class="pb" cx="76" cy="48" r="14"/><circle class="pb" cx="38" cy="32" r="6"/></g><g class="tabby"><path class="st" fill="none" stroke-width="2.5" stroke-linecap="round" d="M27 52l9 2M27 58l9-1M93 52l-9 2M93 58l-9-1M44 27l3 7M76 27l-3 7"/></g><ellipse cx="60" cy="62" rx="14" ry="10" class="be"/>
         <g class="patch" clip-path="url(#hc)"><ellipse class="pa" cx="38" cy="40" rx="13" ry="11"/><ellipse class="pb" cx="86" cy="36" rx="14" ry="12"/></g>
-        <g class="eyes"><ellipse cx="46" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="74" cy="50" rx="7" ry="8" fill="#fff"/>
+        <g class="eyes"><ellipse class="ew" cx="46" cy="50" rx="7" ry="8" fill="#fff"/><ellipse class="ew" cx="74" cy="50" rx="7" ry="8" fill="#fff"/>
           <g class="pup"><circle cx="46" cy="50" r="4.5" fill="#3b2a20"/><circle cx="74" cy="50" r="4.5" fill="#3b2a20"/><circle cx="44.5" cy="48" r="1.5" fill="#fff"/><circle cx="72.5" cy="48" r="1.5" fill="#fff"/></g></g>
         <g class="hp ik" fill="none" stroke-width="3" stroke-linecap="round"><path d="M39 52q7-9 14 0"/><path class="eL" d="M67 52q7-9 14 0"/><circle cx="36" cy="60" r="5" fill="#f48fb1" stroke="none" opacity=".6"/><circle cx="84" cy="60" r="5" fill="#f48fb1" stroke="none" opacity=".6"/></g>
         <g class="zz ik" fill="none" stroke-width="3" stroke-linecap="round"><path d="M39 52q7 7 14 0"/><path class="eL" d="M67 52q7 7 14 0"/></g>
@@ -607,7 +610,7 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
   tabs.onclick = e => { const b = e.target.closest('[data-day]'); if (b) selectDay(b.dataset.day); };
   $('fab').onclick = () => selectDay(todayCode());
   $('q').oninput = e => {
-    S.q = e.target.value.trim().toLowerCase(); $('qClear').hidden = !e.target.value;
+    S.q = e.target.value.trim().toLowerCase(); $('qClear').hidden = !e.target.value; if (S.q) setTimeout(() => eggWord(S.q), 0);
     quiet = true; if (data) refresh(); quiet = false;
   };
   $('qClear').onclick = () => { $('q').value = ''; $('q').oninput({ target: $('q') }); $('q').focus(); };
@@ -653,22 +656,25 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
       o.connect(g); g.connect(out); o.start(t); o.stop(t + d + .05);
     }
     const seq = (fs, gap = .09, type = 'triangle', v = .22) => fs.forEach((f, i) => blip(f, i * gap, .2, type, v));
-    function meow(v = 1, len = .55) {
-      if (!ok()) return;
-      const t = ac.currentTime, o = ac.createOscillator(), g = ac.createGain();
-      o.type = 'sawtooth';
-      o.frequency.setValueAtTime(380 * v, t); o.frequency.exponentialRampToValueAtTime(780 * v, t + len * .35); o.frequency.exponentialRampToValueAtTime(430 * v, t + len);
-      g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.5, t + .06); g.gain.setValueAtTime(.5, t + len * .6); g.gain.exponentialRampToValueAtTime(.0001, t + len);
-      [[700, 1500, 900, .9], [2300, 2800, 2200, .45]].forEach(([a, b, c, k]) => {
-        const f = ac.createBiquadFilter(), m = ac.createGain();
-        f.type = 'bandpass'; f.Q.value = 5; f.frequency.setValueAtTime(a, t); f.frequency.linearRampToValueAtTime(b, t + len * .4); f.frequency.linearRampToValueAtTime(c, t + len);
-        m.gain.value = k; o.connect(f); f.connect(m); m.connect(g);
-      });
-      g.connect(out); o.start(t); o.stop(t + len + .05);
+    const bad = new Set(); let cur = null;
+    function play(urls, vol = .9) {
+      const u = urls.find(x => !bad.has(x)); if (!u || !on) return;
+      if (cur) cur.pause();
+      const a = new Audio(u); a.volume = vol; cur = a;
+      a.onerror = () => { bad.add(u); if (cur === a) play(urls, vol); };
+      a.play().catch(() => {});
     }
+    /* Drop files in a "sounds" folder next to index.html: cookie.mp3, niko.mp3, manu.mp3, cherry.mp3, eddy.mp3 (and meow.mp3 as a fallback for any missing one) */
+    const meow = id => play([`sounds/${id}.mp3`, 'sounds/meow.mp3']);
     function purr() {
-      if (!ok() || ac.currentTime < purrEnd) return;
-      const t = ac.currentTime, d = 1.3; purrEnd = t + d * .8;
+      if (!on || Date.now() < purrEnd) return; purrEnd = Date.now() + 1000;
+      const pf = 'sounds/purr.mp3';
+      if (bad.has(pf)) return synthPurr();
+      const a = new Audio(pf); a.volume = .7; a.onerror = () => { bad.add(pf); synthPurr(); }; a.play().catch(() => {});
+    }
+    function synthPurr() {
+      if (!ok()) return;
+      const t = ac.currentTime, d = 1.3;
       const s = ac.createBufferSource(), f = ac.createBiquadFilter(), am = ac.createGain(), g = ac.createGain(), l = ac.createOscillator(), ld = ac.createGain();
       s.buffer = nz; s.loop = true; f.type = 'lowpass'; f.frequency.value = 260;
       am.gain.value = .5; l.frequency.value = 25; ld.gain.value = .5; l.connect(ld); ld.connect(am.gain);
@@ -699,7 +705,7 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
 
   /* Cat mascot */
   const cat = $('cat'), catBtn = $('catBody'), bub = $('bub'), pupG = cat.querySelector('.pup'), headG = cat.querySelector('.head');
-  let busy = false, idleAt = Date.now(), taps = 0, tapT, bubT, petT;
+  let yt = 0, ytT, bt = 0, btT, ft = 0, ftT, ki = 0, busy = false, idleAt = Date.now(), taps = 0, tapT, bubT, petT;
   const pick = a => a[Math.floor(Math.random() * a.length)];
   const LINES = {
     pet: ['Purrrr…', 'More pets, please!', 'Mrrp! Right there.', 'You’re my favorite human.', 'Best study break ever.'],
@@ -721,7 +727,7 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
   }
   function wake() {
     if (!cat.classList.contains('sleep')) return false;
-    cat.classList.remove('sleep'); say(pick(LINES.wake)); SND.meow(voice()); return true;
+    cat.classList.remove('sleep'); say(pick(LINES.wake)); SND.meow(skin); return true;
   }
   const jump = () => flash('jump', 700);
   function yarn() {
@@ -735,7 +741,7 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
   function pet() {
     idleAt = Date.now();
     if (wake()) return;
-    cat.classList.add('happy'); hearts(); say(pick(LINES.pet), 2200); SND.purr(); if (Math.random() < .35) SND.meow(voice(), .25); gainPet();
+    cat.classList.add('happy'); hearts(); say(pick(LINES.pet), 2200); SND.purr(); if (Math.random() < .35) SND.meow(skin); gainPet();
     clearTimeout(petT); petT = setTimeout(() => cat.classList.remove('happy'), 2200);
     taps++; clearTimeout(tapT); tapT = setTimeout(() => { taps = 0; }, 1500);
     if (taps >= 6) { taps = 0; zoom(); }
@@ -749,7 +755,7 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
   }
   catBtn.onclick = pet;
   catBtn.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pet(); } };
-  $('yarn').onclick = () => { idleAt = Date.now(); if (!wake()) { yarn(); SND.yarn(); } };
+  $('yarn').onclick = () => { idleAt = Date.now(); if (!wake()) { yarn(); SND.yarn(); } clearTimeout(ytT); ytT = setTimeout(() => { yt = 0; }, 3000); if (++yt >= 7) { yt = 0; rain('🧶', 22); say('YARN STORM! 🧶🧶🧶', 3500); SND.jingle(); } };
 
   let mx = 0, my = 0, raf = 0;
   ['pointermove', 'pointerdown'].forEach(ev => document.addEventListener(ev, e => {
@@ -773,7 +779,7 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
   cat.hidden = st.get('cat') === 'off';
   const syncCat = () => { $('catToggle').style.color = cat.hidden ? '' : 'var(--p)'; $('catToggle').setAttribute('aria-pressed', !cat.hidden); };
   syncCat();
-  setTimeout(() => { if (!cat.hidden) say(`Hi! I’m ${nm()}. Tap me for pets 🐾`, 4000); }, 1500);
+  setTimeout(() => { if (!cat.hidden) say(new Date().getHours() < 5 ? 'Why are you still up?! Go to sleep 😾' : `Hi! I’m ${nm()}. Tap me for pets 🐾`, 4000); }, 1500);
 
   /* Cat corner: skins, hat, perch, mini-game */
   const SK = [
@@ -784,12 +790,56 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
     { id: 'eddy', name: 'Eddy', need: 100, v: .8, sw: '#fff' }
   ];
   let pets = +st.get('pets') || 0, skin = st.get('skin') || 'cookie', hatAlways = st.get('hat') === 'on', lastScore = null;
-  const unlocked = x => pets >= x.need;
-  const nm = () => (SK.find(x => x.id === skin) || SK[0]).name, voice = () => (SK.find(x => x.id === skin) || SK[0]).v;
+  const secret = new Set((st.get('unl') || '').split(',').filter(Boolean)), unlocked = x => pets >= x.need || secret.has(x.id);
+  const nm = () => (SK.find(x => x.id === skin) || SK[0]).name;
   function applySkin() { if (!SK.some(x => x.id === skin && unlocked(x))) skin = 'cookie'; cat.dataset.skin = skin; catBtn.setAttribute('aria-label', 'Pet ' + nm()); }
   const applyHat = () => cat.toggleAttribute('data-hat', hatAlways || todayCode() === 'Fri');
+  function rain(chars, n = 24) {
+    const a = [...chars];
+    for (let i = 0; i < n; i++) setTimeout(() => {
+      const e = document.createElement('span'); e.className = 'fall'; e.textContent = pick(a);
+      e.style.left = Math.random() * 96 + '%'; e.style.animationDuration = (2 + Math.random() * 1.6) + 's';
+      document.body.appendChild(e); e.onanimationend = () => e.remove();
+    }, i * 70);
+  }
+  function eggWord(w) {
+    const x = SK.find(k => k.id === w);
+    if (x) {
+      if (!unlocked(x)) { secret.add(x.id); st.set('unl', [...secret].join(',')); SND.jingle(); hearts(6); rain('🐾', 16); }
+      skin = x.id; st.set('skin', skin); applySkin(); SND.meow(skin); say(`${x.name} here! You found my secret 🤫`, 3500); return;
+    }
+    const E = {
+      meow: () => { SND.meow(skin); say('Meow to you too! 😸'); },
+      purr: () => { SND.purr(); hearts(4); say('Purrrr… 💜'); },
+      zoomies: () => zoom(),
+      yarn: () => { rain('🧶', 16); say('YARN!! 🧶'); },
+      fish: () => { rain('🐟', 16); say('Is that tuna?! 🐟'); },
+      party: () => { cat.setAttribute('data-hat', ''); rain('🎉', 18); SND.jingle(); say('PARTY TIME! 🥳', 3500); setTimeout(applyHat, 8000); }
+    };
+    if (E[w]) E[w]();
+  }
+  document.querySelector('.brand').addEventListener('click', () => {
+    clearTimeout(btT); btT = setTimeout(() => { bt = 0; }, 2000);
+    if (++bt < 5) return; bt = 0;
+    const b = document.querySelector('.brand b'); b.textContent = 'Cat Schedule 🐾'; setTimeout(() => { b.textContent = 'Class Schedule'; }, 3500);
+    rain('🐱😺😸😻🐈', 30); SND.meow(skin);
+  });
+  document.querySelector('footer span').addEventListener('click', () => {
+    clearTimeout(ftT); ftT = setTimeout(() => { ft = 0; }, 2000);
+    if (++ft < 3) return; ft = 0; rain('💜❤️💖', 24); say('Made with love 💜', 3000);
+  });
+  const KON = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  addEventListener('keydown', e => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    ki = k === KON[ki] ? ki + 1 : k === KON[0] ? 1 : 0;
+    if (ki < KON.length) return; ki = 0;
+    SK.forEach(x => secret.add(x.id)); st.set('unl', [...secret].join(','));
+    rain('🐱😺😸😻🐈🐾', 44); SND.jingle(); say('Cookie, Niko, Manu, Cherry & Eddy say hi! All cats unlocked 🎮', 5000);
+  });
   function gainPet() {
     pets++; st.set('pets', pets);
+    const M = { 50: '50 pets! You really love me 💜', 200: '200 pets!! Legendary human 👑', 500: '500 pets. Will you marry me? 💍' };
+    if (M[pets]) { hearts(8); rain('💜', 14); say(M[pets], 4500); }
     const u = SK.find(x => x.need === pets);
     if (u) { hearts(6); SND.jingle(); say(`${u.name} unlocked! 🎉 Open my corner to switch cats.`, 5000); }
   }
@@ -806,14 +856,14 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
   $('dlgClose').onclick = () => dlg.close();
   $('skins').onclick = e => {
     const b = e.target.closest('[data-skin]'); if (!b || b.disabled) return;
-    skin = b.dataset.skin; st.set('skin', skin); applySkin(); renderCorner(); hearts(2); say(`Hi, I’m ${nm()}! 🐾`, 2500); SND.meow(voice());
+    skin = b.dataset.skin; st.set('skin', skin); applySkin(); renderCorner(); hearts(2); say(`Hi, I’m ${nm()}! 🐾`, 2500); SND.meow(skin);
   };
   $('catShow').onchange = e => {
     cat.hidden = !e.target.checked; st.set('cat', cat.hidden ? 'off' : 'on'); syncCat(); idleAt = Date.now();
-    if (!cat.hidden) { cat.classList.remove('sleep'); say('Meow! I’m back. 🐱', 2500); SND.meow(voice()); }
+    if (!cat.hidden) { cat.classList.remove('sleep'); say('Meow! I’m back. 🐱', 2500); SND.meow(skin); }
   };
   $('hatAlways').onchange = e => { hatAlways = e.target.checked; st.set('hat', hatAlways ? 'on' : 'off'); applyHat(); };
-  $('sndOn').onchange = e => { SND.set(e.target.checked); if (e.target.checked) SND.meow(voice()); };
+  $('sndOn').onchange = e => { SND.set(e.target.checked); if (e.target.checked) SND.meow(skin); };
   $('playBtn').onclick = () => { dlg.close(); openGame(); };
   bub.onclick = () => { if (bub.classList.contains('act')) { bub.hidden = true; openGame(); } };
 
@@ -847,7 +897,7 @@ dialog::backdrop{background:rgba(0,0,0,.45);animation:fade .3s}
     G.items = G.items.filter(i => !i.done && i.y < GH + 20);
     G.hit = Math.max(0, G.hit - dt);
     if (G.t <= 0) {
-      G.t = 0; G.over = true; G.run = false; lastScore = G.score; SND.end(G.score >= 8, voice());
+      G.t = 0; G.over = true; G.run = false; lastScore = G.score; SND.end(G.score >= 8, skin);
       if (G.score > G.best) { G.best = G.score; st.set('hi', G.score); }
       $('gStart').hidden = false; $('gStart').textContent = 'Play again';
       return gameDraw();
